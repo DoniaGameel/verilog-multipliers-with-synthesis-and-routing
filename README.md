@@ -77,3 +77,31 @@ ii. Only use vertical strips
 **DRC_Report_for_floating_multiplier:** **_DRC_Report_FLoat_Mult_** file
 
 **LVC_Report_for_floating_multiplier:** **_LVS_Report_FLoat_Mult_** file
+
+## Oasys Netlists
+
+## Nitro final layout
+
+## Post_Synthesis_and_Routing_folders_content:
+
+○ Do file to run and configure wave.
+
+○ Constraints files
+
+○ Scripts used for synthesis
+
+○ Scripts used for Floorplanning, Placement & Routing
+
+○ Oasys generated reports
+
+○ Nitro generated reports
+
+○ Post-synthesize code
+
+○ Post-routing code
+
+○ Sdf file
+
+○ GDS
+
+○ Final saved database from Nitro
