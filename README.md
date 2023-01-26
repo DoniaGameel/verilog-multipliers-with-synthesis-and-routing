@@ -66,7 +66,7 @@ ii. Only use vertical strips
 
 ## Files Locations:
 
-Code files for each design: **_'multipliers_files_pre_synthesis'_** folder
+**Code files for each design:** **_'multipliers_files_pre_synthesis'_** folder
 
 **Code files for each testbench:** **_'test_benches' folder_**
 
@@ -77,3 +77,49 @@ Code files for each design: **_'multipliers_files_pre_synthesis'_** folder
 **DRC_Report_for_floating_multiplier:** **_DRC_Report_FLoat_Mult_** file
 
 **LVC_Report_for_floating_multiplier:** **_LVS_Report_FLoat_Mult_** file
+
+## Oasys Netlists
+
+## Nitro final layout
+
+## Post_Synthesis_and_Routing_folders_content:
+
+○ Do file to run and configure wave.
+
+○ Constraints files
+
+○ Scripts used for synthesis
+
+○ Scripts used for Floorplanning, Placement & Routing
+
+○ Oasys generated reports
+
+○ Nitro generated reports
+
+○ Post-synthesize code
+
+○ Post-routing code
+
+○ Sdf file
+
+○ GDS
+
+○ Final saved database from Nitro
+
+## Post-Routing-Report
+
+## Multiplier used in floating point adder
+
+## How to test the modules?
+
+## DRC Report of floating point multiplier:
+
+Results are in 'DRC_Report_FLoat_Mult' folder
+
+![My Image](DRC_Report_FLoat_Mult/DRC Report For Float_Mult.png)
+
+## LVC Report of floating point multiplier:
+
+Results are in 'LVS_Report_FLoat_Mult' folder
+
+![My Image](LVS_Report_FLoat_Mult/LVS.png)
