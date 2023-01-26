@@ -63,3 +63,17 @@ vi. Enable usage of all library cells.
 i. Constraint clock skew to 0.2ns
 
 ii. Only use vertical strips
+
+## Files Locations:
+
+Code files for each design: **_'multipliers_files_pre_synthesis'_** folder
+
+**Code files for each testbench:** **_'test_benches' folder_**
+
+**Code files for each design:** **_multipliers_files_pre_synthesis_**
+
+**Synthesis, Placing and Rputing Results:** **_[multiplier_name]_multiplier_synthesis_and_routing_**
+
+**DRC_Report_for_floating_multiplier:** **_DRC_Report_FLoat_Mult_** file
+
+**LVC_Report_for_floating_multiplier:** **_LVS_Report_FLoat_Mult_** file
