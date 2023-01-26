@@ -108,7 +108,7 @@ ii. Only use vertical strips
 
 ## Post-Routing-Report
 
-## Multiplier used in floating point adder
+## Multiplier used in floating point multiplier
 
 ## How to test the modules?
 1-Open Modelsim.
