@@ -105,3 +105,14 @@ ii. Only use vertical strips
 ○ GDS
 
 ○ Final saved database from Nitro
+
+## Post-Routing-Report
+
+## Multiplier used in floating point adder
+
+## How to test the modules?
+
+## DRC Report of floating point multiplier:
+
+## LVC Report of floating point multiplier:
+
