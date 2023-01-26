@@ -40,3 +40,26 @@ Your testbench should print **“TestCase#1: success”** on success and should
 print the **“TestCase#1: failed with input X and Y and Output Z and overflow
 status N”** , X,Y,Z snd N should be replaced by your values.
 
+## Synthesis using Oasys:
+
+**Synthesis the adders with the following constraints**
+
+i. Set clock to 6ns.
+
+ii. Set Input delay to 0.2ns.
+
+iii. Set load to 10
+
+iv. Set output load to 0.5ns.
+
+v. Set Utilization to 60%
+
+vi. Enable usage of all library cells.
+
+## Place and route using Nitro:
+
+**Place and route the adders with the following constraints**
+
+i. Constraint clock skew to 0.2ns
+
+ii. Only use vertical strips
