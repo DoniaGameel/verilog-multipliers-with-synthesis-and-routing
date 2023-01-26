@@ -1,0 +1,28 @@
+
+
+==================================================================================
+=== CALIBRE::LVS-H SUMMARY REPORT
+===
+
+Extraction Summary
+------------------
+Extraction Start Time:                       Wed Jan 04 04:04:02 2023
+Extraction Finish Time:                      Wed Jan 04 04:04:04 2023
+Circuit Extraction Report:                   float_mult.lvs.report.ext
+Circuit Extraction SPICE Netlist:            /home/vlsi/Desktop/Calbre/float_mult.sp
+
+Comparison Summary
+------------------
+Comparison Start Time:                       Wed Jan 04 04:04:04 2023
+Comparison Finish Time:                      Wed Jan 04 04:04:04 2023
+LVS Comparison Report:                       float_mult.lvs.report
+LVS Comparison Status:                       NOT COMPARED.
+
+                      #   #                  ~   ~     
+                       # #                   x   x     
+                        #                      @       
+                       # #                    ___      
+                      #   #                  /   \     
+
+Comparison Error Types Detected:             2
+
