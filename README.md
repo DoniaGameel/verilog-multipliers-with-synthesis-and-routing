@@ -6,10 +6,14 @@ multipliers and study their characteristics.
 
 In this repo, we implemented using verilog the following 32-bits signed integer multipliers:
 
-**1- Verilog (‘*’) version of multiplier //we already took in lab**
+**1- Verilog (‘*’) version of multiplier**
+
 **2- Multiplier Tree (combinational)**
+
 **3- Sequential Multiplier using shift & accumulate**
+
 **4- Booth Algorithm**
+
 **5- Radix-4 Booth Algorithm**
 
 All multipliers will have an input register before the multiplier and an output register after the multiplier.
