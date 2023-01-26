@@ -114,5 +114,12 @@ ii. Only use vertical strips
 
 ## DRC Report of floating point multiplier:
 
+Results are in 'DRC_Report_FLoat_Mult' folder
+
+![My Image](DRC_Report_FLoat_Mult/DRC Report For Float_Mult.png)
+
 ## LVC Report of floating point multiplier:
 
+Results are in 'LVS_Report_FLoat_Mult' folder
+
+![My Image](LVS_Report_FLoat_Mult/LVS.png)
