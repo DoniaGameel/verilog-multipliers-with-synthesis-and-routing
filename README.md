@@ -66,7 +66,7 @@ ii. Only use vertical strips
 
 ## Files Locations:
 
-Code files for each design: **_'multipliers_files_pre_synthesis'_** folder
+**Code files for each design:** **_'multipliers_files_pre_synthesis'_** folder
 
 **Code files for each testbench:** **_'test_benches' folder_**
 
