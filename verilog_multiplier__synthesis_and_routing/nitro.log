@@ -1,0 +1,293 @@
+#---------------------------------------------------------------------
+# start session at Thu Dec 29 11:17:47 2022
+# Exec path is /home/vlsi/Installation/Nitro/nitroPack-2019.1.R2a/nitro/arch/linux/x86_64/2.12/64/bin
+#---------------------------------------------------------------------
+--------------------------------------------------------------------------
+| Nitro-SoC version 2019.1.R2 1.68700.2.290 Fri Nov 29 21:06:00 PST 2019 | 
+| Running on 192.168.44.136 1core 3.9GBytes 2.4GHz 64bits mode pid 7185  | 
+|          Copyright (c) 2003-2019 Mentor Graphics Corporation           | 
+|                          All Rights Reserved                           | 
+|      THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION       | 
+|          WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION          | 
+|           OR ITS LICENSORS AND IS SUBJECT TO LICENSE TERMS.            | 
+--------------------------------------------------------------------------
+
+Nitro-SoC> start
+Nitro-SoC> check_design
+info CHK10: Checking technology...
+info CHK10: Checking libraries...
+info CHK10: Checking design...
+info CHK10: Checking partition...
+-------------------------------------------------
+|               Technology Errors               |
+|-----------+-------+---------+-----------------|
+| Name      | Count | Status  | Description     | 
+|-----------+-------+---------+-----------------|
+| no_layers | 1     | Warning | No layers exist | 
+-------------------------------------------------
+
+--------------------------------------------------------------------------------
+|                               Partition Errors                               |
+|---------------------+-------+---------+--------------------------------------|
+| Name                | Count | Status  | Description                          | 
+|---------------------+-------+---------+--------------------------------------|
+| no_top_partition    | 1     | Warning | Design does not have a top partition | 
+|---------------------+-------+---------+--------------------------------------|
+| partitions_overlaps | 0     | Passed  | Partition overlaps                   | 
+--------------------------------------------------------------------------------
+
+info UI33: performed design checks for 0 sec (CPU time: 0 sec; MEM: RSS - 172M, CVMEM - 723M, PVMEM - 723M)
+
+nitro.log, current date/time: Thu Dec 29 11:18:11 2022
+version 2019.1.R2 1.68700.2.290 Fri Nov 29 21:06:00 PST 2019
+host 192.168.44.136, pid 7185, ppid 1
+
+Stack trace of thread 7185 'gmain_exec'
+
+#0 (0x0737025f) (null) : _ZN3sda6common14PrintAllStacksEv line: 0
+#1 (0x010a9362) (null) : _ZN15GMainSigHandler13signalHandlerEi line: 0
+#2 (0x7f76207853b0) (null) : stat line: 0
+#3 (0x7f7620842bed) (null) : stat line: 0
+#4 (0x7f762559037c) (null) : stat line: 0
+#5 (0x7f76255904ac) (null) : stat line: 0
+#6 (0x07c86665) (null) : _ZN20QEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE line: 0
+#7 (0x0757d906) (null) : _ZN23QGuiEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE line: 0
+#8 (0x07c6397f) (null) : _ZN10QEventLoop13processEventsE6QFlagsINS_17ProcessEventsFlagEE line: 0
+#9 (0x07c63c0d) (null) : _ZN10QEventLoop4execE6QFlagsINS_17ProcessEventsFlagEE line: 0
+#10 (0x07c6802b) (null) : _ZN16QCoreApplication4execEv line: 0
+#11 (0x010ac995) (null) : _ZN5GMain14runApplicationEv line: 0
+#12 (0x0046aecd) (null) : main line: 0
+#13 (0x7f7620771505) (null) : stat line: 0
+#14 (0x0108f4a5) (null) : _start line: 0
+
+
+Stack trace of thread 7193 'gmain_exec'
+
+#0 (0x0736f4ff) SierraBFD.cpp : _ZN3sda6commonL26print_stack_signal_handlerEiP7siginfoPv line: 0
+#1 (0x7f7623b925f0) (null) : stat line: 0
+#2 (0x7f7623b8e9f3) (null) : stat line: 0
+#3 (0x7f7620ed25ac) (null) : stat line: 0
+#4 (0x0736fe2d) SierraBFD.cpp : _ZN3sda6commonL21freeze_signal_handlerEiP7siginfoPv line: 0
+#5 (0x7f7623b925f0) (null) : stat line: 0
+#6 (0x7f7620844953) (null) : stat line: 0
+#7 (0x7f76242d820c) (null) : stat line: 0
+#8 (0x7f7623b8ae65) (null) : stat line: 0
+#9 (0x7f762084d88d) (null) : stat line: 0
+
+
+Stack trace of thread 7233 'TermCmdLine'
+
+#0 (0x0736f4ff) SierraBFD.cpp : _ZN3sda6commonL26print_stack_signal_handlerEiP7siginfoPv line: 0
+#1 (0x7f7623b925f0) (null) : stat line: 0
+#2 (0x7f7623b8e9f3) (null) : stat line: 0
+#3 (0x7f7620ed25ac) (null) : stat line: 0
+#4 (0x0736fe2d) SierraBFD.cpp : _ZN3sda6commonL21freeze_signal_handlerEiP7siginfoPv line: 0
+#5 (0x7f7623b925f0) (null) : stat line: 0
+#6 (0x7f7623b8eda2) (null) : stat line: 0
+#7 (0x07b92bfa) qthread_unix.cpp : _ZL12thread_sleepP8timespec line: 0
+#8 (0x07b9312d) (null) : _ZN7QThread6msleepEm line: 0
+#9 (0x0112200e) (null) : _ZN20GMainTerminalCmdLine10event_hookEv line: 0
+#10 (0x7f7623dbbf81) (null) : stat line: 0
+#11 (0x7f7623daf327) (null) : stat line: 0
+#12 (0x7f7623daf47c) (null) : stat line: 0
+#13 (0x7f7623daad63) (null) : stat line: 0
+#14 (0x7f7623dbc7b0) (null) : stat line: 0
+#15 (0x011234fc) (null) : _ZN20GMainTerminalCmdLine15commandLineLoopEv line: 0
+#16 (0x01124254) (null) : _ZN20GMainTerminalCmdLine3runEv line: 0
+#17 (0x07b93a45) (null) : _ZN14QThreadPrivate5startEPv line: 0
+#18 (0x7f7623b8ae65) (null) : stat line: 0
+#19 (0x7f762084d88d) (null) : stat line: 0
+
+error UI158: Can't read or write to the terminal.
+info UI155: Nitro-SoC terminated with exit status of 2 (fatal).
+#---------------------------------------------------------------------
+# end session at Thu Dec 29 11:18:12 2022
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+# start session at Thu Dec 29 11:18:18 2022
+# Exec path is /home/vlsi/Installation/Nitro/nitroPack-2019.1.R2a/nitro/arch/linux/x86_64/2.12/64/bin
+#---------------------------------------------------------------------
+--------------------------------------------------------------------------
+| Nitro-SoC version 2019.1.R2 1.68700.2.290 Fri Nov 29 21:06:00 PST 2019 | 
+| Running on 192.168.44.136 1core 3.9GBytes 2.4GHz 64bits mode pid 7306  | 
+|          Copyright (c) 2003-2019 Mentor Graphics Corporation           | 
+|                          All Rights Reserved                           | 
+|      THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION       | 
+|          WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION          | 
+|           OR ITS LICENSORS AND IS SUBJECT TO LICENSE TERMS.            | 
+--------------------------------------------------------------------------
+
+Nitro-SoC> setup_nrf
+Loading utility util::nrf_utils
+NRF info: Copying flow scripts in dir               : ./flow_scripts
+NRF info: Copying utilities and templates in dir    : ./scr
+NRF info: Please update/review                     : ./scr/ocv.tcl
+NRF info: If applicable please provide             : ./scr/reload_constraints_clock.tcl
+NRF info: Existing import_variables.tcl not found; copying template.
+NRF info: Existing flow_variables.tcl not found; copying template.
+NRF info: Existing floorplan_variables.tcl not found; copying template.
+NRF info: Existing nrf_customization.tcl not found; copying template.
+NRF info: Creating run_nrf.csh which can be used to launch the NRF.
+info UI54: redirecting output of 
+            puts "#!/bin/csh
+
+set nitro_ver = \"$nitro_ver\" 
+set flow_ver = \"[pwd]/flow_scripts\"
+
+######################################
+## To append to existing log & jou  ##
+## files, set to true               ##
+######################################
+set append_log = false
+
+###################################### 
+## Set the stages to be run to true ##
+## To skip a stage, set it to false ##
+###################################### 
+set import = true
+set place  = true
+set clock  = true
+set route  = true
+set export = true
+
+###################################### 
+##  Remainder of script should not  ##
+##  require modification            ##
+###################################### 
+
+set prev_stage = null
+set stage_num = 0
+
+foreach stage (import place clock route export)
+    set run_stage = `eval echo \\\$\$stage`
+    set stage_name = \${stage_num}_\${stage}
+    if ( \$run_stage == true ) then
+        if ( \$stage != import && \$prev_stage != null ) then
+            if (! -d dbs/\${prev_stage}.db ) then
+                echo \"\\nNRF_RUN error: Could not find \${prev_stage}.db.  Cannot run \$stage stage.\\n\"
+                exit
+            endif
+        endif
+        if ( -d dbs/\${stage}.db ) then
+            set dstamp = `eval date -r dbs/\${stage}.db +\%m_\%d_\%Y.\%H_\%M_\%S`
+            echo \"NRF_RUN info: Found existing dbs/\${stage}.db.  Moving to dbs/\${stage}_\${dstamp}.db.\"
+            /bin/mv dbs/\${stage}.db dbs/\${stage}.\${dstamp}.db
+        endif
+
+        if ( \$append_log == false ) then
+            if ( -f ./LOGs/\${stage_name}_nitro.log ) then
+                set dstamp = `eval date -r ./LOGs/\${stage_name}_nitro.log +\%m_\%d_\%Y.\%H_\%M_\%S`
+                /bin/mv ./LOGs/\${stage_name}_nitro.log ./LOGs/\${stage_name}.\${dstamp}.log
+            endif
+            if ( -f ./JOUs/\${stage_name}.jou ) then
+                set dstamp = `eval date -r ./JOUs/\${stage_name}.jou +\%m_\%d_\%Y.\%H_\%M_\%S`
+                /bin/mv ./JOUs/\${stage_name}.jou ./JOUs/\${stage_name}.\${dstamp}.jou
+            endif
+        endif
+
+        \$nitro_ver -source \$flow_ver/\${stage_name}.tcl -log ./LOGs/\${stage_name}_nitro.log -journal ./JOUs/\${stage_name}.jou -app_log \$append_log -app_jou \$append_log
+    endif
+
+    set prev_stage = \$stage
+    @ stage_num++
+end
+
+exit
+"
+ to run_nrf.csh
+NRF info: 
+Nitro-SoC> source flow_scripts/0_import.tcl
+
+#####################################################
+## Nitro Reference Flow : Import Stage             ##
+## Version : 2019.1.R2                             ##
+## Imports technology & design info to prepare     ##
+## design for NRF place and route.                 ##
+#####################################################
+
+info UI33: performed source of import_variables.tcl for 0 sec (CPU time: 0 sec; MEM: RSS - 154M, CVMEM - 1656M, PVMEM - 1656M)
+NRF info: Sourcing standard NRF script /home/vlsi/Installation/Nitro/nitroPack-2019.1.R2a/nitro/ref_flows/tcl/scr/kit_utils.tcl
+info UI33: performed source of /home/vlsi/Installation/Nitro/nitroPack-2019.1.R2a/nitro/ref_flows/tcl/scr/kit_utils.tcl for 0 sec (CPU time: 0 sec; MEM: RSS - 154M, CVMEM - 1656M, PVMEM - 1656M)
+Loading utility util::nrf_utils
+Loading utility util::save_nrf_import_vars
+NRF info: Checking import variables
+info UI33: performed source of /home/vlsi/Installation/Nitro/nitroPack-2019.1.R2a/nitro/tcl/tm.tcl for 0 sec (CPU time: 0 sec; MEM: RSS - 154M, CVMEM - 1656M, PVMEM - 1656M)
+info UI33: performed source of /home/vlsi/Installation/Nitro/nitroPack-2019.1.R2a/nitro/tcl/8.5/msgcat-1.4.2.tm for 0 sec (CPU time: 0 sec; MEM: RSS - 154M, CVMEM - 1656M, PVMEM - 1656M)
+info UI33: performed source of /home/vlsi/Installation/Nitro/nitroPack-2019.1.R2a/nitro/tcl/clock.tcl for 0 sec (CPU time: 0 sec; MEM: RSS - 154M, CVMEM - 1656M, PVMEM - 1656M)
+Storing TCL variables as db root property
+warning UI4: Only 1 cores are available; the -cpus argument was set to 16.
+NRF info: MGC_libDbPath :  doesn't exist, Running library setup part of import stage and generate libs.db
+NRF info: Since TECHNO RULE File is not provided or does not exist, technology rules must come from tech lef
+warning UI7: Argument '-select' already specified; using last value 'true'.
+Routing lib vias have been created
+Routing lib vias have been selected
+warning UI4: Only 1 cores are available; the -cpus argument was set to 4.
+error UI1280: No lib data is loaded.
+error UI26: Script file 'flow_scripts/0_import.tcl' execution failed (and stopped) at line 63 (write_db -data lib -file dbs/libs.db).
+Nitro-SoC> start
+
+nitro.log, current date/time: Thu Dec 29 11:19:49 2022
+version 2019.1.R2 1.68700.2.290 Fri Nov 29 21:06:00 PST 2019
+host 192.168.44.136, pid 7306, ppid 1
+
+Stack trace of thread 7306 'gmain_exec'
+
+#0 (0x0737025f) (null) : _ZN3sda6common14PrintAllStacksEv line: 0
+#1 (0x010a9362) (null) : _ZN15GMainSigHandler13signalHandlerEi line: 0
+#2 (0x7f530f5253b0) (null) : stat line: 0
+#3 (0x7f530f5e2bed) (null) : stat line: 0
+#4 (0x7f531433037c) (null) : stat line: 0
+#5 (0x7f53143304ac) (null) : stat line: 0
+#6 (0x07c86665) (null) : _ZN20QEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE line: 0
+#7 (0x0757d906) (null) : _ZN23QGuiEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE line: 0
+#8 (0x07c6397f) (null) : _ZN10QEventLoop13processEventsE6QFlagsINS_17ProcessEventsFlagEE line: 0
+#9 (0x07c63c0d) (null) : _ZN10QEventLoop4execE6QFlagsINS_17ProcessEventsFlagEE line: 0
+#10 (0x07c6802b) (null) : _ZN16QCoreApplication4execEv line: 0
+#11 (0x010ac995) (null) : _ZN5GMain14runApplicationEv line: 0
+#12 (0x0046aecd) (null) : main line: 0
+#13 (0x7f530f511505) (null) : stat line: 0
+#14 (0x0108f4a5) (null) : _start line: 0
+
+
+Stack trace of thread 7314 'gmain_exec'
+
+#0 (0x0736f4ff) SierraBFD.cpp : _ZN3sda6commonL26print_stack_signal_handlerEiP7siginfoPv line: 0
+#1 (0x7f53129325f0) (null) : stat line: 0
+#2 (0x7f531292e9f3) (null) : stat line: 0
+#3 (0x7f530fc725ac) (null) : stat line: 0
+#4 (0x0736fe2d) SierraBFD.cpp : _ZN3sda6commonL21freeze_signal_handlerEiP7siginfoPv line: 0
+#5 (0x7f53129325f0) (null) : stat line: 0
+#6 (0x7f530f5e4953) (null) : stat line: 0
+#7 (0x7f531307820c) (null) : stat line: 0
+#8 (0x7f531292ae65) (null) : stat line: 0
+#9 (0x7f530f5ed88d) (null) : stat line: 0
+
+
+Stack trace of thread 7352 'TermCmdLine'
+
+#0 (0x0736f4ff) SierraBFD.cpp : _ZN3sda6commonL26print_stack_signal_handlerEiP7siginfoPv line: 0
+#1 (0x7f53129325f0) (null) : stat line: 0
+#2 (0x7f531292e9f3) (null) : stat line: 0
+#3 (0x7f530fc725ac) (null) : stat line: 0
+#4 (0x0736fe2d) SierraBFD.cpp : _ZN3sda6commonL21freeze_signal_handlerEiP7siginfoPv line: 0
+#5 (0x7f53129325f0) (null) : stat line: 0
+#6 (0x7f531292eda2) (null) : stat line: 0
+#7 (0x07b92bfa) qthread_unix.cpp : _ZL12thread_sleepP8timespec line: 0
+#8 (0x07b9312d) (null) : _ZN7QThread6msleepEm line: 0
+#9 (0x0112200e) (null) : _ZN20GMainTerminalCmdLine10event_hookEv line: 0
+#10 (0x7f5312b5bf81) (null) : stat line: 0
+#11 (0x7f5312b4f327) (null) : stat line: 0
+#12 (0x7f5312b4f47c) (null) : stat line: 0
+#13 (0x7f5312b4ad63) (null) : stat line: 0
+#14 (0x7f5312b5c7b0) (null) : stat line: 0
+#15 (0x011234fc) (null) : _ZN20GMainTerminalCmdLine15commandLineLoopEv line: 0
+#16 (0x01124254) (null) : _ZN20GMainTerminalCmdLine3runEv line: 0
+#17 (0x07b93a45) (null) : _ZN14QThreadPrivate5startEPv line: 0
+#18 (0x7f531292ae65) (null) : stat line: 0
+#19 (0x7f530f5ed88d) (null) : stat line: 0
+
+error UI158: Can't read or write to the terminal.
+info UI155: Nitro-SoC terminated with exit status of 2 (fatal).
+#---------------------------------------------------------------------
+# end session at Thu Dec 29 11:19:50 2022
+#---------------------------------------------------------------------

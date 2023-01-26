@@ -1,0 +1,9 @@
+Report Instance Areas: 
+-----+--------+-----------------------------+-----+---------
+     |Instance|Module                       |Cells|Cell Area
+-----+--------+-----------------------------+-----+---------
+1    |top     |                             | 1728|     3320
+2    |  regB  |registerNbits__0_16          |   67|      184
+3    |  regA  |registerNbits                |   67|      184
+4    |  regOut|registerNbits__parameterized0|  131|      363
+-----+--------+-----------------------------+-----+---------

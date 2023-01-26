@@ -1,0 +1,84 @@
+Report 'report_drc': DRC Violations
+Generated on Wed Jan 4 05:29:02 2023
+  
+-----------------------------
+| Constraint Max Transition | 
+| Total Cost -52.8660       | 
+| Violators  66             | 
+-----------------------------
+
+
+  
+-------------------------------------------------
+| Pin                 Actual Limit Slack   Edge | 
+|-----------------------------------------------|
+| CLOCK_slh__c129/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c131/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c133/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c135/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c137/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c139/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c141/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c143/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c145/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c147/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c149/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c151/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c153/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c155/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c157/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c159/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c161/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c163/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c165/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c167/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c169/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c171/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c173/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c175/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c177/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c179/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c181/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c183/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c185/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c187/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c189/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c191/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c193/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c195/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c197/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c199/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c201/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c203/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c205/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c207/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c209/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c211/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c213/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c215/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c217/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c219/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c221/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c223/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c225/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c227/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c229/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c231/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c233/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c235/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c237/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c239/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c241/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c243/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c245/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c247/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c249/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c251/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c253/A   1000   199   -0.8010 Fall | 
+| CLOCK_slh__c255/A   1000   199   -0.8010 Fall | 
+| CTS_L1_c_tid1_117/A 1000   199   -0.8010 Fall | 
+| i_0_0_0/A           1000   199   -0.8010 Fall | 
+-------------------------------------------------
+
+
+info UI33: performed report_constraints for 0 sec (CPU time: 0 sec; MEM: RSS - 615M, CVMEM - 1908M, PVMEM - 2636M)

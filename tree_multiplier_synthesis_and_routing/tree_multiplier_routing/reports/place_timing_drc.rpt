@@ -1,0 +1,83 @@
+Report 'report_drc': DRC Violations
+Generated on Wed Jan 4 05:25:00 2023
+  
+-----------------------------
+| Constraint Max Transition | 
+| Total Cost -52.0650       | 
+| Violators  65             | 
+-----------------------------
+
+
+  
+-----------------------------------------
+| Pin         Actual Limit Slack   Edge | 
+|---------------------------------------|
+| i_0_0_0/A   1000   199   -0.8010 Fall | 
+| x_reg[0]/D  1000   199   -0.8010 Fall | 
+| x_reg[10]/D 1000   199   -0.8010 Fall | 
+| x_reg[11]/D 1000   199   -0.8010 Fall | 
+| x_reg[12]/D 1000   199   -0.8010 Fall | 
+| x_reg[13]/D 1000   199   -0.8010 Fall | 
+| x_reg[14]/D 1000   199   -0.8010 Fall | 
+| x_reg[15]/D 1000   199   -0.8010 Fall | 
+| x_reg[16]/D 1000   199   -0.8010 Fall | 
+| x_reg[17]/D 1000   199   -0.8010 Fall | 
+| x_reg[18]/D 1000   199   -0.8010 Fall | 
+| x_reg[19]/D 1000   199   -0.8010 Fall | 
+| x_reg[1]/D  1000   199   -0.8010 Fall | 
+| x_reg[20]/D 1000   199   -0.8010 Fall | 
+| x_reg[21]/D 1000   199   -0.8010 Fall | 
+| x_reg[22]/D 1000   199   -0.8010 Fall | 
+| x_reg[23]/D 1000   199   -0.8010 Fall | 
+| x_reg[24]/D 1000   199   -0.8010 Fall | 
+| x_reg[25]/D 1000   199   -0.8010 Fall | 
+| x_reg[26]/D 1000   199   -0.8010 Fall | 
+| x_reg[27]/D 1000   199   -0.8010 Fall | 
+| x_reg[28]/D 1000   199   -0.8010 Fall | 
+| x_reg[29]/D 1000   199   -0.8010 Fall | 
+| x_reg[2]/D  1000   199   -0.8010 Fall | 
+| x_reg[30]/D 1000   199   -0.8010 Fall | 
+| x_reg[31]/D 1000   199   -0.8010 Fall | 
+| x_reg[3]/D  1000   199   -0.8010 Fall | 
+| x_reg[4]/D  1000   199   -0.8010 Fall | 
+| x_reg[5]/D  1000   199   -0.8010 Fall | 
+| x_reg[6]/D  1000   199   -0.8010 Fall | 
+| x_reg[7]/D  1000   199   -0.8010 Fall | 
+| x_reg[8]/D  1000   199   -0.8010 Fall | 
+| x_reg[9]/D  1000   199   -0.8010 Fall | 
+| y_reg[0]/D  1000   199   -0.8010 Fall | 
+| y_reg[10]/D 1000   199   -0.8010 Fall | 
+| y_reg[11]/D 1000   199   -0.8010 Fall | 
+| y_reg[12]/D 1000   199   -0.8010 Fall | 
+| y_reg[13]/D 1000   199   -0.8010 Fall | 
+| y_reg[14]/D 1000   199   -0.8010 Fall | 
+| y_reg[15]/D 1000   199   -0.8010 Fall | 
+| y_reg[16]/D 1000   199   -0.8010 Fall | 
+| y_reg[17]/D 1000   199   -0.8010 Fall | 
+| y_reg[18]/D 1000   199   -0.8010 Fall | 
+| y_reg[19]/D 1000   199   -0.8010 Fall | 
+| y_reg[1]/D  1000   199   -0.8010 Fall | 
+| y_reg[20]/D 1000   199   -0.8010 Fall | 
+| y_reg[21]/D 1000   199   -0.8010 Fall | 
+| y_reg[22]/D 1000   199   -0.8010 Fall | 
+| y_reg[23]/D 1000   199   -0.8010 Fall | 
+| y_reg[24]/D 1000   199   -0.8010 Fall | 
+| y_reg[25]/D 1000   199   -0.8010 Fall | 
+| y_reg[26]/D 1000   199   -0.8010 Fall | 
+| y_reg[27]/D 1000   199   -0.8010 Fall | 
+| y_reg[28]/D 1000   199   -0.8010 Fall | 
+| y_reg[29]/D 1000   199   -0.8010 Fall | 
+| y_reg[2]/D  1000   199   -0.8010 Fall | 
+| y_reg[30]/D 1000   199   -0.8010 Fall | 
+| y_reg[31]/D 1000   199   -0.8010 Fall | 
+| y_reg[3]/D  1000   199   -0.8010 Fall | 
+| y_reg[4]/D  1000   199   -0.8010 Fall | 
+| y_reg[5]/D  1000   199   -0.8010 Fall | 
+| y_reg[6]/D  1000   199   -0.8010 Fall | 
+| y_reg[7]/D  1000   199   -0.8010 Fall | 
+| y_reg[8]/D  1000   199   -0.8010 Fall | 
+| y_reg[9]/D  1000   199   -0.8010 Fall | 
+-----------------------------------------
+
+
+info UI33: performed report_constraints for 0 sec (CPU time: 0 sec; MEM: RSS - 526M, CVMEM - 1970M, PVMEM - 2636M)

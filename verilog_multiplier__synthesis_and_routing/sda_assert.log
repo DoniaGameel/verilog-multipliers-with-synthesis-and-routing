@@ -1,0 +1,122 @@
+
+sda_assert.log, current date/time: Thu Dec 29 11:18:11 2022
+version 2019.1.R2 1.68700.2.290 Fri Nov 29 21:06:00 PST 2019
+host 192.168.44.136, pid 7185, ppid 1
+
+Stack trace of thread 7185 'gmain_exec'
+
+#0 (0x0737025f) (null) : _ZN3sda6common14PrintAllStacksEv line: 0
+#1 (0x010a9362) (null) : _ZN15GMainSigHandler13signalHandlerEi line: 0
+#2 (0x7f76207853b0) (null) : stat line: 0
+#3 (0x7f7620842bed) (null) : stat line: 0
+#4 (0x7f762559037c) (null) : stat line: 0
+#5 (0x7f76255904ac) (null) : stat line: 0
+#6 (0x07c86665) (null) : _ZN20QEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE line: 0
+#7 (0x0757d906) (null) : _ZN23QGuiEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE line: 0
+#8 (0x07c6397f) (null) : _ZN10QEventLoop13processEventsE6QFlagsINS_17ProcessEventsFlagEE line: 0
+#9 (0x07c63c0d) (null) : _ZN10QEventLoop4execE6QFlagsINS_17ProcessEventsFlagEE line: 0
+#10 (0x07c6802b) (null) : _ZN16QCoreApplication4execEv line: 0
+#11 (0x010ac995) (null) : _ZN5GMain14runApplicationEv line: 0
+#12 (0x0046aecd) (null) : main line: 0
+#13 (0x7f7620771505) (null) : stat line: 0
+#14 (0x0108f4a5) (null) : _start line: 0
+
+
+Stack trace of thread 7193 'gmain_exec'
+
+#0 (0x0736f4ff) SierraBFD.cpp : _ZN3sda6commonL26print_stack_signal_handlerEiP7siginfoPv line: 0
+#1 (0x7f7623b925f0) (null) : stat line: 0
+#2 (0x7f7623b8e9f3) (null) : stat line: 0
+#3 (0x7f7620ed25ac) (null) : stat line: 0
+#4 (0x0736fe2d) SierraBFD.cpp : _ZN3sda6commonL21freeze_signal_handlerEiP7siginfoPv line: 0
+#5 (0x7f7623b925f0) (null) : stat line: 0
+#6 (0x7f7620844953) (null) : stat line: 0
+#7 (0x7f76242d820c) (null) : stat line: 0
+#8 (0x7f7623b8ae65) (null) : stat line: 0
+#9 (0x7f762084d88d) (null) : stat line: 0
+
+
+Stack trace of thread 7233 'TermCmdLine'
+
+#0 (0x0736f4ff) SierraBFD.cpp : _ZN3sda6commonL26print_stack_signal_handlerEiP7siginfoPv line: 0
+#1 (0x7f7623b925f0) (null) : stat line: 0
+#2 (0x7f7623b8e9f3) (null) : stat line: 0
+#3 (0x7f7620ed25ac) (null) : stat line: 0
+#4 (0x0736fe2d) SierraBFD.cpp : _ZN3sda6commonL21freeze_signal_handlerEiP7siginfoPv line: 0
+#5 (0x7f7623b925f0) (null) : stat line: 0
+#6 (0x7f7623b8eda2) (null) : stat line: 0
+#7 (0x07b92bfa) qthread_unix.cpp : _ZL12thread_sleepP8timespec line: 0
+#8 (0x07b9312d) (null) : _ZN7QThread6msleepEm line: 0
+#9 (0x0112200e) (null) : _ZN20GMainTerminalCmdLine10event_hookEv line: 0
+#10 (0x7f7623dbbf81) (null) : stat line: 0
+#11 (0x7f7623daf327) (null) : stat line: 0
+#12 (0x7f7623daf47c) (null) : stat line: 0
+#13 (0x7f7623daad63) (null) : stat line: 0
+#14 (0x7f7623dbc7b0) (null) : stat line: 0
+#15 (0x011234fc) (null) : _ZN20GMainTerminalCmdLine15commandLineLoopEv line: 0
+#16 (0x01124254) (null) : _ZN20GMainTerminalCmdLine3runEv line: 0
+#17 (0x07b93a45) (null) : _ZN14QThreadPrivate5startEPv line: 0
+#18 (0x7f7623b8ae65) (null) : stat line: 0
+#19 (0x7f762084d88d) (null) : stat line: 0
+
+
+sda_assert.log, current date/time: Thu Dec 29 11:19:49 2022
+version 2019.1.R2 1.68700.2.290 Fri Nov 29 21:06:00 PST 2019
+host 192.168.44.136, pid 7306, ppid 1
+
+Stack trace of thread 7306 'gmain_exec'
+
+#0 (0x0737025f) (null) : _ZN3sda6common14PrintAllStacksEv line: 0
+#1 (0x010a9362) (null) : _ZN15GMainSigHandler13signalHandlerEi line: 0
+#2 (0x7f530f5253b0) (null) : stat line: 0
+#3 (0x7f530f5e2bed) (null) : stat line: 0
+#4 (0x7f531433037c) (null) : stat line: 0
+#5 (0x7f53143304ac) (null) : stat line: 0
+#6 (0x07c86665) (null) : _ZN20QEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE line: 0
+#7 (0x0757d906) (null) : _ZN23QGuiEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE line: 0
+#8 (0x07c6397f) (null) : _ZN10QEventLoop13processEventsE6QFlagsINS_17ProcessEventsFlagEE line: 0
+#9 (0x07c63c0d) (null) : _ZN10QEventLoop4execE6QFlagsINS_17ProcessEventsFlagEE line: 0
+#10 (0x07c6802b) (null) : _ZN16QCoreApplication4execEv line: 0
+#11 (0x010ac995) (null) : _ZN5GMain14runApplicationEv line: 0
+#12 (0x0046aecd) (null) : main line: 0
+#13 (0x7f530f511505) (null) : stat line: 0
+#14 (0x0108f4a5) (null) : _start line: 0
+
+
+Stack trace of thread 7314 'gmain_exec'
+
+#0 (0x0736f4ff) SierraBFD.cpp : _ZN3sda6commonL26print_stack_signal_handlerEiP7siginfoPv line: 0
+#1 (0x7f53129325f0) (null) : stat line: 0
+#2 (0x7f531292e9f3) (null) : stat line: 0
+#3 (0x7f530fc725ac) (null) : stat line: 0
+#4 (0x0736fe2d) SierraBFD.cpp : _ZN3sda6commonL21freeze_signal_handlerEiP7siginfoPv line: 0
+#5 (0x7f53129325f0) (null) : stat line: 0
+#6 (0x7f530f5e4953) (null) : stat line: 0
+#7 (0x7f531307820c) (null) : stat line: 0
+#8 (0x7f531292ae65) (null) : stat line: 0
+#9 (0x7f530f5ed88d) (null) : stat line: 0
+
+
+Stack trace of thread 7352 'TermCmdLine'
+
+#0 (0x0736f4ff) SierraBFD.cpp : _ZN3sda6commonL26print_stack_signal_handlerEiP7siginfoPv line: 0
+#1 (0x7f53129325f0) (null) : stat line: 0
+#2 (0x7f531292e9f3) (null) : stat line: 0
+#3 (0x7f530fc725ac) (null) : stat line: 0
+#4 (0x0736fe2d) SierraBFD.cpp : _ZN3sda6commonL21freeze_signal_handlerEiP7siginfoPv line: 0
+#5 (0x7f53129325f0) (null) : stat line: 0
+#6 (0x7f531292eda2) (null) : stat line: 0
+#7 (0x07b92bfa) qthread_unix.cpp : _ZL12thread_sleepP8timespec line: 0
+#8 (0x07b9312d) (null) : _ZN7QThread6msleepEm line: 0
+#9 (0x0112200e) (null) : _ZN20GMainTerminalCmdLine10event_hookEv line: 0
+#10 (0x7f5312b5bf81) (null) : stat line: 0
+#11 (0x7f5312b4f327) (null) : stat line: 0
+#12 (0x7f5312b4f47c) (null) : stat line: 0
+#13 (0x7f5312b4ad63) (null) : stat line: 0
+#14 (0x7f5312b5c7b0) (null) : stat line: 0
+#15 (0x011234fc) (null) : _ZN20GMainTerminalCmdLine15commandLineLoopEv line: 0
+#16 (0x01124254) (null) : _ZN20GMainTerminalCmdLine3runEv line: 0
+#17 (0x07b93a45) (null) : _ZN14QThreadPrivate5startEPv line: 0
+#18 (0x7f531292ae65) (null) : stat line: 0
+#19 (0x7f530f5ed88d) (null) : stat line: 0
+

@@ -1,0 +1,93 @@
+
+sda_assert.log, current date/time: Wed Jan  4 05:31:50 2023
+version 2019.1.R2 1.68700.2.290 Fri Nov 29 21:06:00 PST 2019
+host localhost.localdomain, pid 16363, ppid 1
+
+Stack trace of thread 16363 'gmain_exec'
+
+#0 (0x0737025f) (null) : _ZN3sda6common14PrintAllStacksEv line: 0
+#1 (0x010a9362) (null) : _ZN15GMainSigHandler13signalHandlerEi line: 0
+#2 (0x7f28f611e3b0) (null) : stat line: 0
+#3 (0x7f28f61dbbed) (null) : stat line: 0
+#4 (0x7f28faf2937c) (null) : stat line: 0
+#5 (0x7f28faf294ac) (null) : stat line: 0
+#6 (0x07c86665) (null) : _ZN20QEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE line: 0
+#7 (0x0757d906) (null) : _ZN23QGuiEventDispatcherGlib13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE line: 0
+#8 (0x07c6397f) (null) : _ZN10QEventLoop13processEventsE6QFlagsINS_17ProcessEventsFlagEE line: 0
+#9 (0x07c63c0d) (null) : _ZN10QEventLoop4execE6QFlagsINS_17ProcessEventsFlagEE line: 0
+#10 (0x07c6802b) (null) : _ZN16QCoreApplication4execEv line: 0
+#11 (0x010ac995) (null) : _ZN5GMain14runApplicationEv line: 0
+#12 (0x0046aecd) (null) : main line: 0
+#13 (0x7f28f610a505) (null) : stat line: 0
+#14 (0x0108f4a5) (null) : _start line: 0
+
+
+Stack trace of thread 16371 'gmain_exec'
+
+#0 (0x0736f4ff) SierraBFD.cpp : _ZN3sda6commonL26print_stack_signal_handlerEiP7siginfoPv line: 0
+#1 (0x7f28f952b5f0) (null) : stat line: 0
+#2 (0x7f28f95279f3) (null) : stat line: 0
+#3 (0x7f28f686b5ac) (null) : stat line: 0
+#4 (0x0736fe2d) SierraBFD.cpp : _ZN3sda6commonL21freeze_signal_handlerEiP7siginfoPv line: 0
+#5 (0x7f28f952b5f0) (null) : stat line: 0
+#6 (0x7f28f61dd953) (null) : stat line: 0
+#7 (0x7f28f9c7120c) (null) : stat line: 0
+#8 (0x7f28f9523e65) (null) : stat line: 0
+#9 (0x7f28f61e688d) (null) : stat line: 0
+
+
+Stack trace of thread 16408 'TermCmdLine'
+
+#0 (0x0736f4ff) SierraBFD.cpp : _ZN3sda6commonL26print_stack_signal_handlerEiP7siginfoPv line: 0
+#1 (0x7f28f952b5f0) (null) : stat line: 0
+#2 (0x7f28f95279f3) (null) : stat line: 0
+#3 (0x7f28f686b5ac) (null) : stat line: 0
+#4 (0x0736fe2d) SierraBFD.cpp : _ZN3sda6commonL21freeze_signal_handlerEiP7siginfoPv line: 0
+#5 (0x7f28f952b5f0) (null) : stat line: 0
+#6 (0x7f28f9527da2) (null) : stat line: 0
+#7 (0x07b92bfa) qthread_unix.cpp : _ZL12thread_sleepP8timespec line: 0
+#8 (0x07b9312d) (null) : _ZN7QThread6msleepEm line: 0
+#9 (0x0112200e) (null) : _ZN20GMainTerminalCmdLine10event_hookEv line: 0
+#10 (0x7f28f9754f81) (null) : stat line: 0
+#11 (0x7f28f9748327) (null) : stat line: 0
+#12 (0x7f28f974847c) (null) : stat line: 0
+#13 (0x7f28f9743d63) (null) : stat line: 0
+#14 (0x7f28f97557b0) (null) : stat line: 0
+#15 (0x011234fc) (null) : _ZN20GMainTerminalCmdLine15commandLineLoopEv line: 0
+#16 (0x01124254) (null) : _ZN20GMainTerminalCmdLine3runEv line: 0
+#17 (0x07b93a45) (null) : _ZN14QThreadPrivate5startEPv line: 0
+#18 (0x7f28f9523e65) (null) : stat line: 0
+#19 (0x7f28f61e688d) (null) : stat line: 0
+
+
+Stack trace of thread 23742 'TP_TIMER #1'
+
+#0 (0x0736f4ff) SierraBFD.cpp : _ZN3sda6commonL26print_stack_signal_handlerEiP7siginfoPv line: 0
+#1 (0x7f28f952b5f0) (null) : stat line: 0
+#2 (0x7f28f95279f3) (null) : stat line: 0
+#3 (0x7f28f686b5ac) (null) : stat line: 0
+#4 (0x0736fe2d) SierraBFD.cpp : _ZN3sda6commonL21freeze_signal_handlerEiP7siginfoPv line: 0
+#5 (0x7f28f952b5f0) (null) : stat line: 0
+#6 (0x7f28f95279f3) (null) : stat line: 0
+#7 (0x7f28f686b5ac) (null) : stat line: 0
+#8 (0x072b806e) (null) : _ZN3sda14ThreadPoolImpl9runWorkerEPNS_12ThreadWorkerE line: 0
+#9 (0x7f28f6870fcf) (null) : stat line: 0
+#10 (0x7f28f9523e65) (null) : stat line: 0
+#11 (0x7f28f61e688d) (null) : stat line: 0
+
+
+Stack trace of thread 23743 'TP_TIMER #2'
+
+#0 (0x0736f4ff) SierraBFD.cpp : _ZN3sda6commonL26print_stack_signal_handlerEiP7siginfoPv line: 0
+#1 (0x7f28f952b5f0) (null) : stat line: 0
+#2 (0x7f28f95279f3) (null) : stat line: 0
+#3 (0x7f28f686b5ac) (null) : stat line: 0
+#4 (0x0736fe2d) SierraBFD.cpp : _ZN3sda6commonL21freeze_signal_handlerEiP7siginfoPv line: 0
+#5 (0x7f28f952b5f0) (null) : stat line: 0
+#6 (0x7f28f95279f3) (null) : stat line: 0
+#7 (0x7f28f686b5ac) (null) : stat line: 0
+#8 (0x072b806e) (null) : _ZN3sda14ThreadPoolImpl9runWorkerEPNS_12ThreadWorkerE line: 0
+#9 (0x7f28f6870fcf) (null) : stat line: 0
+#10 (0x7f28f9523e65) (null) : stat line: 0
+#11 (0x7f28f61e688d) (null) : stat line: 0
+

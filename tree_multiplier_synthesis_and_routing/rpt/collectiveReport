@@ -1,0 +1,49 @@
+Report Physical info: 
+------------------------+-------------+-----------+------------
+                        |             |Area (squm)|Leakage (uW)
+------------------------+-------------+-----------+------------
+Design Name             |wallace_tree |           |            
+  Total Instances       |         8654|      10948|     249.284
+    Macros              |            0|          0|       0.000
+    Pads                |            0|          0|       0.000
+    Phys                |            0|          0|       0.000
+    Blackboxes          |            0|          0|       0.000
+    Cells               |         8654|      10948|     249.284
+      Buffers           |            0|          0|       0.000
+      Inverters         |           94|         50|       1.349
+      Clock-Gates       |            1|          4|       0.059
+      Combinational     |         8431|      10315|     237.749
+      Latches           |            0|          0|       0.000
+      FlipFlops         |          128|        579|      10.126
+       Single-Bit FF    |          128|        579|      10.126
+       Multi-Bit FF     |            0|          0|       0.000
+       Clock-Gated      |           64|           |            
+       Bits             |          128|        579|      10.126
+         Load-Enabled   |            0|           |            
+         Clock-Gated    |           64|           |            
+  Tristate Pin Count    |            0|           |            
+Physical Info           |Placed       |           |            
+  Chip Size (mm x mm)   |0.195 x 0.195|      38056|            
+  Fixed Cell Area       |             |          0|            
+    Phys Only           |            0|          0|            
+  Placeable Area        |             |      18131|            
+  Movable Cell Area     |             |      10948|            
+  Utilization (%)       |           60|           |            
+  Chip Utilization (%)  |           60|           |            
+  Total Wire Length (mm)|       87.697|           |            
+  Longest Wire (mm)     |        0.176|           |            
+  Average Wire (mm)     |        0.089|           |            
+------------------------+-------------+-----------+------------
+Report Path Groups: 
+-----+-------+------+---------+---------
+     | Path  |Weight|Critical |Worst    
+     | Group |      |Range(ps)|Slack(ps)
+-----+-------+------+---------+---------
+1    |default| 1.000|      0.0|    669.8
+2    |I2R    | 1.000|      0.0|   5666.9
+3    |I2O    | 1.000|      0.0|<ill>    
+4    |R2O    | 1.000|      0.0|   5403.3
+-----+-------+------+---------+---------
+1299 |               |                    |                     |                   |                 
+1300 |*TOTAL         |         1459.008789|          2497.594482|         249.285995|      4205.889160
+-----+---------------+--------------------+---------------------+-------------------+-----------------

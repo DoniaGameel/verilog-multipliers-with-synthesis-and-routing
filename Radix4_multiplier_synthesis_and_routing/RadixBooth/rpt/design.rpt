@@ -1,0 +1,36 @@
+Report Physical info: 
+------------------------+-------------+-----------+------------
+                        |             |Area (squm)|Leakage (uW)
+------------------------+-------------+-----------+------------
+Design Name             |RadixBooth   |           |            
+  Total Instances       |         1723|       3255|      67.767
+    Macros              |            0|          0|       0.000
+    Pads                |            0|          0|       0.000
+    Phys                |            0|          0|       0.000
+    Blackboxes          |            0|          0|       0.000
+    Cells               |         1723|       3255|      67.767
+      Buffers           |            0|          0|       0.000
+      Inverters         |          196|        104|       2.813
+      Clock-Gates       |            6|         24|       0.355
+      Combinational     |         1165|       1517|      36.435
+      Latches           |            0|          0|       0.000
+      FlipFlops         |          356|       1610|      28.164
+       Single-Bit FF    |          356|       1610|      28.164
+       Multi-Bit FF     |            0|          0|       0.000
+       Clock-Gated      |          356|           |            
+       Bits             |          356|       1610|      28.164
+         Load-Enabled   |            0|           |            
+         Clock-Gated    |          356|           |            
+  Tristate Pin Count    |            0|           |            
+Physical Info           |Placed       |           |            
+  Chip Size (mm x mm)   |0.140 x 0.140|      19737|            
+  Fixed Cell Area       |             |          0|            
+    Phys Only           |            0|          0|            
+  Placeable Area        |             |       6414|            
+  Movable Cell Area     |             |       3255|            
+  Utilization (%)       |           50|           |            
+  Chip Utilization (%)  |           50|           |            
+  Total Wire Length (mm)|        9.320|           |            
+  Longest Wire (mm)     |        0.079|           |            
+  Average Wire (mm)     |        0.071|           |            
+------------------------+-------------+-----------+------------

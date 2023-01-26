@@ -1,0 +1,16 @@
+#--------------------------------------------------------------------
+#         date     : Tue Jan 03 22:02:59 EET 2023
+#         ppid/pid : 20456/20466
+#         hostname : 192.168.44.142
+#         arch/os  : x86_64/Linux-3.10.0-1062.12.1.el7.x86_64 
+#         install  : /home/vlsi/Installation/Oasys/Oasys-RTL-2019.2.R1
+#         currdir  : /home/vlsi/Desktop/Booth/Lab3_2022
+#         logfile  : /home/vlsi/Desktop/Booth/Lab3_2022/oasys.log.00
+#         tmpdir   : /tmp/oasys.20456/
+#--------------------------------------------------------------------
+# Starting Interactive Session
+vsim
+source scripts/0_init_design.tcl
+source scripts/1_read_design.tcl
+source scripts/2_synthesize_optimize.tcl
+source scripts/3_export_design.tcl

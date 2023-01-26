@@ -1,0 +1,84 @@
+Report 'report_drc': DRC Violations
+Generated on Tue Jan 3 00:05:19 2023
+  
+-----------------------------
+| Constraint Max Transition | 
+| Total Cost -52.8660       | 
+| Violators  66             | 
+-----------------------------
+
+
+  
+-------------------------------------------------
+| Pin                 Actual Limit Slack   Edge | 
+|-----------------------------------------------|
+| CTS_L1_c_tid1_350/A 1000   199   -0.8010 Fall | 
+| drc_ipo_c25/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c26/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c27/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c28/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c29/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c30/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c31/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c32/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c33/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c34/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c35/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c36/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c37/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c38/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c39/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c40/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c41/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c42/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c43/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c44/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c45/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c46/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c47/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c48/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c49/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c50/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c51/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c52/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c53/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c54/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c55/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c56/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c57/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c58/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c59/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c60/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c61/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c62/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c63/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c64/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c65/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c66/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c67/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c68/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c69/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c70/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c71/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c72/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c73/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c74/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c75/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c76/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c77/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c78/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c79/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c80/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c81/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c82/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c83/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c84/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c85/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c86/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c87/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c88/A       1000   199   -0.8010 Fall | 
+| drc_ipo_c89/A       1000   199   -0.8010 Fall | 
+-------------------------------------------------
+
+
+info UI33: performed report_constraints for 0 sec (CPU time: 0 sec; MEM: RSS - 355M, CVMEM - 1812M, PVMEM - 2637M)

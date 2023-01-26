@@ -1,0 +1,559 @@
+#---------------------------------------------------------------------
+# start session at Wed Jan 4 01:48:45 2023
+# version 2019.1.R2 1.68700.2.290 Fri Nov 29 21:06:00 PST 2019 
+# Running on localhost.localdomain 1core 3.9GBytes 2.7GHz 64bits mode pid 17933 
+# Exec path is /home/vlsi/Installation/Nitro/nitroPack-2019.1.R2a/nitro/arch/linux/x86_64/2.12/64/bin
+#---------------------------------------------------------------------
+setup_nrf 
+source flow_scripts/0_import.tcl 
+start_gui 
+## trigger_gui -name main:activate_window -param design:view
+set_option -name toolbar:main:floorplan:location -value {0 0}
+set_option -name toolbar:main:layers:location -value {0 0}
+set_option -name toolbar:main:interactive_modes:location -value {0 77}
+set_option -name toolbar:main:windows:location -value {60 20}
+set_option -name toolbar:main:zoom:location -value {310 20}
+set_option -name toolbar:main:custom_editing:location -value {508 20}
+set_option -name toolbar:main:objects:location -value {735 20}
+set_option -name toolbar:main:cross_probe:location -value {412 48}
+trigger_gui -name main:window_action:move_view -param up
+zoom_to -target area -xl_area -4.3225u -yb_area 5.2220u -xr_area 90.7725u -yt_area 100.6670u
+set_option -name window:main:view:location -value {375 39}
+set_option -name window:main:view:location -value {322 39}
+trigger_gui -name main:view_errors
+set_option -name window:main:errors:state -value visible
+set_option -name window:main:errors:size -value {757 600}
+set_option -name window:main:errors:state -value hidden
+trigger_gui -name main:view_errors
+set_option -name window:main:errors:state -value visible
+set_option -name window:main:errors:state -value hidden
+write_db -file db/import.db
+source flow_scripts/1_place.tcl > LOGs/place.log
+# config_shell -echo false
+# config_shell -echo false
+# config_shell -echo false
+# config_shell -echo false
+# config_shell -echo false
+# set_crpr_spec -method margin_based
+# config_default_value -command compile_scan -argument cross_chain_optimization -value false
+# config_place_detail -name min_filler_space -value $MGC_min_filler_space
+# fk_msg -type info Reading OCV from scr/ocv.tcl
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# config_shell -echo false
+# config_shell -table_lines vertical_lines
+# config_shell -echo false
+# config_shell -echo false
+# config_optimize -dont_create_assign
+# fk_msg -type info "Deriving Clock NDR from technology."
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# get_layers -type metal
+# fk_msg Setting up NDR: setup_clock_ndr_shield {-ndr_width_multiplier 1  -ndr_space_multiplier 2  -ndr_layers {metal7 metal8}  -top_route_layer metal8}
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# setup_clock_ndr_shield -ndr_width_multiplier 1 -ndr_space_multiplier 2 -ndr_layers metal7 metal8 -top_route_layer metal8
+# get_config -name process -param node
+# config_shell -echo false
+# set_rcd_models -stage pre_cts
+# config_shell -echo false
+# fk_msg -type info Reading configs from scr/config.tcl
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# config_shell -echo false
+# config_optimize -allow_reroute true -nondef_rule "" 
+# config_timing -disable_clock_gating_checks false
+# config_clockdata_optimize -name hold_corners -value corner_0_0
+# config_flows -preserve_rcd true
+# config_shell -echo false
+# set_max_length -length_threshold $MGC_maxLengthParam 
+# report_max_length
+# fk_msg "Max Length Set to [report_max_length]"
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# config_shell -echo false
+# fk_msg -type warning Please provide SAIF file when running low power flow. Power analysis will be inaccurate otherwise.
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# fk_msg -type warning MGC_cts_repeater_pruning_objective is not defined. Setting it to default value 'delay'. Please review/update flow_variables.tcl to latest version.
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# config_cts -corner corner_0_0 -min_route_layer metal7 -max_route_layer metal8 -max_transition 0.25n -max_leaf_transition 0.25n -max_skew 0.2n -max_length 400u -enable_port_clock_leaves false
+# config_cts -use_inverters false -buffers CLKBUF_* -inverters 
+# config_shell -echo false
+# fk_msg Delay, Timing, Parasitic, CRPR Configs Report
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# config_timing -report
+# config_extraction -report
+# report_delay_model
+# report_parasitic_model
+# set_crpr_spec -report
+# source nrf_customization.tcl
+# run_place_timing -effort $MGC_flow_effort  -skip_precondition $MGC_skip_precondition -messages verbose 
+# create_property -name rpt_flow_args -object_type root -storage sparse -data_type string -hidden true -persistent true -init false >> /dev/null
+# get_root
+# set_property -name rpt_flow_args -object root -value {2 effort medium} {6 messages verbose} {11 skip_preconditioning true}
+# config_flows -action is_user_defined -optimize_layers
+# config_shell -echo false
+# get_config -name process -param node
+# config_application -cpus 4
+# config_shell -echo_script false
+# config_shell -echo_script false
+# get_top_partition
+# config_shell -echo_script false
+# config_shell -echo_script false
+# config_place_timing -category user_defined
+# config_place_detail -category user_defined
+# config_route_global -category user_defined
+# config_place_timing -name low_power_effort
+# config_place_timing -name enable_remap_optimization
+# config_place_timing -name enable_remap_optimization
+# config_place_timing -name pass2_optimization_effort
+# config_place_timing -name turbo2
+# config_place_timing -name congestion_effort
+# config_cell_density_map_colors -ignore_bloats false
+# config_place_timing -name combined_multi_objective
+# config_place_timing -name combined_multi_objective
+# get_root
+# get_property -name mxdb.design_state.netlist -object root
+# config_prects_corners -mode set
+# config_shell -echo false
+# report_analysis_corner
+# config_nitro_flow -name power_corner
+# get_config -name ref_flows/power_corner
+# fk_msg -set_prompt NRF
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name flow_msg_prompt -value NRF -descr Flow prefix - will appear in all messages printed by flow_msg -quiet
+# config_shell -echo false
+# config_shell -ignore_errors false
+# config_shell -max_output_line_len 2048
+# config_clock_timing -name dont_prune_corners -value corner_0_0
+# config_place_timing -name low_power_effort
+# fk_msg -type info Power effort is low. Enabling corner corner_0_0 for leakage and dynamic power.
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# set_analysis_corner -corner corner_0_0 -enable true -setup true -power all
+# config_nitro_flow -name leakage_corner
+# get_config -name ref_flows/leakage_corner
+# fk_msg -set_prompt NRF
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name flow_msg_prompt -value NRF -descr Flow prefix - will appear in all messages printed by flow_msg -quiet
+# config_shell -echo false
+# config_shell -ignore_errors false
+# config_shell -max_output_line_len 2048
+# report_analysis_corner
+# config_timing -create_io_path_groups true
+# config_shell -echo false
+# config_timing -estimated_delay false
+# config_shell -echo false
+set_option -name window:main:errors:state -value visible
+set_option -name window:main:errors:location -value {30 192}
+set_option -name window:main:errors:state -value hidden
+write_db -file db/place.db
+report_placement
+create_pg_ports -net {VDD VSS}
+source flow_scripts/2_clock.tcl > LOGs/clock.log
+# config_event_handler -append -command compile_cts -event start_command -script {
+	set ::cts_vr_cdm_overlap_free true
+	RCTU::Cts::AddHalo
+}
+# get_config -name process -param node
+# config_lib_vias -use_generated true -create true -select true -use_asymmetrical true -use_4cut true
+# config_name_rules -cell CLOCK
+# config_name_rules -net CLOCK
+# config_timing -use_annotated_cts_offsets false
+# config_route_global -category user_defined
+# fk_msg "Applying NRF non-default GR settings"
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# config_route_global -name gr_full_timing_update_thresh -value 0.0
+# config_shell -echo false
+# config_shell -echo false
+# config_shell -echo false
+# source scr/ocv.tcl
+# set_crpr_spec -crpr_threshold $MGC_crpr_threshold
+# source scr/config.tcl
+# config_timing -rc_degrade_min_slew_when_rd_less_than_rnet false
+# config_timing -disable_recovery_removal false
+# config_timing -enable_exception_proxy true
+# config_timing -disable_time_borrow false
+# config_timing -disable_annotation_factor_calc true
+# config_timing -enable_clock_propagation_through_three_state_enable_pins false
+# config_timing -disable_internal_inout_cell_paths true
+# config_timing -enable_cond_arcs_with_default true 
+# config_timing -enable_default_for_cond_arcs true
+# config_timing -enable_setup_independent_hold_checks true
+# config_timing -enable_ideal_clock_data_tags true
+# config_timing -enable_clock_gating_propagate true
+# config_timing -disable_seq_case_analysis true
+# config_timing -early_launch_at_borrowing_latches false
+# config_timing -enable_preset_clear_arcs false
+# config_timing -enable_non_unate_clock_paths true
+# config_timing -pt_min_max_compatibility on_chip_variation
+# config_timing -enable_non_unate_clock_paths true
+# config_timing -disable_sequential_generation_of_waveform_preserving_clocks false
+# config_timing -capacitance_violation_threshold 0
+# config_timing -disable_clock_gating_checks false
+# config_timing -enable_default_input_delay false
+# config_extraction -gr_short_route_gcell_span 3
+# config_extraction -search_distance_multiple 15
+# config_extraction -use_thickness_variation false
+# config_extraction -use_thickness_variation_for_cap false
+# config_extraction -use_thickness_variation_for_res true
+# config_extraction -coupling_abs_threshold 0.1f
+# config_extraction -coupling_rel_threshold 1.0
+# ta_debug -cc_ratio 0
+# get_lib_cells $MGC_DLY_cells
+# set_property -name is_dont_use -value true -objects [get_lib_cells $MGC_DLY_cells]
+# get_lib_cells $MGC_DLY_cells 
+# config_flows -hold_opt_cell_list [ get_lib_cells $MGC_DLY_cells ]
+# config_shell -echo false
+# config_cts -corner corner_0_0 -min_route_layer metal7 -max_route_layer metal8 -max_transition 0.25n -max_leaf_transition 0.25n -max_skew 0.2n -max_length 400u -enable_port_clock_leaves false
+# config_cts -use_inverters false -buffers CLKBUF_* -inverters 
+# update_timing -stage mark_clocks
+# get_pins -leaf -filter is_clock && is_out
+# get_cells -of  -filter !@is_buffer && !@is_inverter && !@is_macro && !@is_physical && @type!=pad
+# get_lib_cells -of 
+# get_lib_cells * -filter !@is_buffer && !@is_inverter && !@is_macro && !@is_physical && @type!=pad
+# fk_msg -type info Usage of dont_use libcells: false
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# get_lib_cells 
+# filter_collection  -expression !@is_dont_use
+# fk_msg -type info CG Pruning enabled: true
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# prune_cts_cells -type clock_gates 
+# sizeof_collection 
+# fk_msg -type info Selected 0 libcells for CTS CG Optimization.
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# sizeof_collection 
+# fk_msg -type warning No usable libcell for CG sizing found. CG Sizing will be disabled during CTS
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# report_cts_spec -quiet -name CTS
+# get_report_value -name CTS -table config_cts_report -row opt_clock_gates
+# config_cts -opt_clock_gates latency move 
+# config_cts
+# config_clock_timing -name refine_cts -value $MGC_clock_refine_cts
+# fk_msg Delay, Timing, Parasitic, CRPR Configs Report
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# config_timing -report
+# config_extraction -report
+# report_delay_model
+# report_parasitic_model
+# set_crpr_spec -report
+# config_clock_timing -name preserve_rcd_models -value true
+# config_clock_timing -name enable_optimize_clock_tree -value $MGC_enable_clock_data_opt
+# config_clock_timing -name dont_prune_corners
+# get_corners $current_excluded_corners_for_pruning
+# get_corners $::MGC_activeCorners(clock:ref)
+# add_to_collection -unique true -object [get_corners $current_excluded_corners_for_pruning] -add [get_corners $::MGC_activeCorners(clock:ref)]
+# config_clock_timing -name dont_prune_corners -value [add_to_collection -unique true -object [get_corners $current_excluded_corners_for_pruning] -add [get_corners $::MGC_activeCorners(clock:ref)]]
+# config_optimize -buffer_removal_max_length_limit $MGC_maxLengthParam
+# source nrf_customization.tcl
+# run_clock_timing -cpus $MGC_cpus
+# config_place_timing -name clock_tree_latency_estimation
+# config_application -cpu 2
+# config_timing -cpu 2
+# fk_msg -set_prompt RCT
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name flow_msg_prompt -value RCT -descr Flow prefix - will appear in all messages printed by flow_msg -quiet
+# get_objects -type root
+# report_property -cat all root -output names
+# create_property -name rct_last_stage -data_type string -object_type root -storage sparse -persistent true
+# get_objects -type root
+# set_property -objects root -name rct_last_stage -value 
+# get_objects -type root
+# report_property -cat all root -output names
+# create_property -name rct_clock_opt_ran -data_type bool -object_type root -storage sparse -persistent true
+# get_objects -type root
+# set_property -objects root -name rct_clock_opt_ran -value false
+# config_shell -echo_script false
+# get_modes
+# get_property -name enable default
+# get_property -name enable new_mode
+# get_corners
+# get_property -name enable slow
+# get_property -name hold slow
+# get_property -name setup slow
+# get_property -name enable fast
+# get_property -name hold fast
+# get_property -name setup fast
+# get_property -name enable corner_0_0
+# get_property -name hold corner_0_0
+# get_property -name setup corner_0_0
+# get_modes
+# get_corners -of_object new_mode
+# config_messages -message_id UI33 -max_message 0
+# fk_msg Adjusting TNS range
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# config_units -for input -value_type time -units pico
+# config_units -for output -value_type time -units pico
+# get_path_groups -filter is_qor==true
+# get_property -name tns_range **default**
+# group_path -name **default** -tns_range 10000
+# get_property -name tns_range **async**
+# group_path -name **async** -tns_range 10000
+# get_property -name tns_range **clock_gating**
+# group_path -name **clock_gating** -tns_range 10000
+# get_property -name tns_range **inputs**
+# group_path -name **inputs** -tns_range 10000
+# get_property -name tns_range **outputs**
+# group_path -name **outputs** -tns_range 10000
+# get_property -name tns_range **feedthroughs**
+# group_path -name **feedthroughs** -tns_range 10000
+# config_units -for input -value_type time -units nano
+# config_units -for output -value_type time -units nano
+# config_messages -message_id UI33 -max_message 10
+# fk_msg Preserving USER-Specified RCD settings
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# set_rcd_models -mode report_only
+# report_parasitic_model
+# report_delay_model
+# report_parasitic_derate
+# get_config -name config_optimize -param preserve_congestion -properties is_modified
+# config_units -for output -value_type time -units pico
+# config_shell -echo_script false
+set_option -name window:main:errors:state -value visible
+set_option -name window:main:errors:state -value hidden
+set_option -name view:design:scheme0:layer1:pre_route:wire:visible -value true
+set_option -name view:design:scheme0:layer3:pre_route:wire:visible -value true
+set_option -name view:design:scheme0:layer5:pre_route:wire:visible -value true
+set_option -name view:design:scheme0:layer7:pre_route:wire:visible -value true
+set_option -name view:design:scheme0:layer9:pre_route:wire:visible -value true
+set_option -name view:design:scheme0:layer11:pre_route:wire:visible -value true
+set_option -name view:design:scheme0:layer13:pre_route:wire:visible -value true
+set_option -name view:design:scheme0:layer15:pre_route:wire:visible -value true
+set_option -name view:design:scheme0:layer17:pre_route:wire:visible -value true
+set_option -name view:design:scheme0:layer19:pre_route:wire:visible -value true
+set_option -name view:design:scheme0:layer1:final_route:wire:visible -value true
+set_option -name view:design:scheme0:layer3:final_route:wire:visible -value true
+set_option -name view:design:scheme0:layer5:final_route:wire:visible -value true
+set_option -name view:design:scheme0:layer7:final_route:wire:visible -value true
+set_option -name view:design:scheme0:layer9:final_route:wire:visible -value true
+set_option -name view:design:scheme0:layer11:final_route:wire:visible -value true
+set_option -name view:design:scheme0:layer13:final_route:wire:visible -value true
+set_option -name view:design:scheme0:layer15:final_route:wire:visible -value true
+set_option -name view:design:scheme0:layer17:final_route:wire:visible -value true
+set_option -name view:design:scheme0:layer19:final_route:wire:visible -value true
+set_option -name view:design:scheme0:layer1:pre_route:via_top:visible -value true
+set_option -name view:design:scheme0:layer1:pre_route:via_bottom:visible -value true
+set_option -name view:design:scheme0:layer0:pre_route:via_cut:visible -value true
+set_option -name view:design:scheme0:layer3:pre_route:via_top:visible -value true
+set_option -name view:design:scheme0:layer3:pre_route:via_bottom:visible -value true
+set_option -name view:design:scheme0:layer2:pre_route:via_cut:visible -value true
+set_option -name view:design:scheme0:layer5:pre_route:via_top:visible -value true
+set_option -name view:design:scheme0:layer5:pre_route:via_bottom:visible -value true
+set_option -name view:design:scheme0:layer4:pre_route:via_cut:visible -value true
+set_option -name view:design:scheme0:layer7:pre_route:via_top:visible -value true
+set_option -name view:design:scheme0:layer7:pre_route:via_bottom:visible -value true
+set_option -name view:design:scheme0:layer6:pre_route:via_cut:visible -value true
+set_option -name view:design:scheme0:layer9:pre_route:via_top:visible -value true
+set_option -name view:design:scheme0:layer9:pre_route:via_bottom:visible -value true
+set_option -name view:design:scheme0:layer8:pre_route:via_cut:visible -value true
+set_option -name view:design:scheme0:layer11:pre_route:via_top:visible -value true
+set_option -name view:design:scheme0:layer11:pre_route:via_bottom:visible -value true
+set_option -name view:design:scheme0:layer10:pre_route:via_cut:visible -value true
+set_option -name view:design:scheme0:layer13:pre_route:via_top:visible -value true
+set_option -name view:design:scheme0:layer13:pre_route:via_bottom:visible -value true
+set_option -name view:design:scheme0:layer12:pre_route:via_cut:visible -value true
+set_option -name view:design:scheme0:layer15:pre_route:via_top:visible -value true
+set_option -name view:design:scheme0:layer15:pre_route:via_bottom:visible -value true
+set_option -name view:design:scheme0:layer14:pre_route:via_cut:visible -value true
+set_option -name view:design:scheme0:layer17:pre_route:via_top:visible -value true
+set_option -name view:design:scheme0:layer17:pre_route:via_bottom:visible -value true
+set_option -name view:design:scheme0:layer16:pre_route:via_cut:visible -value true
+set_option -name view:design:scheme0:layer19:pre_route:via_top:visible -value true
+set_option -name view:design:scheme0:layer19:pre_route:via_bottom:visible -value true
+set_option -name view:design:scheme0:layer18:pre_route:via_cut:visible -value true
+zoom_to -target area -xl_area -25.7434u -yb_area -2.2802u -xr_area 93.1252u -yt_area 117.0259u
+zoom_to -target area -xl_area -97.1464u -yb_area -27.2875u -xr_area 100.9678u -yt_area 171.5559u
+zoom_to -target area -xl_area -66.6546u -yb_area -22.9459u -xr_area 91.8366u -yt_area 136.1287u
+zoom_to -target area -xl_area -42.2612u -yb_area -19.4726u -xr_area 84.5316u -yt_area 107.7869u
+zoom_to -target area -xl_area -22.7465u -yb_area -16.6940u -xr_area 78.6876u -yt_area 85.1135u
+zoom_to -target area -xl_area -8.4240u -yb_area -5.4017u -xr_area 72.7231u -yt_area 76.0441u
+zoom_to -target area -xl_area 23.4035u -yb_area 19.6920u -xr_area 59.4688u -yt_area 55.8901u
+zoom_to -target area -xl_area 34.3157u -yb_area 28.2955u -xr_area 54.9244u -yt_area 48.9801u
+zoom_to -target area -xl_area 37.2256u -yb_area 30.5898u -xr_area 53.7125u -yt_area 47.1374u
+zoom_to -target area -xl_area 43.0454u -yb_area 35.1783u -xr_area 51.2888u -yt_area 43.4521u
+zoom_to -target area -xl_area 19.7662u -yb_area 16.8239u -xr_area 60.9832u -yt_area 58.1929u
+zoom_to -target area -xl_area 0.3668u -yb_area 1.5287u -xr_area 69.0617u -yt_area 70.4770u
+zoom_to -target area -xl_area -11.7577u -yb_area -8.0306u -xr_area 74.1108u -yt_area 78.1546u
+zoom_to -target area -xl_area -26.9134u -yb_area -19.9798u -xr_area 80.4221u -yt_area 87.7516u
+zoom_to -target area -xl_area -45.8579u -yb_area -34.9163u -xr_area 88.3113u -yt_area 99.7478u
+zoom_to -target area -xl_area -28.7949u -yb_area -11.0412u -xr_area 78.5402u -yt_area 96.6899u
+write_db -file db/clock.db
+source flow_scripts/3_route.tcl > LOGs/route.log
+# get_config -name process -param node
+# config_lib_vias -use_generated true -create true -select true -use_asymmetrical true -use_4cut true
+# config_shell -echo false
+# config_shell -echo false
+# config_timing -disable_clock_gating_checks false
+# set_crpr_spec -method graph_based
+# config_flows -preserve_rcd false
+# config_shell -echo false
+# source scr/config.tcl
+# config_timing -rc_degrade_min_slew_when_rd_less_than_rnet false
+# config_timing -disable_recovery_removal false
+# config_timing -enable_exception_proxy true
+# config_timing -disable_time_borrow false
+# config_timing -disable_annotation_factor_calc true
+# config_timing -enable_clock_propagation_through_three_state_enable_pins false
+# config_timing -disable_internal_inout_cell_paths true
+# config_timing -enable_cond_arcs_with_default true 
+# config_timing -enable_default_for_cond_arcs true
+# config_timing -enable_setup_independent_hold_checks true
+# config_timing -enable_ideal_clock_data_tags true
+# config_timing -enable_clock_gating_propagate true
+# config_timing -disable_seq_case_analysis true
+# config_timing -early_launch_at_borrowing_latches false
+# config_timing -enable_preset_clear_arcs false
+# config_timing -enable_non_unate_clock_paths true
+# config_timing -pt_min_max_compatibility on_chip_variation
+# config_timing -enable_non_unate_clock_paths true
+# config_timing -disable_sequential_generation_of_waveform_preserving_clocks false
+# config_timing -capacitance_violation_threshold 0
+# config_timing -disable_clock_gating_checks false
+# config_timing -enable_default_input_delay false
+# config_extraction -gr_short_route_gcell_span 3
+# config_extraction -search_distance_multiple 15
+# config_extraction -use_thickness_variation false
+# config_extraction -use_thickness_variation_for_cap false
+# config_extraction -use_thickness_variation_for_res true
+# config_extraction -coupling_abs_threshold 0.1f
+# config_extraction -coupling_rel_threshold 1.0
+# ta_debug -cc_ratio 0
+# config_route_timing -name dvia_mode -value dfm
+# config_place_detail -name follow_drc_for
+# source nrf_customization.tcl
+# config_extraction -use_thickness_variation false
+# config_extraction -use_thickness_variation_for_cap false
+# config_extraction -use_thickness_variation_for_res true
+# set_crpr_spec -crpr_threshold 5p
+# set_crpr_spec -method graph_based
+# set_crpr_spec -transition same_transition
+# fk_msg Max Length Constraint
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# set_max_length -length_threshold 1000u
+# report_max_length
+# fk_msg Max Length Set to 1000
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# fk_msg Running RRT with Interleave Optimization
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# run_route_timing -mode interleave_opt -cpus 2 -messages verbose
+# help run_route_timing -return
+# print_table -title Start run_route_timing flow -column_names Argument Value -values cpus 2 messages verbose timing_mode si preserve_clocks auto save_db_stages {} stop_after false start_from false resume false skip_stages {} run_stages {} mode interleave_opt trial false dump_qor_stages {} user_params {}
+# fk_msg Setting up run_route_timing flow ...
+
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name verbose_level
+# config_messages -message_id UI24 -max_messages 0
+# config_messages -message_id UI24 -max_log_messages 0
+# config_messages -message_id UI34 -max_messages 0
+# config_messages -message_id UI34 -max_log_messages 0
+# config_messages -message_id UI54 -max_messages 0
+# config_messages -message_id UI54 -max_log_messages 0
+# config_messages -message_id UI705 -max_messages 0
+# config_messages -message_id UI705 -max_log_messages 0
+# config_messages -message_id UI156 -max_messages 0
+# config_messages -message_id UI156 -max_log_messages 0
+# config_messages -message_id config1 -max_messages 0
+# config_messages -message_id config1 -max_log_messages 0
+# config_messages -message_id config3 -max_messages 0
+# config_messages -message_id config3 -max_log_messages 0
+# config_messages -message_id config5 -max_messages 0
+# config_messages -message_id config5 -max_log_messages 0
+# config_messages -message_id CSDB57 -max_messages 0
+# config_messages -message_id CSDB57 -max_log_messages 0
+# config_messages -message_id CSDB87 -max_messages 0
+# config_messages -message_id CSDB87 -max_log_messages 0
+# config_messages -message_id TA_CMDS1618 -max_messages 0
+# config_messages -message_id TA_CMDS1618 -max_log_messages 0
+# config_messages -message_id TA_CMDS1619 -max_messages 0
+# config_messages -message_id TA_CMDS1619 -max_log_messages 0
+# config_messages -message_id TA_CMDS7412 -max_messages 0
+# config_messages -message_id TA_CMDS7412 -max_log_messages 0
+# config_messages -message_id SDB43 -max_messages 0
+# config_messages -message_id SDB43 -max_log_messages 0
+# config_messages -message_id CSDB45 -max_messages 0
+# config_messages -message_id CSDB45 -max_log_messages 0
+# create_property -name tdro_last_stage -object_type root -data_type string -storage sparse -persistent true -init_value null
+# create_property -name follow_gr -object_type net -data_type integer -storage sparse -persistent true -init_value 0
+# create_property -name preserve_layer -object_type net -data_type integer -storage sparse -persistent true -init_value 0
+# create_property -name preserve_channel -object_type net -data_type integer -storage sparse -persistent true -init_value 0
+# fk_msg -set_prompt RRT
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name flow_msg_prompt -value RRT -descr Flow prefix - will appear in all messages printed by flow_msg -quiet
+# config_shell -level _d%ve_
+# fk_msg -set_verbosity_filter debug
+# new_config_flow -name verbose_level
+# new_config_flow -name verbose_level -value debug -quiet
+# config_shell -echo false
+# config_shell -ignore_errors false
+# config_application -cpus 1
+# config_timing -cpus 2
+# config_default_value -command route_global -argument check -value  technology libraries routing 
+# config_default_value -command route_global -argument messages -value normal
+# config_default_value -command route_track -argument check -value  technology libraries routing 
+# config_default_value -command route_track -argument messages -value normal
+# config_default_value -command route_final -argument check -value  technology libraries routing 
+# config_default_value -command route_final -argument messages -value normal
+# config_default_value -command route_si_repair -argument check -value  
+# config_default_value -command route_si_repair -argument messages -value normal
+# config_route_final -opt_strict_drc false
+# write_db -data design -file dbs/route.db
+# save_db -directory dbs/route.db -overwrite true -data design -cpus 4 -description 
+# config_shell -echo false
+set_option -name window:main:view:location -value {372 36}
+trigger_gui -name main:view_errors
+set_option -name window:main:errors:state -value visible
+set_option -name window:main:errors:state -value hidden
+write_db -file db/route.db
+report_timing
+report_timing -max_delay
+report_timing -min_delay
+report_placement
+report_power
+write_db -file db/route.db
+source flow_scripts/4_export.tcl
+# config_shell -echo_script false
+# config_shell -ignore_errors false
+# config_application -cpus 1
+# config_timing -cpus 2
+# config_default_value -command route_global -argument check -value  technology libraries routing 
+# config_default_value -command route_global -argument messages -value normal
+# config_default_value -command route_track -argument check -value  technology libraries routing 
+# config_default_value -command route_track -argument messages -value normal
+# config_default_value -command route_final -argument check -value  technology libraries routing 
+# config_default_value -command route_final -argument messages -value normal
+# config_default_value -command route_si_repair -argument check -value  
+# config_default_value -command route_si_repair -argument messages -value normal
+# config_route_final -opt_strict_drc false
+# fk_msg -set_prompt NRF
+# new_config_flow -name flow_msg_prompt -quiet
+# new_config_flow -name flow_msg_prompt -value NRF -descr Flow prefix - will appear in all messages printed by flow_msg -quiet
+# config_shell -level normal
+# fk_msg -set_verbosity_filter info
+# new_config_flow -name verbose_level
+# new_config_flow -name verbose_level -value info -quiet
+# config_shell -echo false
+source /home/vlsi/Desktop/Lab5_2022/save_design.sh 
+set_option -name window:hierarchy:explorer:location -value {62 77}
+set_option -name window:hierarchy:explorer:size -value {260 720}
+set_option -name window:main:message_area:location -value {328 592}
+set_option -name window:main:message_area:size -value {1590 205}
+set_option -name window:main:view_options_panel:state -value hidden
+set_option -name window:main:interactive_modes:state -value hidden
+set_option -name window:hierarchy:explorer:state -value hidden
+set_option -name window:main:message_area:location -value {39 592}
+set_option -name window:main:message_area:size -value {1879 205}
+set_option -name window:main:message_area:state -value hidden

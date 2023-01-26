@@ -1,0 +1,43 @@
+Report 'report_mcmm_variation': MCMM Variation
+Generated on Wed Jan 4 02:22:42 2023
+  
+----------------------------------------------------------
+| MCMM variability report for design 'float_mult' (pico) |
+|--------------------------------------------------------|
+| MODE CORNER WNS TNS #Endpts WHS THS #Endpts            | 
+----------------------------------------------------------
+
+
+info UI33: performed report_mcmm_variation for 0 sec (CPU time: 0 sec; MEM: RSS - 323M, CVMEM - 1691M, PVMEM - 1870M)
+Report 'report_path_group': Path Group
+Generated on Wed Jan 4 02:22:42 2023
+  
+-------------------------------------------------------------------------------------------
+|                               PATH GROUPS (SETUP) (pico)                                |
+|-----------------------------------------------------------------------------------------|
+| QOR Weight Margin TNS Range Endpoints Violating Endpoints Violating Endpoints % WNS TNS | 
+-------------------------------------------------------------------------------------------
+
+
+info UI33: performed report_path_group for 0 sec (CPU time: 0 sec; MEM: RSS - 323M, CVMEM - 1691M, PVMEM - 1870M)
+SLACK HISTOGRAM
+---------------
+Select : SELECT_NONE
+
+info UI33: performed report_slack_histogram for 0 sec (CPU time: 0 sec; MEM: RSS - 323M, CVMEM - 1691M, PVMEM - 1870M)
+Report 'report_path_group': Path Group
+Generated on Wed Jan 4 02:22:42 2023
+  
+-------------------------------------------------------------------------------------------
+|                                PATH GROUPS (HOLD) (pico)                                |
+|-----------------------------------------------------------------------------------------|
+| QOR Weight Margin TNS Range Endpoints Violating Endpoints Violating Endpoints % WNS TNS | 
+-------------------------------------------------------------------------------------------
+
+
+info UI33: performed report_path_group for 0 sec (CPU time: 0 sec; MEM: RSS - 323M, CVMEM - 1691M, PVMEM - 1870M)
+SLACK HISTOGRAM
+---------------
+Select : SELECT_NONE
+
+info UI33: performed report_slack_histogram for 0 sec (CPU time: 0 sec; MEM: RSS - 323M, CVMEM - 1691M, PVMEM - 1870M)

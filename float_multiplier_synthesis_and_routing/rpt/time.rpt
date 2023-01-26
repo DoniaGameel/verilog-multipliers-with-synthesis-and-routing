@@ -1,0 +1,381 @@
+Report for group default
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Startpoint: regA/out_reg[4]/Q
+    (Clocked by vsysclk R)
+Endpoint: regOut/out_reg[22]/D
+    (Clocked by vsysclk R)
+Path Group: default
+Data required time: 5969.2
+    (Clock shift: 6000.0, minus Uncertainty: 0.0, plus Latency 0.0, minus Setup time: 30.8)
+Data arrival time: 3409.8
+Slack: 2559.4
+Logic depth: 95
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                     Arrival               Arc      Net               Net    Total   fan-                                   
+Path                     Module/Cell           Edge     Time    Delay    Delay    Delay     Slew     Load     Load    out     Location Power Domain      (V)
+                                                        (ps)     (ps)     (ps)     (ps)     (ps)     (ff)     (ff)    (#)      (um,um)                      
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+clk                      {create_clock}           r      0.0      0.0      0.0                        0.0      0.0     96     0,   66                       
+regA/out_reg[4]/CK->Q    DFF_X1*                 rr    171.3    171.3    171.3      0.0      0.0      7.1    116.2     22    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_10/A2->ZN
+                         NAND2_X4*               rf    204.8     33.5     33.3      0.2     15.3      1.2     35.6      4    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_25/A->ZN
+                         XNOR2_X2                ff    247.1     42.3     42.3      0.0     15.3      0.6      5.6      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_38/A1->ZN
+                         OAI33_X1                fr    339.0     91.9     91.9      0.0     12.4      0.7      8.0      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_39/B->Z
+                         XOR2_X2                 rr    411.7     72.7     72.7      0.0    105.6      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_64/A1->ZN
+                         AOI22_X4*               rf    449.3     37.6     37.6      0.0     34.5      0.7     30.2      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_69/B1->ZN
+                         OAI22_X4                fr    494.9     45.6     45.6      0.0     15.3      0.7      8.0      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_74/A->Z
+                         XOR2_X2                 rr    563.0     68.1     68.1      0.0     34.8      0.6      8.4      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_76/A1->ZN
+                         NAND2_X4                rf    587.6     24.6     24.6      0.0     35.9      0.9     12.8      3    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_121/A2->ZN
+                         AOI22_X4                fr    629.7     42.1     42.1      0.0     10.3      0.6      8.4      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_122/A1->ZN
+                         NAND2_X4*               rf    664.1     34.4     34.4      0.0     29.8      0.6     29.9      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_167/A->ZN
+                         INV_X8                  fr    678.4     14.3     14.3      0.0     15.3      0.6      8.3      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_171/A1->ZN
+                         NAND2_X4                rf    694.4     16.0     16.0      0.0      6.3      0.9     13.0      3    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_191/A2->ZN
+                         NOR2_X4                 fr    733.8     39.4     39.4      0.0     10.4      0.9     12.7      3    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_218/A2->ZN
+                         NAND2_X4*               rf    766.5     32.7     32.7      0.0     25.1      0.6     29.9      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_234/A->ZN
+                         INV_X8                  fr    780.8     14.3     14.3      0.0     15.3      0.6      8.3      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_240/A1->ZN
+                         NAND2_X4*               rf    806.4     25.6     25.6      0.0      6.3      0.6     29.9      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_248/A->ZN
+                         INV_X8                  fr    820.7     14.3     14.3      0.0     15.3      0.6      8.5      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_249/A2->ZN
+                         NAND2_X4*               rf    847.8     27.1     27.1      0.0      6.4      0.6     29.9      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_250/A->ZN
+                         OAI21_X4*               fr    886.5     38.7     38.7      0.0     15.3      0.6     29.1      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_277/A->ZN
+                         XNOR2_X2                rr    931.7     45.2     45.2      0.0     15.3      0.6      8.1      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_281/A2->ZN
+                         AOI22_X4                rf    953.9     22.2     22.2      0.0     32.2      0.7      8.0      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_322/A1->ZN
+                         OAI22_X4                fr   1011.1     57.2     57.2      0.0     13.9      0.3     25.8      1    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_323/A->ZN
+                         INV_X8                  rf   1018.1      7.0      7.0      0.0     56.4      0.5      6.5      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_344/A1->ZN
+                         OR2_X4*                 ff   1070.3     52.2     52.2      0.0      3.7      0.5     29.9      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_351/A->ZN
+                         INV_X8                  fr   1082.8     12.5     12.5      0.0     15.3      0.3      4.3      1    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_352/B1->ZN
+                         OAI21_X4                rf   1096.9     14.1     14.1      0.0      5.3      0.6      7.9      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_393/B1->ZN
+                         OAI21_X4                fr   1151.8     54.9     54.9      0.0     10.9      0.3     25.7      1    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_394/A->ZN
+                         INV_X8                  rf   1159.5      7.7      7.7      0.0     43.3      0.5      6.5      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_396/A1->ZN
+                         OR2_X4                  ff   1203.0     43.5     43.5      0.0      3.7      0.9     13.0      3    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_509/A1->ZN
+                         NOR2_X4*                fr   1257.9     54.9     54.9      0.0     10.6      0.6     30.0      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_510/B2->ZN
+                         OAI21_X4                rf   1281.0     23.1     23.1      0.0     15.3      0.9     12.8      3    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_555/A1->ZN
+                         NOR2_X4*                fr   1336.8     55.8     55.8      0.0     13.0      0.6     29.9      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_564/A->ZN
+                         AOI21_X4                rf   1352.7     15.9     15.9      0.0     15.3      0.6      7.7      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_609/B1->ZN
+                         OAI21_X4                fr   1384.9     32.2     32.2      0.0      9.1      0.6      8.6      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_613/A1->ZN
+                         NAND2_X4                rf   1406.7     21.8     21.8      0.0     23.4      0.9     12.9      3    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_730/A1->ZN
+                         NOR4_X4*                fr   1516.2    109.5    109.5      0.0     10.4      0.6     30.1      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_776/B2->ZN
+                         OAI21_X4                rf   1536.5     20.3     20.3      0.0     15.3      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_828/B1->ZN
+                         AOI21_X4                fr   1567.9     31.4     31.4      0.0     10.8      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_879/A1->ZN
+                         OAI22_X4                rf   1591.9     24.0     24.0      0.0     25.8      0.7      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_930/A1->ZN
+                         AOI22_X4                fr   1629.1     37.2     37.2      0.0     12.5      0.7      7.9      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_932/A->ZN
+                         XNOR2_X2                rr   1677.7     48.6     48.6      0.0     29.2      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_966/A1->ZN
+                         OAI22_X4                rf   1703.2     25.5     25.5      0.0     31.4      0.7      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_992/A1->ZN
+                         AOI22_X4                fr   1740.3     37.1     37.1      0.0     12.5      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1018/B1->ZN
+                         OAI21_X4                rf   1761.7     21.4     21.4      0.0     29.0      0.6      8.4      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1055/A1->ZN
+                         NAND2_X4                fr   1779.6     17.9     17.9      0.0     11.1      0.6      8.5      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1057/A->ZN
+                         OAI21_X4                rf   1800.4     20.8     20.8      0.0     11.7      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1090/B1->ZN
+                         AOI21_X4                fr   1831.7     31.3     31.3      0.0     10.8      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1122/B1->ZN
+                         AOI21_X4                rf   1852.0     20.3     20.3      0.0     25.7      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1146/A1->ZN
+                         AOI22_X4                fr   1887.8     35.8     35.8      0.0      9.1      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1174/B1->ZN
+                         AOI21_X4                rf   1908.7     20.9     20.9      0.0     29.0      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1200/A1->ZN
+                         AOI22_X4                fr   1944.6     35.9     35.9      0.0      9.1      0.7      7.9      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1222/A1->ZN
+                         OAI22_X4                rf   1969.5     24.9     24.9      0.0     29.1      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1237/B1->ZN
+                         AOI21_X4*               fr   2027.7     58.2     58.2      0.0     12.4      0.6     29.1      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1243/A->ZN
+                         XNOR2_X2                rf   2049.6     21.9     21.9      0.0     15.3      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1246/A1->ZN
+                         AOI22_X4*               fr   2114.0     64.4     64.4      0.0     14.3      0.6     29.3      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1250/A->ZN
+                         INV_X8                  rf   2120.9      6.9      6.9      0.0     15.3      0.3      4.4      1    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1251/A1->ZN
+                         AOI22_X4                fr   2154.9     34.0     34.0      0.0      3.5      0.6      7.9      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1268/B1->ZN
+                         AOI21_X4                rf   2174.9     20.0     20.0      0.0     29.2      0.6      6.5      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_2593/A1->ZN
+                         OR2_X4*                 ff   2228.8     53.9     53.9      0.0      8.6      0.5     29.7      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_2620/A->ZN
+                         INV_X8                  fr   2241.3     12.5     12.5      0.0     15.3      0.3      4.3      1    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_2621/B1->ZN
+                         OAI21_X4                rf   2255.4     14.1     14.1      0.0      5.3      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_2641/A1->ZN
+                         AOI22_X4*               fr   2321.0     65.6     65.6      0.0     10.8      0.9     33.7      3    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_2671/B1->ZN
+                         AOI21_X4                rf   2338.9     17.9     17.9      0.0     15.3      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_2675/B1->ZN
+                         AOI21_X4*               fr   2415.6     76.7     76.7      0.0      9.1      8.9     80.5     28    66,   66  /PD_TOP        (1.10)
+i_0_0_78/A->ZN           OAI211_X4               rf   2444.7     29.1     28.8      0.3     15.3      0.3      4.3      1    66,   66  /PD_TOP        (1.10)
+i_0_0_76/A->ZN           OAI21_X4                fr   2468.7     24.0     24.0      0.0     14.5      0.6      6.1      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_1/A2->ZN         AND2_X4                 rr   2502.1     33.4     33.4      0.0     20.5      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_3/A1->ZN         AND2_X4                 rr   2531.2     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_5/A1->ZN         AND2_X4                 rr   2560.3     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_7/A1->ZN         AND2_X4                 rr   2589.4     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_9/A1->ZN         AND2_X4                 rr   2618.5     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_11/A1->ZN        AND2_X4                 rr   2647.6     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_13/A1->ZN        AND2_X4                 rr   2676.7     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_15/A1->ZN        AND2_X4                 rr   2705.8     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_17/A1->ZN        AND2_X4                 rr   2734.9     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_19/A1->ZN        AND2_X4                 rr   2764.0     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_21/A1->ZN        AND2_X4                 rr   2793.1     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_23/A1->ZN        AND2_X4                 rr   2822.2     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_25/A1->ZN        AND2_X4                 rr   2851.3     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_44/A1->ZN        AND2_X4                 rr   2880.5     29.2     29.2      0.0      8.7      0.5      6.2      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_43/A2->ZN        AND2_X4                 rr   2910.8     30.3     30.3      0.0      8.8      0.5      6.2      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_41/A2->ZN        AND2_X4                 rr   2941.1     30.3     30.3      0.0      8.8      0.5      6.2      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_39/A2->ZN        AND2_X4                 rr   2971.4     30.3     30.3      0.0      8.8      0.5      6.2      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_37/A2->ZN        AND2_X4                 rr   3001.7     30.3     30.3      0.0      8.8      0.5      6.2      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_35/A2->ZN        AND2_X4                 rr   3032.0     30.3     30.3      0.0      8.8      0.5      6.2      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_33/A2->ZN        AND2_X4                 rr   3062.3     30.3     30.3      0.0      8.8      0.5      6.2      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_31/A2->ZN        AND2_X4                 rr   3093.8     31.5     31.5      0.0      8.8      0.5      7.9      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_42/B->Z          XOR2_X2                 rr   3149.7     55.9     55.9      0.0      9.7      0.6      6.6      2    66,   66  /PD_TOP        (1.10)
+i_0_0_58/A2->ZN          NOR4_X4                 rf   3165.8     16.1     16.1      0.0     31.8      0.3      4.3      1    66,   66  /PD_TOP        (1.10)
+i_0_0_57/A2->ZN          NAND2_X4                fr   3181.7     15.9     15.9      0.0      7.2      0.3      4.5      1    66,   66  /PD_TOP        (1.10)
+i_0_0_51/A1->ZN          NOR2_X4*                rf   3200.4     18.7     18.7      0.0      9.6      0.9     30.1      3    66,   66  /PD_TOP        (1.10)
+i_0_0_42/A1->ZN          OR2_X4                  ff   3243.9     43.5     43.5      0.0     15.3      0.5      4.9      2    66,   66  /PD_TOP        (1.10)
+i_0_0_40/A2->ZN          OR2_X4*                 ff   3306.7     62.8     62.8      0.0      8.4      2.9     36.7      9    66,   66  /PD_TOP        (1.10)
+i_0_0_23/A2->ZN          NOR2_X4*                fr   3381.2     74.5     74.4      0.1     15.3      6.1     57.9     23    66,   66  /PD_TOP        (1.10)
+i_0_0_22/A2->ZN          AND2_X4                 rr   3409.8     28.6     28.4      0.2     15.3      0.3      1.4      1    66,   66  /PD_TOP        (1.10)
+regOut/out_reg[22]/D     DFF_X1                   r   3409.8      0.0               0.0      6.3                             66,   66  /PD_TOP        (1.10)
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Report for group I2R
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Startpoint: B[31]
+    (Clocked by vsysclk R)
+Endpoint: regB/out_reg[31]/D
+    (Clocked by vsysclk R)
+Path Group: I2R
+Data required time: 5867.4
+    (Clock shift: 6000.0, minus Uncertainty: 0.0, plus Latency 0.0, minus Setup time: 132.6)
+Data arrival time: 200.6
+Slack: 5666.8
+Logic depth: 0
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                     Arrival               Arc      Net               Net    Total   fan-                                   
+Path                     Module/Cell           Edge     Time    Delay    Delay    Delay     Slew     Load     Load    out     Location Power Domain      (V)
+                                                        (ps)     (ps)     (ps)     (ps)     (ps)     (ff)     (ff)    (#)      (um,um)                      
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+B[31]                    {set_input_delay}        r    200.0    200.0    200.0                        3.8      5.0      1   133,   65                       
+regB/out_reg[31]/D       DFF_X1                   r    200.6      0.6               0.6   1000.0                             66,   66  /PD_TOP        (1.10)
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Report for group I2O
+Report for group R2O
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Startpoint: regA/out_reg[4]/Q
+    (Clocked by vsysclk R)
+Endpoint: Overflow
+    (Clocked by vsysclk R)
+Path Group: R2O
+Data required time: 5500.0
+    (Clock shift: 6000.0, minus Uncertainty: 0.0, plus Latency 0.0, minus Out delay: 500.0)
+Data arrival time: 3323.5
+Slack: 2176.5
+Logic depth: 95
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                     Arrival               Arc      Net               Net    Total   fan-                                   
+Path                     Module/Cell           Edge     Time    Delay    Delay    Delay     Slew     Load     Load    out     Location Power Domain      (V)
+                                                        (ps)     (ps)     (ps)     (ps)     (ps)     (ff)     (ff)    (#)      (um,um)                      
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+clk                      {create_clock}           r      0.0      0.0      0.0                        0.0      0.0     96     0,   66                       
+regA/out_reg[4]/CK->Q    DFF_X1*                 rr    171.3    171.3    171.3      0.0      0.0      7.1    116.2     22    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_10/A2->ZN
+                         NAND2_X4*               rf    204.8     33.5     33.3      0.2     15.3      1.2     35.6      4    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_25/A->ZN
+                         XNOR2_X2                ff    247.1     42.3     42.3      0.0     15.3      0.6      5.6      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_38/A1->ZN
+                         OAI33_X1                fr    339.0     91.9     91.9      0.0     12.4      0.7      8.0      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_39/B->Z
+                         XOR2_X2                 rr    411.7     72.7     72.7      0.0    105.6      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_64/A1->ZN
+                         AOI22_X4*               rf    449.3     37.6     37.6      0.0     34.5      0.7     30.2      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_69/B1->ZN
+                         OAI22_X4                fr    494.9     45.6     45.6      0.0     15.3      0.7      8.0      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_74/A->Z
+                         XOR2_X2                 rr    563.0     68.1     68.1      0.0     34.8      0.6      8.4      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_76/A1->ZN
+                         NAND2_X4                rf    587.6     24.6     24.6      0.0     35.9      0.9     12.8      3    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_121/A2->ZN
+                         AOI22_X4                fr    629.7     42.1     42.1      0.0     10.3      0.6      8.4      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_122/A1->ZN
+                         NAND2_X4*               rf    664.1     34.4     34.4      0.0     29.8      0.6     29.9      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_167/A->ZN
+                         INV_X8                  fr    678.4     14.3     14.3      0.0     15.3      0.6      8.3      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_171/A1->ZN
+                         NAND2_X4                rf    694.4     16.0     16.0      0.0      6.3      0.9     13.0      3    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_191/A2->ZN
+                         NOR2_X4                 fr    733.8     39.4     39.4      0.0     10.4      0.9     12.7      3    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_218/A2->ZN
+                         NAND2_X4*               rf    766.5     32.7     32.7      0.0     25.1      0.6     29.9      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_234/A->ZN
+                         INV_X8                  fr    780.8     14.3     14.3      0.0     15.3      0.6      8.3      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_240/A1->ZN
+                         NAND2_X4*               rf    806.4     25.6     25.6      0.0      6.3      0.6     29.9      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_248/A->ZN
+                         INV_X8                  fr    820.7     14.3     14.3      0.0     15.3      0.6      8.5      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_249/A2->ZN
+                         NAND2_X4*               rf    847.8     27.1     27.1      0.0      6.4      0.6     29.9      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_250/A->ZN
+                         OAI21_X4*               fr    886.5     38.7     38.7      0.0     15.3      0.6     29.1      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_277/A->ZN
+                         XNOR2_X2                rr    931.7     45.2     45.2      0.0     15.3      0.6      8.1      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_281/A2->ZN
+                         AOI22_X4                rf    953.9     22.2     22.2      0.0     32.2      0.7      8.0      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_322/A1->ZN
+                         OAI22_X4                fr   1011.1     57.2     57.2      0.0     13.9      0.3     25.8      1    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_323/A->ZN
+                         INV_X8                  rf   1018.1      7.0      7.0      0.0     56.4      0.5      6.5      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_344/A1->ZN
+                         OR2_X4*                 ff   1070.3     52.2     52.2      0.0      3.7      0.5     29.9      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_351/A->ZN
+                         INV_X8                  fr   1082.8     12.5     12.5      0.0     15.3      0.3      4.3      1    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_352/B1->ZN
+                         OAI21_X4                rf   1096.9     14.1     14.1      0.0      5.3      0.6      7.9      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_393/B1->ZN
+                         OAI21_X4                fr   1151.8     54.9     54.9      0.0     10.9      0.3     25.7      1    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_394/A->ZN
+                         INV_X8                  rf   1159.5      7.7      7.7      0.0     43.3      0.5      6.5      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_396/A1->ZN
+                         OR2_X4                  ff   1203.0     43.5     43.5      0.0      3.7      0.9     13.0      3    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_509/A1->ZN
+                         NOR2_X4*                fr   1257.9     54.9     54.9      0.0     10.6      0.6     30.0      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_510/B2->ZN
+                         OAI21_X4                rf   1281.0     23.1     23.1      0.0     15.3      0.9     12.8      3    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_555/A1->ZN
+                         NOR2_X4*                fr   1336.8     55.8     55.8      0.0     13.0      0.6     29.9      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_564/A->ZN
+                         AOI21_X4                rf   1352.7     15.9     15.9      0.0     15.3      0.6      7.7      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_609/B1->ZN
+                         OAI21_X4                fr   1384.9     32.2     32.2      0.0      9.1      0.6      8.6      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_613/A1->ZN
+                         NAND2_X4                rf   1406.7     21.8     21.8      0.0     23.4      0.9     12.9      3    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_730/A1->ZN
+                         NOR4_X4*                fr   1516.2    109.5    109.5      0.0     10.4      0.6     30.1      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_776/B2->ZN
+                         OAI21_X4                rf   1536.5     20.3     20.3      0.0     15.3      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_828/B1->ZN
+                         AOI21_X4                fr   1567.9     31.4     31.4      0.0     10.8      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_879/A1->ZN
+                         OAI22_X4                rf   1591.9     24.0     24.0      0.0     25.8      0.7      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_930/A1->ZN
+                         AOI22_X4                fr   1629.1     37.2     37.2      0.0     12.5      0.7      7.9      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_932/A->ZN
+                         XNOR2_X2                rr   1677.7     48.6     48.6      0.0     29.2      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_966/A1->ZN
+                         OAI22_X4                rf   1703.2     25.5     25.5      0.0     31.4      0.7      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_992/A1->ZN
+                         AOI22_X4                fr   1740.3     37.1     37.1      0.0     12.5      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1018/B1->ZN
+                         OAI21_X4                rf   1761.7     21.4     21.4      0.0     29.0      0.6      8.4      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1055/A1->ZN
+                         NAND2_X4                fr   1779.6     17.9     17.9      0.0     11.1      0.6      8.5      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1057/A->ZN
+                         OAI21_X4                rf   1800.4     20.8     20.8      0.0     11.7      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1090/B1->ZN
+                         AOI21_X4                fr   1831.7     31.3     31.3      0.0     10.8      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1122/B1->ZN
+                         AOI21_X4                rf   1852.0     20.3     20.3      0.0     25.7      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1146/A1->ZN
+                         AOI22_X4                fr   1887.8     35.8     35.8      0.0      9.1      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1174/B1->ZN
+                         AOI21_X4                rf   1908.7     20.9     20.9      0.0     29.0      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1200/A1->ZN
+                         AOI22_X4                fr   1944.6     35.9     35.9      0.0      9.1      0.7      7.9      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1222/A1->ZN
+                         OAI22_X4                rf   1969.5     24.9     24.9      0.0     29.1      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1237/B1->ZN
+                         AOI21_X4*               fr   2027.7     58.2     58.2      0.0     12.4      0.6     29.1      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1243/A->ZN
+                         XNOR2_X2                rf   2049.6     21.9     21.9      0.0     15.3      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1246/A1->ZN
+                         AOI22_X4*               fr   2114.0     64.4     64.4      0.0     14.3      0.6     29.3      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1250/A->ZN
+                         INV_X8                  rf   2120.9      6.9      6.9      0.0     15.3      0.3      4.4      1    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1251/A1->ZN
+                         AOI22_X4                fr   2154.9     34.0     34.0      0.0      3.5      0.6      7.9      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_1268/B1->ZN
+                         AOI21_X4                rf   2174.9     20.0     20.0      0.0     29.2      0.6      6.5      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_2593/A1->ZN
+                         OR2_X4*                 ff   2228.8     53.9     53.9      0.0      8.6      0.5     29.7      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_2620/A->ZN
+                         INV_X8                  fr   2241.3     12.5     12.5      0.0     15.3      0.3      4.3      1    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_2621/B1->ZN
+                         OAI21_X4                rf   2255.4     14.1     14.1      0.0      5.3      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_2641/A1->ZN
+                         AOI22_X4*               fr   2321.0     65.6     65.6      0.0     10.8      0.9     33.7      3    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_2671/B1->ZN
+                         AOI21_X4                rf   2338.9     17.9     17.9      0.0     15.3      0.6      7.8      2    66,   66  /PD_TOP        (1.10)
+mantissa_multiplier/i_0/i_2675/B1->ZN
+                         AOI21_X4*               fr   2415.6     76.7     76.7      0.0      9.1      8.9     80.5     28    66,   66  /PD_TOP        (1.10)
+i_0_0_78/A->ZN           OAI211_X4               rf   2444.7     29.1     28.8      0.3     15.3      0.3      4.3      1    66,   66  /PD_TOP        (1.10)
+i_0_0_76/A->ZN           OAI21_X4                fr   2468.7     24.0     24.0      0.0     14.5      0.6      6.1      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_1/A2->ZN         AND2_X4                 rr   2502.1     33.4     33.4      0.0     20.5      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_3/A1->ZN         AND2_X4                 rr   2531.2     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_5/A1->ZN         AND2_X4                 rr   2560.3     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_7/A1->ZN         AND2_X4                 rr   2589.4     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_9/A1->ZN         AND2_X4                 rr   2618.5     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_11/A1->ZN        AND2_X4                 rr   2647.6     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_13/A1->ZN        AND2_X4                 rr   2676.7     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_15/A1->ZN        AND2_X4                 rr   2705.8     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_17/A1->ZN        AND2_X4                 rr   2734.9     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_19/A1->ZN        AND2_X4                 rr   2764.0     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_21/A1->ZN        AND2_X4                 rr   2793.1     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_23/A1->ZN        AND2_X4                 rr   2822.2     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_25/A1->ZN        AND2_X4                 rr   2851.3     29.1     29.1      0.0      8.7      0.5      6.0      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_44/A1->ZN        AND2_X4                 rr   2880.5     29.2     29.2      0.0      8.7      0.5      6.2      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_43/A2->ZN        AND2_X4                 rr   2910.8     30.3     30.3      0.0      8.8      0.5      6.2      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_41/A2->ZN        AND2_X4                 rr   2941.1     30.3     30.3      0.0      8.8      0.5      6.2      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_39/A2->ZN        AND2_X4                 rr   2971.4     30.3     30.3      0.0      8.8      0.5      6.2      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_37/A2->ZN        AND2_X4                 rr   3001.7     30.3     30.3      0.0      8.8      0.5      6.2      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_35/A2->ZN        AND2_X4                 rr   3032.0     30.3     30.3      0.0      8.8      0.5      6.2      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_33/A2->ZN        AND2_X4                 rr   3062.3     30.3     30.3      0.0      8.8      0.5      6.2      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_31/A2->ZN        AND2_X4                 rr   3093.8     31.5     31.5      0.0      8.8      0.5      7.9      2    66,   66  /PD_TOP        (1.10)
+i_0_6/i_29/A2->ZN        NAND2_X4                rf   3107.3     13.5     13.5      0.0      9.7      0.3      4.0      1    66,   66  /PD_TOP        (1.10)
+i_0_6/i_27/B->ZN         XNOR2_X2                ff   3147.9     40.6     40.6      0.0      6.8      0.6      6.8      2    66,   66  /PD_TOP        (1.10)
+i_0_0_58/A1->ZN          NOR4_X4                 fr   3194.8     46.9     46.9      0.0     13.5      0.3      4.3      1    66,   66  /PD_TOP        (1.10)
+i_0_0_57/A2->ZN          NAND2_X4                rf   3213.9     19.1     19.1      0.0     42.6      0.3      4.5      1    66,   66  /PD_TOP        (1.10)
+i_0_0_51/A1->ZN          NOR2_X4*                fr   3267.5     53.6     53.6      0.0      7.0      0.9     30.1      3    66,   66  /PD_TOP        (1.10)
+i_0_0_50/A->ZN           INV_X8                  rf   3274.4      6.9      6.9      0.0     15.3      0.3      4.4      1    66,   66  /PD_TOP        (1.10)
+i_0_0_49/A2->ZN          NOR2_X4                 fr   3306.0     31.6     31.6      0.0      3.5      0.5      8.9      2    66,   66  /PD_TOP        (1.10)
+i_0_0_48/A2->ZN          NOR2_X4                 rf   3322.9     16.9     16.9      0.0     20.8      4.0     14.0      1    66,   66  /PD_TOP        (1.10)
+Overflow                                          f   3323.5      0.6               0.6      7.8                              0,   63                       
+------------------------------------------------------------------------------------------------------------------------------------------------------------

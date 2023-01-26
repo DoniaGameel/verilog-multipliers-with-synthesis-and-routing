@@ -1,0 +1,11 @@
+Report Instance Areas: 
+-----+--------+------------------+-----+---------
+     |Instance|Module            |Cells|Cell Area
+-----+--------+------------------+-----+---------
+1    |top     |                  | 5461|     7064
+2    |  mult  |multiplyTimes     | 5193|     6327
+3    |  regA  |registerNbits__2_2|   67|      184
+4    |  regB  |registerNbits__2_5|   67|      184
+5    |  outB  |registerNbits__2_8|   67|      184
+6    |  outA  |registerNbits     |   67|      184
+-----+--------+------------------+-----+---------

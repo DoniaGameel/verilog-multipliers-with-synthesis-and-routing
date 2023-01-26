@@ -1,0 +1,36 @@
+Report Physical info: 
+------------------------+---------------------+-----------+------------
+                        |                     |Area (squm)|Leakage (uW)
+------------------------+---------------------+-----------+------------
+Design Name             |sequential_multiplier|           |            
+  Total Instances       |                  778|       1939|      36.716
+    Macros              |                    0|          0|       0.000
+    Pads                |                    0|          0|       0.000
+    Phys                |                    0|          0|       0.000
+    Blackboxes          |                    0|          0|       0.000
+    Cells               |                  778|       1939|      36.716
+      Buffers           |                    0|          0|       0.000
+      Inverters         |                   79|         42|       1.134
+      Clock-Gates       |                    4|         16|       0.237
+      Combinational     |                  465|        841|      17.150
+      Latches           |                    0|          0|       0.000
+      FlipFlops         |                  230|       1040|      18.196
+       Single-Bit FF    |                  230|       1040|      18.196
+       Multi-Bit FF     |                    0|          0|       0.000
+       Clock-Gated      |                  230|           |            
+       Bits             |                  230|       1040|      18.196
+         Load-Enabled   |                    0|           |            
+         Clock-Gated    |                  230|           |            
+  Tristate Pin Count    |                    0|           |            
+Physical Info           |Placed               |           |            
+  Chip Size (mm x mm)   |0.117 x 0.117        |      13652|            
+  Fixed Cell Area       |                     |          0|            
+    Phys Only           |                    0|          0|            
+  Placeable Area        |                     |       3181|            
+  Movable Cell Area     |                     |       1939|            
+  Utilization (%)       |                   60|           |            
+  Chip Utilization (%)  |                   60|           |            
+  Total Wire Length (mm)|                8.123|           |            
+  Longest Wire (mm)     |                0.069|           |            
+  Average Wire (mm)     |                0.062|           |            
+------------------------+---------------------+-----------+------------

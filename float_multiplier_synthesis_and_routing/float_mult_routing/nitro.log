@@ -1,0 +1,2554 @@
+#---------------------------------------------------------------------
+# start session at Wed Jan 4 01:48:45 2023
+# Exec path is /home/vlsi/Installation/Nitro/nitroPack-2019.1.R2a/nitro/arch/linux/x86_64/2.12/64/bin
+#---------------------------------------------------------------------
+---------------------------------------------------------------------------------
+|    Nitro-SoC version 2019.1.R2 1.68700.2.290 Fri Nov 29 21:06:00 PST 2019     | 
+| Running on localhost.localdomain 1core 3.9GBytes 2.7GHz 64bits mode pid 17933 | 
+|              Copyright (c) 2003-2019 Mentor Graphics Corporation              | 
+|                              All Rights Reserved                              | 
+|          THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION          | 
+|             WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION              | 
+|               OR ITS LICENSORS AND IS SUBJECT TO LICENSE TERMS.               | 
+---------------------------------------------------------------------------------
+
+Nitro-SoC> setup_nrf 
+Loading utility util::nrf_utils
+NRF info: Copying flow scripts in dir               : ./flow_scripts
+NRF info: Copying utilities and templates in dir    : ./scr
+NRF info: Please update/review                     : ./scr/ocv.tcl
+NRF info: If applicable please provide             : ./scr/reload_constraints_clock.tcl
+NRF info: Will not overwrite existing file import_variables.tcl
+NRF info: Will not overwrite existing file flow_variables.tcl
+NRF info: Will not overwrite existing file floorplan_variables.tcl
+NRF info: Existing nrf_customization.tcl not found; copying template.
+NRF info: Creating run_nrf.csh which can be used to launch the NRF.
+info UI54: redirecting output of 
+            puts "#!/bin/csh
+
+set nitro_ver = \"$nitro_ver\" 
+set flow_ver = \"[pwd]/flow_scripts\"
+
+######################################
+## To append to existing log & jou  ##
+## files, set to true               ##
+######################################
+set append_log = false
+
+###################################### 
+## Set the stages to be run to true ##
+## To skip a stage, set it to false ##
+###################################### 
+set import = true
+set place  = true
+set clock  = true
+set route  = true
+set export = true
+
+###################################### 
+##  Remainder of script should not  ##
+##  require modification            ##
+###################################### 
+
+set prev_stage = null
+set stage_num = 0
+
+foreach stage (import place clock route export)
+    set run_stage = `eval echo \\\$\$stage`
+    set stage_name = \${stage_num}_\${stage}
+    if ( \$run_stage == true ) then
+        if ( \$stage != import && \$prev_stage != null ) then
+            if (! -d dbs/\${prev_stage}.db ) then
+                echo \"\\nNRF_RUN error: Could not find \${prev_stage}.db.  Cannot run \$stage stage.\\n\"
+                exit
+            endif
+        endif
+        if ( -d dbs/\${stage}.db ) then
+            set dstamp = `eval date -r dbs/\${stage}.db +\%m_\%d_\%Y.\%H_\%M_\%S`
+            echo \"NRF_RUN info: Found existing dbs/\${stage}.db.  Moving to dbs/\${stage}_\${dstamp}.db.\"
+            /bin/mv dbs/\${stage}.db dbs/\${stage}.\${dstamp}.db
+        endif
+
+        if ( \$append_log == false ) then
+            if ( -f ./LOGs/\${stage_name}_nitro.log ) then
+                set dstamp = `eval date -r ./LOGs/\${stage_name}_nitro.log +\%m_\%d_\%Y.\%H_\%M_\%S`
+                /bin/mv ./LOGs/\${stage_name}_nitro.log ./LOGs/\${stage_name}.\${dstamp}.log
+            endif
+            if ( -f ./JOUs/\${stage_name}.jou ) then
+                set dstamp = `eval date -r ./JOUs/\${stage_name}.jou +\%m_\%d_\%Y.\%H_\%M_\%S`
+                /bin/mv ./JOUs/\${stage_name}.jou ./JOUs/\${stage_name}.\${dstamp}.jou
+            endif
+        endif
+
+        \$nitro_ver -source \$flow_ver/\${stage_name}.tcl -log ./LOGs/\${stage_name}_nitro.log -journal ./JOUs/\${stage_name}.jou -app_log \$append_log -app_jou \$append_log
+    endif
+
+    set prev_stage = \$stage
+    @ stage_num++
+end
+
+exit
+"
+ to run_nrf.csh
+NRF info: 
+Nitro-SoC> source flow_scripts/0_import.tcl 
+
+#####################################################
+## Nitro Reference Flow : Import Stage             ##
+## Version : 2019.1.R2                             ##
+## Imports technology & design info to prepare     ##
+## design for NRF place and route.                 ##
+#####################################################
+
+info UI33: performed source of import_variables.tcl for 0 sec (CPU time: 0 sec; MEM: RSS - 153M, CVMEM - 1656M, PVMEM - 1656M)
+NRF info: Sourcing standard NRF script /home/vlsi/Installation/Nitro/nitroPack-2019.1.R2a/nitro/ref_flows/tcl/scr/kit_utils.tcl
+info UI33: performed source of /home/vlsi/Installation/Nitro/nitroPack-2019.1.R2a/nitro/ref_flows/tcl/scr/kit_utils.tcl for 0 sec (CPU time: 0 sec; MEM: RSS - 153M, CVMEM - 1656M, PVMEM - 1656M)
+Loading utility util::nrf_utils
+Loading utility util::save_nrf_import_vars
+NRF info: Checking import variables
+NRF warning: Array variable MGC_aocv_library is not defined. Please review/update import_variables.tcl.
+info UI33: performed source of /home/vlsi/Installation/Nitro/nitroPack-2019.1.R2a/nitro/tcl/tm.tcl for 0 sec (CPU time: 0 sec; MEM: RSS - 153M, CVMEM - 1656M, PVMEM - 1656M)
+info UI33: performed source of /home/vlsi/Installation/Nitro/nitroPack-2019.1.R2a/nitro/tcl/8.5/msgcat-1.4.2.tm for 0 sec (CPU time: 0 sec; MEM: RSS - 154M, CVMEM - 1656M, PVMEM - 1656M)
+info UI33: performed source of /home/vlsi/Installation/Nitro/nitroPack-2019.1.R2a/nitro/tcl/clock.tcl for 0 sec (CPU time: 0 sec; MEM: RSS - 154M, CVMEM - 1656M, PVMEM - 1656M)
+Storing TCL variables as db root property
+warning UI4: Only 1 cores are available; the -cpus argument was set to 2.
+NRF info: MGC_libDbPath :  doesn't exist, Running library setup part of import stage and generate libs.db
+NRF info: Since TECHNO RULE File is not provided or does not exist, technology rules must come from tech lef
+NRF info: Reading TECH LEF File
+info UI35: Reading LEF file '/home/vlsi/Desktop/Lab5_2022/lib_data/NangateOpenCellLibrary.tech.lef'.
+info SDBLEF119: Processing 'NangateOpenCellLibrary.tech' library...
+warning SDBLEF112: A manufacturing grid definition in the DB irrelevant to what is defined in the tech LEF for MANUFACTURINGGRID
+info SDB2: Layer 'poly' added.
+info SDB2: Layer 'active' added.
+info SDB2: Layer 'metal1' added.
+info SDB2: Layer 'via1' added.
+info SDB2: Layer 'metal2' added.
+info SDB2: Layer 'via2' added.
+info SDB2: Layer 'metal3' added.
+info SDB2: Layer 'via3' added.
+info SDB2: Layer 'metal4' added.
+info SDB2: Layer 'via4' added.
+info SDB2: Layer 'metal5' added.
+info SDB2: Layer 'via5' added.
+info SDB2: Layer 'metal6' added.
+info SDB2: Layer 'via6' added.
+info SDB2: Layer 'metal7' added.
+info SDB2: Layer 'via7' added.
+info SDB2: Layer 'metal8' added.
+info SDB2: Layer 'via8' added.
+info SDB2: Layer 'metal9' added.
+info SDB2: Layer 'via9' added.
+info SDB2: Layer 'metal10' added.
+info SDB2: Layer 'OVERLAP' added.
+info SDBLEF15: Via rule 'Via1Array-0' added.
+info SDBLEF15: Via rule 'Via1Array-1' added.
+info SDBLEF15: Via rule 'Via1Array-2' added.
+info SDBLEF15: Via rule 'Via1Array-3' added.
+info SDBLEF15: Via rule 'Via1Array-4' added.
+info SDBLEF15: Via rule 'Via2Array-0' added.
+info SDBLEF15: Via rule 'Via2Array-1' added.
+info SDBLEF15: Via rule 'Via2Array-2' added.
+info SDBLEF15: Via rule 'Via2Array-3' added.
+info SDBLEF15: Via rule 'Via2Array-4' added.
+info SDBLEF15: Via rule 'Via3Array-0' added.
+info SDBLEF15: Via rule 'Via3Array-1' added.
+info SDBLEF15: Via rule 'Via3Array-2' added.
+info SDBLEF15: Via rule 'Via4Array-0' added.
+info SDBLEF15: Via rule 'Via5Array-0' added.
+info SDBLEF15: Via rule 'Via6Array-0' added.
+info SDBLEF15: Via rule 'Via7Array-0' added.
+info SDBLEF15: Via rule 'Via8Array-0' added.
+info SDBLEF15: Via rule 'Via9Array-0' added.
+info SDB2: Layer 'CO' added.
+info UI33: performed LEF read for 0 sec (CPU time: 0 sec; MEM: RSS - 156M, CVMEM - 1656M, PVMEM - 1656M)
+NRF info: Reading Cell LEF Files
+info UI35: Reading LEF file '/home/vlsi/Desktop/Lab5_2022/lib_data/NangateOpenCellLibrary.macro.lef'.
+info SDBLEF119: Processing 'NangateOpenCellLibrary.macro' library...
+info UI33: performed LEF read for 0 sec (CPU time: 0 sec; MEM: RSS - 157M, CVMEM - 1656M, PVMEM - 1656M)
+NRF info: Load new_rc technology .PTF
+info LIB65: Identified 'ptf' format in file 'NCSU_FreePDK_45nm.ptf'
+warning LIB47: Unknown library keyword 'thickness_unit' at line 15.
+warning LIB4: Layer 'contact' is not defined in LEF.
+warning LIB4: Layer 'diffco' is not defined in LEF.
+info LIB40: Library file '/home/vlsi/Desktop/Lab5_2022/lib_data/NCSU_FreePDK_45nm.ptf' containing library group(s) 'master_techFreePDK45 ' (renamed using prefix: 'new_rc') successfully read.
+info UI33: performed library read for 0 sec (CPU time: 0 sec; MEM: RSS - 158M, CVMEM - 1656M, PVMEM - 1656M)
+info LIB65: Identified 'liberty' format in file 'NangateOpenCellLibrary_typical.lib'
+info LIB40: Library file '/home/vlsi/Desktop/Lab5_2022/lib_data/NangateOpenCellLibrary_typical.lib' containing library group(s) 'NangateOpenCellLibrary ' (renamed using prefix: 'new_pvt') successfully read.
+info UI33: performed library read for 5 sec (CPU time: 1 sec; MEM: RSS - 164M, CVMEM - 1656M, PVMEM - 1656M)
+warning UI7: Argument '-select' already specified; using last value 'true'.
+Routing lib vias have been created
+Routing lib vias have been selected
+warning UI4: Only 1 cores are available; the -cpus argument was set to 4.
+info UI36: Writing folded database file '/home/vlsi/Desktop/Lab5_2022/work/dbs/libs.db'.
+info Writing libraries...
+info UI33: performed database save for 0 sec (CPU time: 0 sec; MEM: RSS - 166M, CVMEM - 1656M, PVMEM - 1656M)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Corner     | Enable | Setup | Hold  | CRPR       | SI   | Power   | EM   | Voltage Drop | DRC        | Process                    | RC Temp | Scale Factor | 
+|------------+--------+-------+-------+------------+------+---------+------+--------------+------------+----------------------------+---------+--------------|
+| slow       | false  | true  | false | setup_hold | none | leakage | none | none         | trans, cap | new_rcmaster_techFreePDK45 | 25      | 1            | 
+|------------+--------+-------+-------+------------+------+---------+------+--------------+------------+----------------------------+---------+--------------|
+| fast       | false  | false | true  | setup_hold | none | leakage | none | none         | trans, cap | new_rcmaster_techFreePDK45 | 25      | 1            | 
+|------------+--------+-------+-------+------------+------+---------+------+--------------+------------+----------------------------+---------+--------------|
+| corner_0_0 | true   | true  | true  | setup_hold | none | leakage | none | none         | trans, cap | new_rcmaster_techFreePDK45 | 25      | 1            | 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+NRF info: Reading netlist /home/vlsi/Desktop/Lab5_2022/verilog/demo_float_mult.syn.v
+info VLOG8: Reading verilog file '/home/vlsi/Desktop/Lab5_2022/verilog/demo_float_mult.syn.v'.
+info VLOG2: Parsed 7 modules.
+info SDB3: Top design set to 'float_mult'.
+info UI33: performed verilog read for 0 sec (CPU time: 0 sec; MEM: RSS - 167M, CVMEM - 1656M, PVMEM - 1656M)
+NRF info: Info: Setting delay model to voltage
+------------------------------
+| Name  | Model | Base Model | 
+|-------+-------+------------|
+| Data  | fast  | voltage    | 
+|-------+-------+------------|
+| Clock | fast  | voltage    | 
+------------------------------
+
+-------------------------------------------
+| Mode     | Enable | System | Corners    | 
+|----------+--------+--------+------------|
+| default  | false  | true   | <all>      | 
+|----------+--------+--------+------------|
+| new_mode | true   | false  | corner_0_0 | 
+-------------------------------------------
+
+NRF info: Sourcing standard NRF script /home/vlsi/Installation/Nitro/nitroPack-2019.1.R2a/nitro/ref_flows/tcl/scr/floorplan.tcl
+
+
+########################
+### FLOORPLAN: Start ###
+########################
+
+### FLOORPLAN: Sourcing floorplan variable settings file. ###
+info UI33: performed source of floorplan_variables.tcl for 0 sec (CPU time: 0 sec; MEM: RSS - 166M, CVMEM - 1656M, PVMEM - 1656M)
+Loading utility util::nrf_utils
+NRF info: Checking floorplan variables
+
+### FLOORPLAN: Checking technology ###
+info UI54: redirecting output of check_technology -check all to reports/check_tech.rpt
+info CHK10: Checking technology...
+-----------------------------------------------------------------------------------------------------------
+|                                            Technology Errors                                            |
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| Name                 | Count | Status | Description                                                     | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| no_parasitics        | 0     | Passed | Layer has no corresponding parasitics data                      | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| no_ndr_vias          | 0     | Passed | No vias at all in non default rule.                             | 
+|                      |       |        | Use default vias                                                | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| partial_ndr_vias     | 0     | Passed | Not all layers have vias in non default rule.                   | 
+|                      |       |        | Use default vias                                                | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| duplicate_lvias      | 0     | Passed | Duplicate name for some lib_vias in non default rule.           | 
+|                      |       |        | To avoid unpredictable results please fix the problem by        | 
+|                      |       |        | keeping unique names.                                           | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| wrong_ndr_width      | 0     | Passed | Nondefault rule width is less then default width on the         | 
+|                      |       |        | layer                                                           | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| wrong_ndr_space      | 0     | Passed | Nondefault rule spacing is less then required spacing on        | 
+|                      |       |        | the layer                                                       | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| wrong_ndr_min_layer  | 0     | Passed | Nondefault rule min layer is higher than partition max layer    | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| wrong_ndr_max_layer  | 0     | Passed | Nondefault rule max layer is higher than partition max layer    | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| ndr_duplicated       | 0     | Passed | Nondefault rule has duplication in different libraries          | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| wrong_min_area       | 0     | Passed | Min area requirement is too big                                 | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| wrong_hole_area      | 0     | Passed | Hole area requirement is too big                                | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| wrong_mfgrid         | 0     | Passed | Manufacturing grid is too big                                   | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| not_even_mfgrid      | 0     | Passed | All width and spacing rules on all metal and cut layers must be | 
+|                      |       |        | an even multiple of manufacturing grid (2*N*mg)                 | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| wrong_layer_dir      | 0     | Passed | Direction of the layer is not reversed to below layer           | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| wrong_layer_order    | 0     | Passed | Order of layer is wrong, should be metal-cut-metal-...-metal    | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| wrong_m1_width       | 0     | Passed | Width of M1 pins is less then minimum width parameter           | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| wrong_cut_size       | 0     | Passed | Size of cut is not defined and can't be determined              | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| wrong_cut_space      | 0     | Passed | Space between cuts is not defined and can't be determined       | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| wrong_diff_cut_space | 0     | Passed | Diffnet cut spacing is less then samenet cut spacing            | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| wrong_proj_cut_space | 0     | Passed | Projection cut spacing is less to diffnet cut spacing           | 
+|----------------------+-------+--------+-----------------------------------------------------------------|
+| max_metal            | 0     | Passed | Top metal is too wide for routing                               | 
+-----------------------------------------------------------------------------------------------------------
+
+info UI33: performed technology checks for 0 sec (CPU time: 0 sec; MEM: RSS - 166M, CVMEM - 1656M, PVMEM - 1656M)
+info UI54: redirecting output of report_technology -display all to reports/report_tech.rpt
+-----------------------------------------------------------------------------------------------------------------
+|                                             Metal layers (micro)                                              |
+|--------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|                    | metal1 | metal2 | metal3 | metal4 | metal5 | metal6 | metal7 | metal8 | metal9 | metal10 | 
+|--------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Direction          | HOR    | VERT   | HOR    | VERT   | HOR    | VERT   | HOR    | VERT   | HOR    | VERT    | 
+|--------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Width              | 0.0700 | 0.0700 | 0.0700 | 0.1400 | 0.1400 | 0.1400 | 0.4000 | 0.4000 | 0.8000 | 0.8000  | 
+|--------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Space              | 0.0650 | 0.0700 | 0.0700 | 0.1400 | 0.1400 | 0.1400 | 0.4000 | 0.4000 | 0.8000 | 0.8000  | 
+|--------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Offset             | 0.0700 | 0.0950 | 0.0700 | 0.0950 | 0.0700 | 0.0950 | 0.0700 | 0.0950 | 0.0700 | 0.0950  | 
+|--------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Pitch              | 0.1400 | 0.1900 | 0.1400 | 0.2800 | 0.2800 | 0.2800 | 0.8000 | 0.8000 | 1.6000 | 1.6000  | 
+|--------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| DownVia-Wire pitch |        | 0.1400 | 0.1400 | 0.2800 | 0.2800 | 0.2800 | 0.8000 | 0.8000 | 1.6000 | 1.6000  | 
+|--------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| UpVia-Wire   pitch | 0.1350 | 0.1400 | 0.1400 | 0.2800 | 0.2800 | 0.2800 | 0.8000 | 0.8000 | 1.6000 |         | 
+-----------------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+|                                                          Cut layers (micro)                                                           |
+|--------------------+--------+----------+----------+---------------+--------+--------+---------------+--------+---------------+--------|
+|                    | CO     | via1     | via2     | via3          | via4   | via5   | via6          | via7   | via8          | via9   | 
+|--------------------+--------+----------+----------+---------------+--------+--------+---------------+--------+---------------+--------|
+| Size               | 0.0700 | 0.0700   | 0.0700   | 0.0700        | 0.1400 | 0.1400 | 0.1400        | 0.4000 | 0.4000        | 0.8000 | 
+|--------------------+--------+----------+----------+---------------+--------+--------+---------------+--------+---------------+--------|
+| Space              | 0.0700 | 0.0800   | 0.0900   | 0.0900        | 0.1600 | 0.1600 | 0.1600        | 0.4400 | 0.4400        | 0.8800 | 
+|--------------------+--------+----------+----------+---------------+--------+--------+---------------+--------+---------------+--------|
+| Below enclosure    | 0/0    | 0/0.0350 | 0/0.0350 | 0/0.0350      | 0/0    | 0/0    | 0/0           | 0/0    | 0/0           | 0/0    | 
+|--------------------+--------+----------+----------+---------------+--------+--------+---------------+--------+---------------+--------|
+| Above enclosure    | 0/0    | 0/0.0350 | 0/0.0350 | 0.0350/0.0350 | 0/0    | 0/0    | 0.1300/0.1300 | 0/0    | 0.2000/0.2000 | 0/0    | 
+|--------------------+--------+----------+----------+---------------+--------+--------+---------------+--------+---------------+--------|
+| Bar length         | -      | 0.0700   | 0.0700   | 0.0700        | 0.1400 | 0.1400 | 0.1400        | 0.4000 | 0.4000        | 0.8000 | 
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------
+|                                               DRC layer rules (micro)                                               |
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|                     |    | metal1 | metal2 | metal3 | metal4 | metal5 | metal6 | metal7 | metal8 | metal9 | metal10 | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Min width           | >= | 0.0700 | 0.0700 | 0.0700 | 0.1400 | 0.1400 | 0.1400 | 0.4000 | 0.4000 | 0.8000 | 0.8000  | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Min space           | >= | 0.0650 | 0.0700 | 0.0700 | 0.1400 | 0.1400 | 0.1400 | 0.4000 | 0.4000 | 0.8000 | 0.8000  | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| End of line         | >= | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Min area (sq-micro) | >= | 0.005  | 0.005  | 0.005  | 0.020  | 0.020  | 0.020  | 0.160  | 0.160  | 0.640  | 0.640   | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Min hole (sq-micro) | >= | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Min length          |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Step                |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Fat space           |    | -      | *      | *      | *      | *      | *      | *      | *      | *      | *       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Span space          |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Pinch space         |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Fat jog space       |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Influence space     |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Direction space     |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Discrete space      |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Dir space           |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Corner space        |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Samemask space      |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Patterns            | #  | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Discrete width      |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Protrusion          |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Notch space         |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Grid alignment      |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Max parallel length | <= | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Max width           | <= | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|                     |    | CO     | via1   | via2   | via3   | via4   | via5   | via6   | via7   | via8   | via9    | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Min space           | >= |        | 0.0800 | 0.0900 | 0.0900 | 0.1600 | 0.1600 | 0.1600 | 0.4400 | 0.4400 | 0.8800  | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Projection space    | >= |        | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Array space         | >= |        | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Above diff space    | >= | -      | -      | -      | -      | -      | -      | -      | -      | -      |         | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Above same space    | >= | -      | -      | -      | -      | -      | -      | -      | -      | -      |         | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Above stackable     |    | true   | true   | true   | true   | true   | true   | true   | true   | true   |         | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Bar/Large space     |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Single space        |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Cluster array       |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Number of cuts      |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Enclosure           |    | *      | *      | *      | *      | *      | *      | *      | *      | *      | *       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Inner space         | >= | -/-    | -/-    | -/-    | -/-    | -/-    | -/-    | -/-    | -/-    | -/-    | -/-     | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Joint space         | >= | -/-    | -/-    | -/-    | -/-    | -/-    | -/-    | -/-    | -/-    | -/-    | -/-     | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Corner space        | >= | -/-    | -/-    | -/-    | -/-    | -/-    | -/-    | -/-    | -/-    | -/-    | -/-     | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Confined space      | >= | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Metal space         | >= | -/-    | -/-    | -/-    | -/-    | -/-    | -/-    | -/-    | -/-    | -/-    | -/-     | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Grid alignment      |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Wide array          |    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|---------------------+----+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Max space           | <= | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+-----------------------------------------------------------------------------------------------------------------------
+
+Info: '-' rule is not defined; '*' rule is defined; '+' center-to-center cut spacing
+      'R' dfm-recommended rule is defined
+----------------------------------------------------------------------------------------------------
+|                                           DRC options                                            |
+|-------------------------+-------+----------------------------------------------------------------|
+|                         | Value | Description                                                    | 
+|-------------------------+-------+----------------------------------------------------------------|
+| cut_enc_touch_not_viol  | false | Consider cut touching a fat shape no cut enclosure violation   | 
+|-------------------------+-------+----------------------------------------------------------------|
+| cut_enc_simple_parallel | false | Simple check for parallel run length in cut enclosure rule     | 
+|-------------------------+-------+----------------------------------------------------------------|
+| cut_proj_except_samenet | false | Do not check cut projection spacing for same net objects       | 
+|-------------------------+-------+----------------------------------------------------------------|
+| cut_proj_apply_samenet  | false | Apply cut projection spacing to adjacent vias of same net even | 
+|                         |       | if they have common metal shape                                | 
+|-------------------------+-------+----------------------------------------------------------------|
+| allow_offgrid_ndr       | false | Allow non-default width shapes be offgris                      | 
+|-------------------------+-------+----------------------------------------------------------------|
+| influence_with_corners  | false | Extend influence halo from fat shape to corners as well        | 
+|-------------------------+-------+----------------------------------------------------------------|
+| influence_thin_to_fat   | false | Check influence spacing between thin and fat shape             | 
+|-------------------------+-------+----------------------------------------------------------------|
+| pref_width_as_allowed   | false | Consider preferred widths as only allowed                      | 
+|-------------------------+-------+----------------------------------------------------------------|
+| cut_sector_relaxed      | false | Relaxed conditions of cut_sector_array spacing                 | 
+|-------------------------+-------+----------------------------------------------------------------|
+| strict_max_metal        | false | Force router strictly follow max metal                         | 
+|-------------------------+-------+----------------------------------------------------------------|
+| disjoined_plength       | false | Do not combine run length from different fat shapes            | 
+|-------------------------+-------+----------------------------------------------------------------|
+| strict_dp_prevention    | false | Enable strict DRC rules in router to prevent DP                | 
+|-------------------------+-------+----------------------------------------------------------------|
+| static_mask             | false | Check mask violation on static objects                         | 
+|-------------------------+-------+----------------------------------------------------------------|
+| static_grid             | false | Check grid violation on static objects                         | 
+----------------------------------------------------------------------------------------------------
+
+--------------------------------------
+|          DRC global rules          |
+|---------------------------+--------|
+|                           | Value  | 
+|---------------------------+--------|
+| Metric                    | Euclid | 
+|---------------------------+--------|
+| Manufacturing grid        | 0.0050 | 
+|---------------------------+--------|
+| Min obstruction space     | true   | 
+|---------------------------+--------|
+| Min sub-partition space   | false  | 
+|---------------------------+--------|
+| No M1 routing             | false  | 
+|---------------------------+--------|
+| Macro ports double cut    | -      | 
+|---------------------------+--------|
+| Macro ports strict access | false  | 
+|---------------------------+--------|
+| Max routing layer         | -      | 
+|---------------------------+--------|
+| Max via stack             | -      | 
+--------------------------------------
+
+---------------------------------------------------------------------------------------------------------
+|                                     Metal diagonal rules (micro)                                      |
+|------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|            | metal1 | metal2 | metal3 | metal4 | metal5 | metal6 | metal7 | metal8 | metal9 | metal10 | 
+|------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Width      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Spacing    | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Min Length | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+---------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------
+|                Metal metal2 fat spacing rules (micro):                 |
+|----------+--------+----------+----------+----------+----------+--------|
+|          | Length | > 0.3000 | > 0.9000 | > 1.8000 | > 2.7000 | > 4    | 
+|----------+--------+----------+----------+----------+----------+--------|
+| Width    | 0.0700 | 0.0700   | 0.0700   | 0.0700   | 0.0700   | 0.0700 | 
+|----------+--------+----------+----------+----------+----------+--------|
+| > 0.0900 | 0.0700 | 0.0900   | 0.0900   | 0.0900   | 0.0900   | 0.0900 | 
+|----------+--------+----------+----------+----------+----------+--------|
+| > 0.2700 | 0.0700 | 0.0900   | 0.2700   | 0.2700   | 0.2700   | 0.2700 | 
+|----------+--------+----------+----------+----------+----------+--------|
+| > 0.5000 | 0.0700 | 0.0900   | 0.2700   | 0.5000   | 0.5000   | 0.5000 | 
+|----------+--------+----------+----------+----------+----------+--------|
+| > 0.9000 | 0.0700 | 0.0900   | 0.2700   | 0.5000   | 0.9000   | 0.9000 | 
+|----------+--------+----------+----------+----------+----------+--------|
+| > 1.5000 | 0.0700 | 0.0900   | 0.2700   | 0.5000   | 0.9000   | 1.5000 | 
+--------------------------------------------------------------------------
+
+--------------------------------------------------------------------------
+|                Metal metal3 fat spacing rules (micro):                 |
+|----------+--------+----------+----------+----------+----------+--------|
+|          | Length | > 0.3000 | > 0.9000 | > 1.8000 | > 2.7000 | > 4    | 
+|----------+--------+----------+----------+----------+----------+--------|
+| Width    | 0.0700 | 0.0700   | 0.0700   | 0.0700   | 0.0700   | 0.0700 | 
+|----------+--------+----------+----------+----------+----------+--------|
+| > 0.0900 | 0.0700 | 0.0900   | 0.0900   | 0.0900   | 0.0900   | 0.0900 | 
+|----------+--------+----------+----------+----------+----------+--------|
+| > 0.2700 | 0.0700 | 0.0900   | 0.2700   | 0.2700   | 0.2700   | 0.2700 | 
+|----------+--------+----------+----------+----------+----------+--------|
+| > 0.5000 | 0.0700 | 0.0900   | 0.2700   | 0.5000   | 0.5000   | 0.5000 | 
+|----------+--------+----------+----------+----------+----------+--------|
+| > 0.9000 | 0.0700 | 0.0900   | 0.2700   | 0.5000   | 0.9000   | 0.9000 | 
+|----------+--------+----------+----------+----------+----------+--------|
+| > 1.5000 | 0.0700 | 0.0900   | 0.2700   | 0.5000   | 0.9000   | 1.5000 | 
+--------------------------------------------------------------------------
+
+---------------------------------------------------------------
+|           Metal metal4 fat spacing rules (micro):           |
+|----------+--------+----------+----------+----------+--------|
+|          | Length | > 0.9000 | > 1.8000 | > 2.7000 | > 4    | 
+|----------+--------+----------+----------+----------+--------|
+| Width    | 0.1400 | 0.1400   | 0.1400   | 0.1400   | 0.1400 | 
+|----------+--------+----------+----------+----------+--------|
+| > 0.2700 | 0.1400 | 0.2700   | 0.2700   | 0.2700   | 0.2700 | 
+|----------+--------+----------+----------+----------+--------|
+| > 0.5000 | 0.1400 | 0.2700   | 0.5000   | 0.5000   | 0.5000 | 
+|----------+--------+----------+----------+----------+--------|
+| > 0.9000 | 0.1400 | 0.2700   | 0.5000   | 0.9000   | 0.9000 | 
+|----------+--------+----------+----------+----------+--------|
+| > 1.5000 | 0.1400 | 0.2700   | 0.5000   | 0.9000   | 1.5000 | 
+---------------------------------------------------------------
+
+---------------------------------------------------------------
+|           Metal metal5 fat spacing rules (micro):           |
+|----------+--------+----------+----------+----------+--------|
+|          | Length | > 0.9000 | > 1.8000 | > 2.7000 | > 4    | 
+|----------+--------+----------+----------+----------+--------|
+| Width    | 0.1400 | 0.1400   | 0.1400   | 0.1400   | 0.1400 | 
+|----------+--------+----------+----------+----------+--------|
+| > 0.2700 | 0.1400 | 0.2700   | 0.2700   | 0.2700   | 0.2700 | 
+|----------+--------+----------+----------+----------+--------|
+| > 0.5000 | 0.1400 | 0.2700   | 0.5000   | 0.5000   | 0.5000 | 
+|----------+--------+----------+----------+----------+--------|
+| > 0.9000 | 0.1400 | 0.2700   | 0.5000   | 0.9000   | 0.9000 | 
+|----------+--------+----------+----------+----------+--------|
+| > 1.5000 | 0.1400 | 0.2700   | 0.5000   | 0.9000   | 1.5000 | 
+---------------------------------------------------------------
+
+---------------------------------------------------------------
+|           Metal metal6 fat spacing rules (micro):           |
+|----------+--------+----------+----------+----------+--------|
+|          | Length | > 0.9000 | > 1.8000 | > 2.7000 | > 4    | 
+|----------+--------+----------+----------+----------+--------|
+| Width    | 0.1400 | 0.1400   | 0.1400   | 0.1400   | 0.1400 | 
+|----------+--------+----------+----------+----------+--------|
+| > 0.2700 | 0.1400 | 0.2700   | 0.2700   | 0.2700   | 0.2700 | 
+|----------+--------+----------+----------+----------+--------|
+| > 0.5000 | 0.1400 | 0.2700   | 0.5000   | 0.5000   | 0.5000 | 
+|----------+--------+----------+----------+----------+--------|
+| > 0.9000 | 0.1400 | 0.2700   | 0.5000   | 0.9000   | 0.9000 | 
+|----------+--------+----------+----------+----------+--------|
+| > 1.5000 | 0.1400 | 0.2700   | 0.5000   | 0.9000   | 1.5000 | 
+---------------------------------------------------------------
+
+----------------------------------------------------
+|     Metal metal7 fat spacing rules (micro):      |
+|----------+--------+----------+----------+--------|
+|          | Length | > 1.8000 | > 2.7000 | > 4    | 
+|----------+--------+----------+----------+--------|
+| Width    | 0.4000 | 0.4000   | 0.4000   | 0.4000 | 
+|----------+--------+----------+----------+--------|
+| > 0.5000 | 0.4000 | 0.5000   | 0.5000   | 0.5000 | 
+|----------+--------+----------+----------+--------|
+| > 0.9000 | 0.4000 | 0.5000   | 0.9000   | 0.9000 | 
+|----------+--------+----------+----------+--------|
+| > 1.5000 | 0.4000 | 0.5000   | 0.9000   | 1.5000 | 
+----------------------------------------------------
+
+----------------------------------------------------
+|     Metal metal8 fat spacing rules (micro):      |
+|----------+--------+----------+----------+--------|
+|          | Length | > 1.8000 | > 2.7000 | > 4    | 
+|----------+--------+----------+----------+--------|
+| Width    | 0.4000 | 0.4000   | 0.4000   | 0.4000 | 
+|----------+--------+----------+----------+--------|
+| > 0.5000 | 0.4000 | 0.5000   | 0.5000   | 0.5000 | 
+|----------+--------+----------+----------+--------|
+| > 0.9000 | 0.4000 | 0.5000   | 0.9000   | 0.9000 | 
+|----------+--------+----------+----------+--------|
+| > 1.5000 | 0.4000 | 0.5000   | 0.9000   | 1.5000 | 
+----------------------------------------------------
+
+-------------------------------------------
+| Metal metal9 fat spacing rules (micro): |
+|----------+--------+----------+----------|
+|          | Length | > 2.7000 | > 4      | 
+|----------+--------+----------+----------|
+| Width    | 0.8000 | 0.8000   | 0.8000   | 
+|----------+--------+----------+----------|
+| > 0.9000 | 0.8000 | 0.9000   | 0.9000   | 
+|----------+--------+----------+----------|
+| > 1.5000 | 0.8000 | 0.9000   | 1.5000   | 
+-------------------------------------------
+
+--------------------------------------------
+| Metal metal10 fat spacing rules (micro): |
+|----------+--------+----------+-----------|
+|          | Length | > 2.7000 | > 4       | 
+|----------+--------+----------+-----------|
+| Width    | 0.8000 | 0.8000   | 0.8000    | 
+|----------+--------+----------+-----------|
+| > 0.9000 | 0.8000 | 0.9000   | 0.9000    | 
+|----------+--------+----------+-----------|
+| > 1.5000 | 0.8000 | 0.9000   | 1.5000    | 
+--------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+|                                                      Cut below enclosure rules (micro)                                                       |
+|-----------+----+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------|
+|           |    | metal1-via1 | metal2-via2 | metal3-via3 | metal4-via4 | metal5-via5 | metal6-via6 | metal7-via7 | metal8-via8 | metal9-via9 | 
+|-----------+----+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------|
+| Type      |    | basic       | basic       | basic       | basic       | basic       | basic       | basic       | basic       | basic       | 
+| Width     | >= | -           | -           | -           | -           | -           | -           | -           | -           | -           | 
+| Enclosure | >= | 0.0350/0    | 0.0350/0    | 0.0350/0    | 0/0         | 0/0         | 0/0         | 0/0         | 0/0         | 0/0         | 
+| Via class |    | all         | all         | all         | all         | all         | all         | all         | all         | all         | 
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|                                                                Cut above enclosure rules (micro)                                                                |
+|-----------+----+-----------+-------------+-------------+---------------+-------------+-------------+---------------+-------------+---------------+--------------|
+|           |    | metal1-CO | metal2-via1 | metal3-via2 | metal4-via3   | metal5-via4 | metal6-via5 | metal7-via6   | metal8-via7 | metal9-via8   | metal10-via9 | 
+|-----------+----+-----------+-------------+-------------+---------------+-------------+-------------+---------------+-------------+---------------+--------------|
+| Type      |    | basic     | basic       | basic       | basic         | basic       | basic       | basic         | basic       | basic         | basic        | 
+| Width     | >= | -         | -           | -           | -             | -           | -           | -             | -           | -             | -            | 
+| Enclosure | >= | 0/0       | 0.0350/0    | 0.0350/0    | 0.0350/0.0350 | 0/0         | 0/0         | 0.1300/0.1300 | 0/0         | 0.2000/0.2000 | 0/0          | 
+| Via class |    | all       | all         | all         | all           | all         | all         | all           | all         | all           | all          | 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Enclosure metric: '' - opposite, 'S' - square, 'C' - combo
+--------------------------------------------------
+| Default parameters and high-voltage nets count |
+|---------------------+--------------------------|
+|                     | value                    | 
+|---------------------+--------------------------|
+| Min default voltage | -                        | 
+|---------------------+--------------------------|
+| Max default voltage | -                        | 
+--------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------
+|                                               Antenna rules (OXIDE1):                                               |
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|                          | metal1 | metal2 | metal3 | metal4 | metal5 | metal6 | metal7 | metal8 | metal9 | metal10 | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Gate/Diff area factor    | 1/1    | 1/1    | 1/1    | 1/1    | 1/1    | 1/1    | 1/1    | 1/1    | 1/1    | 1/1     | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Gate partial area        | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Diff partial area        | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Gate cumulative area     | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Diff cumulative area     | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|                          | metal1 | metal2 | metal3 | metal4 | metal5 | metal6 | metal7 | metal8 | metal9 | metal10 | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Thickness                | 0.1300 | 0.1400 | 0.1400 | 0.2800 | 0.2800 | 0.2800 | 0.8000 | 0.8000 | 2      | 2       | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Gate/Diff side factor    | 1/1    | 1/1    | 1/1    | 1/1    | 1/1    | 1/1    | 1/1    | 1/1    | 1/1    | 1/1     | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Gate partial side        | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Diff partial side        | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Gate cumulative side     | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Diff cumulative side     | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|                          | metal1 | metal2 | metal3 | metal4 | metal5 | metal6 | metal7 | metal8 | metal9 | metal10 | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Cumulative area plus cut | false  | false  | false  | false  | false  | false  | false  | false  | false  | false   | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Area minus diff factor   | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Gate plus diff factor    | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Area diff reduce factor  | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Effective gate area      | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|                          | metal1 | metal2 | metal3 | metal4 | metal5 | metal6 | metal7 | metal8 | metal9 | metal10 | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Floating area            | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Floating spacing         | -      | -      | -      | -      | -      | -      | -      | -      | -      | -       | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|                          | via1   | via2   | via3   | via4   | via5   | via6   | via7   | via8   | via9   |         | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Gate/Diff cut factor     | 1/1    | 1/1    | 1/1    | 1/1    | 1/1    | 1/1    | 1/1    | 1/1    | 1/1    |         | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Gate partial cut         | -      | -      | -      | -      | -      | -      | -      | -      | -      |         | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Diff partial cut         | -      | -      | -      | -      | -      | -      | -      | -      | -      |         | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Gate cumulative cut      | -      | -      | -      | -      | -      | -      | -      | -      | -      |         | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Diff cumulative cut      | -      | -      | -      | -      | -      | -      | -      | -      | -      |         | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|                          | via1   | via2   | via3   | via4   | via5   | via6   | via7   | via8   | via9   |         | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Area minus diff factor   | -      | -      | -      | -      | -      | -      | -      | -      | -      |         | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Gate plus diff factor    | -      | -      | -      | -      | -      | -      | -      | -      | -      |         | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Area diff reduce factor  | -      | -      | -      | -      | -      | -      | -      | -      | -      |         | 
+|--------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Effective gate area      | -      | -      | -      | -      | -      | -      | -      | -      | -      |         | 
+-----------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------
+|        Dfm cut weights (defaults)         |
+|--------+-------+--------+--------+--------|
+|        | 1-cut | 2-cuts | 3-cuts | 4-cuts | 
+|--------+-------+--------+--------+--------|
+| single | 1     | 10     | 15     | 30     | 
+|--------+-------+--------+--------+--------|
+| bar    | 5     | 25     | 40     | 60     | 
+|--------+-------+--------+--------+--------|
+| large  | 20    | 55     | 90     | 125    | 
+---------------------------------------------
+
+info UI34: no objects were found for '*'
+NRF info: Design is not MV, but reading UPF file for power intent.
+info UI420: Supply net 'VDD' inferred as power.
+info UI420: Supply net 'VSS' inferred as ground.
+info UI419: Adding port 'VDD' to current scope '/'.
+info UI33: performed source of /home/vlsi/Desktop/Lab5_2022/constraints/demo_adder.85.upf for 0 sec (CPU time: 0 sec; MEM: RSS - 167M, CVMEM - 1656M, PVMEM - 1656M)
+
+### FLOORPLAN: Creating the chip based on utilization ###
+info CSDB79: Snapped chip dimensions to manufacturing grid.
+info CSDB75: Core area resized to fit integral number of core row sites.
+info CSDB76: Core area resized to fit integral number of core row sites.
+info DUM203: create_chip: created cell-density map for partition float_mult with max-util 100 and bin-size 8x8 rows.
+
+### FLOORPLAN: Creating rows ###
+warning UI160: Clear all variables that may contain removed objects.
+info UI40: removed 62 objects (out of 62 objects)
+info UI49: 60 rows were created
+
+### FLOORPLAN: Creating tracks ###
+warning UI137: The precision for 'angstrom' has been set to the minimum of '4'
+info UI49: creating 620 horizontal track starting at 0 with step 0.1400
+info UI49: creating 455 vertical track starting at 0 with step 0.1900
+info UI49: creating 620 horizontal track starting at 0 with step 0.1400
+info UI49: creating 308 vertical track starting at 0 with step 0.2800
+info UI49: creating 310 horizontal track starting at 0 with step 0.2800
+info UI49: creating 308 vertical track starting at 0 with step 0.2800
+info UI49: creating 109 horizontal track starting at 0 with step 0.8000
+info UI49: creating 108 vertical track starting at 0 with step 0.8000
+info UI49: creating 54 horizontal track starting at 0 with step 1.6000
+info UI49: creating 54 vertical track starting at 0 with step 1.6000
+info UI34: no objects were found for '*'
+-------------------------
+|   Max routing layer   |
+|-------------+---------|
+| Stack       | metal10 | 
+|-------------+---------|
+| Property    | metal10 | 
+|-------------+---------|
+| Recommended | metal10 | 
+-------------------------
+
+info UI49: updated global design rule(s): max_layer
+
+### FLOORPLAN: Creating the supply network ###
+NRF info: Sourcing standard NRF script /home/vlsi/Installation/Nitro/nitroPack-2019.1.R2a/nitro/ref_flows/tcl/scr/power_planning.tcl
+------------------------------------
+| Prepared rails for domain PD_TOP |
+|-------+--------+-----------------|
+|       | metal1 | Total           | 
+|-------+--------+-----------------|
+| VDD   | 60     | 60              | 
+|-------+--------+-----------------|
+| VSS   | 60     | 60              | 
+|-------+--------+-----------------|
+| Total | 120    | 120             | 
+------------------------------------
+
+--------------------------
+|      Merged wires      |
+|-------+--------+-------|
+|       | metal1 | Total | 
+|-------+--------+-------|
+| VSS   | 31     | 31    | 
+|-------+--------+-------|
+| VDD   | 30     | 30    | 
+|-------+--------+-------|
+| Total | 61     | 61    | 
+--------------------------
+
+--------------------------
+|     Cleared wires      |
+|-------+--------+-------|
+|       | metal1 | Total | 
+|-------+--------+-------|
+| VDD   | 30     | 30    | 
+|-------+--------+-------|
+| VSS   | 31     | 31    | 
+|-------+--------+-------|
+| Total | 61     | 61    | 
+--------------------------
+
+--------------------------
+|     Created wires      |
+|-------+--------+-------|
+|       | metal1 | Total | 
+|-------+--------+-------|
+| VDD   | 30     | 30    | 
+|-------+--------+-------|
+| VSS   | 31     | 31    | 
+|-------+--------+-------|
+| Total | 61     | 61    | 
+--------------------------
+
+info UI33: performed Create PG rails for 0 sec (CPU time: 0 sec; MEM: RSS - 170M, CVMEM - 1656M, PVMEM - 1656M)
+info UI34: no objects were found for 'GND'
+PGR_WARN: Ignoring last 1 widths
+warning PGR151: Spacing for net VDD has been set into 4200a.
+--------------------------
+|      Merged wires      |
+|-------+--------+-------|
+|       | metal6 | Total | 
+|-------+--------+-------|
+| VDD   | 308    | 308   | 
+|-------+--------+-------|
+| Total | 308    | 308   | 
+--------------------------
+
+--------------------------
+|     Cleared wires      |
+|-------+--------+-------|
+|       | metal6 | Total | 
+|-------+--------+-------|
+| VDD   | 154    | 154   | 
+|-------+--------+-------|
+| Total | 154    | 154   | 
+--------------------------
+
+--------------------------
+|     Created wires      |
+|-------+--------+-------|
+|       | metal6 | Total | 
+|-------+--------+-------|
+| VDD   | 154    | 154   | 
+|-------+--------+-------|
+| Total | 154    | 154   | 
+--------------------------
+
+PGR_WARN: Checked 154 stripe positions, 0 positions have been fully blocked
+info UI33: performed Create PG stripes for 0 sec (CPU time: 0 sec; MEM: RSS - 170M, CVMEM - 1656M, PVMEM - 1656M)
+Inserting PG vias in partition float_mult
+Processing metal1: 20% 50% 70% 100% 
+Processing metal2: 30% 60% 100% 
+Processing metal3: 30% 60% 100% 
+Processing metal4: 30% 60% 100% 
+Processing metal5: 30% 60% 100% 
+Processing metal6: 30% 60% 100% 
+Processing metal7: 30% 60% 100% 
+Processing metal8: 30% 60% 100% 
+Processing metal9: 30% 60% 100% 
+Processing metal10: 30% 60% 100% 
+--------------------------------------------------------------------------------------------------------------------
+|                                      PG wire stats in partition float_mult                                       |
+|---------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------+-------|
+|               | metal1 | metal2 | metal3 | metal4 | metal5 | metal6 | metal7 | metal8 | metal9 | metal10 | Total | 
+|---------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------+-------|
+| Wires         | 61     | 0      | 0      | 0      | 0      | 154    | 0      | 0      | 0      | 0       | 215   | 
+|---------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------+-------|
+| Overlaps      | 4500   | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 4500  | 
+|---------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------+-------|
+| Existing vias | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 0     | 
+--------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------
+|                              PG via insertion stats in partition float_mult                               |
+|-----------------------+------+------+------+------+------+------+------+------+------+------------+-------|
+|                       | via1 | via2 | via3 | via4 | via5 | via6 | via7 | via8 | via9 | Stack vias | Total | 
+|-----------------------+------+------+------+------+------+------+------+------+------+------------+-------|
+| Successfully inserted | 4500 | 4500 | 4500 | 4500 | 4500 | 0    | 0    | 0    | 0    | 4500       | 22500 | 
+|-----------------------+------+------+------+------+------+------+------+------+------+------------+-------|
+| Lib via failed        | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0          | 0     | 
+|-----------------------+------+------+------+------+------+------+------+------+------+------------+-------|
+| DRC failed            | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0          | 0     | 
+-------------------------------------------------------------------------------------------------------------
+
+info UI33: performed Insert PG vias for 0 sec (CPU time: 0 sec; MEM: RSS - 174M, CVMEM - 1656M, PVMEM - 1656M)
+info PGR187: Wire trimmed.   location: (10000 443150 13700 444850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 443150 853600 444850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 23150 13700 24850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 23150 853600 24850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 51150 13700 52850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 51150 853600 52850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 79150 13700 80850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 79150 853600 80850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 107150 13700 108850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 107150 853600 108850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 135150 13700 136850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 135150 853600 136850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 163150 13700 164850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 163150 853600 164850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 191150 13700 192850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 191150 853600 192850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 219150 13700 220850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 219150 853600 220850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 247150 13700 248850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 247150 853600 248850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 275150 13700 276850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 275150 853600 276850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 303150 13700 304850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 303150 853600 304850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 331150 13700 332850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 331150 853600 332850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 359150 13700 360850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 359150 853600 360850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 387150 13700 388850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 387150 853600 388850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 415150 13700 416850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 415150 853600 416850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 471150 13700 472850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 471150 853600 472850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 499150 13700 500850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 499150 853600 500850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 527150 13700 528850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 527150 853600 528850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 555150 13700 556850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 555150 853600 556850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 583150 13700 584850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 583150 853600 584850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 611150 13700 612850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 611150 853600 612850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 639150 13700 640850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 639150 853600 640850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 667150 13700 668850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 667150 853600 668850) on layer metal1
+info PGR187: Wire trimmed.   location: (10000 695150 13700 696850) on layer metal1
+info PGR187: Wire trimmed.   location: (849500 695150 853600 696850) on layer metal1
+Discovered 4 tail wires and vias in net 'VDD'
+Removed 4 tail wires and vias from net 'VDD'
+Trimmed 180 wires in net 'VDD'
+Discovered 31 tail wires and vias in net 'VSS'
+Removed 31 tail wires and vias from net 'VSS'
+No wires in net 'VSS' need trimming
+
+Discovered 35 tail wires and vias in PG nets in partition 'float_mult'
+Removed 35 tail wires and vias from PG nets in partition 'float_mult'
+Trimmed 180 PG wires in partition 'float_mult'
+
+info UI: 100 (out of 790) 'PGR187' messages were written to the session log file
+info UI33: performed trim PG routing for 0 sec (CPU time: 0 sec; MEM: RSS - 174M, CVMEM - 1656M, PVMEM - 1656M)
+info UI33: performed source of /home/vlsi/Installation/Nitro/nitroPack-2019.1.R2a/nitro/ref_flows/tcl/scr/power_planning.tcl for 0 sec (CPU time: 0 sec; MEM: RSS - 174M, CVMEM - 1656M, PVMEM - 1656M)
+warning CSDB87: Property name 'placed' has been deprecated. Use 'placed_state'.
+
+### FLOORPLAN: Quick place of std cells to perform IO placement. ###
+info CHK10: Checking technology...
+info CHK10: Checking placement...
+info CHK10: Checking routing...
+PLX-INFO: Evaluating region utilizations.
+info  report_region_utilization is restricted to regions with property member_hard set to TRUE. 
+info UI30: performing global placement on partition float_mult (started at Wed Jan 4 01:49:14 2023)
+warning PLC2012: The port 'Exception' is not fixed.
+warning PLC2012: The port 'clk' is not fixed.
+info PLACING CELLS using 1 core.
+info PLX: 10% 30% 50% 60% 80% 100%
+info =================================================================================
+info PLACING CELLS using 1 core.
+25% 50% 75% 100%
+info =================================================================================
+info PLACING CELLS using 1 core.
+info PLX: 25% 50% 75% 100%
+info =================================================================================
+info PLACING CELLS using 1 core.
+info PLX: 16% 33% 50% 66% 83% 100%
+info =================================================================================
+info PLACING CELLS using 1 core.
+info PLX: 14% 28% 42% 57% 71% 85% 100%
+info =================================================================================
+info PLX: Placer total heap increase: [0G:30M:536K]
+info DUM207: place_timing: re-initialized cell-density map for partition float_mult old bin-size 8x8 rows new bin-size 8x8 rows.
+info DUM204: place_timing: re-initialized cell-density map for partition float_mult old max-util 100 new max-util 100.
+info Total Bounding-Box Half-Perimeter Wirelength  = 2.007276e+08
+Report 'placement': Placement Report
+Generated on Wed Jan 4 01:49:56 2023
+  
+Cell Density Map Utilization - 64 objects 
+    --- get_objects cell_density_rect -of [get_objects cell_density_map] -fi --->
+0   | 0
+5   | 0
+10  | 0
+15  | 0
+20  | 0
+25  | 0
+30  | 0
+35  | 0
+40  |==== 2
+45  |===================================== 16
+50  |======================================================================== 31
+55  |================================== 15
+60  | 0
+65  | 0
+70  | 0
+75  | 0
+80  | 0
+85  | 0
+90  | 0
+95  | 0
+100 | 0
+105 | 0
+110 | 0
+115 | 0
+120 | 0
+125 | 0
+130 | 0
+135 | 0
+140 | 0
+145 | 0
+150 |
+    V      get_property -name utilization -object %object%
+info UI33: performed global placement for 41 sec (CPU time: 5 sec; MEM: RSS - 180M, CVMEM - 1687M, PVMEM - 1870M)
+info CHK10: Checking placement...
+info UI30: performing detailed placement on partition float_mult (started at Wed Jan 4 01:49:56 2023)
+
+All Parameters are Set to Default Values for 'config_place_detail'
+
+Routing Cell Library initialization ...
+  Technology offset 700 is not equal to partition offset 200 on metal1 layer. Use partition value.
+  Technology offset 950 is not equal to partition offset 500 on metal2 layer. Use partition value.
+ core  lib cells:  135 with    135 unique orients.
+Calculated access for 533 core library pins:
+ Ideal   :    48 pins (via ongrid,  completely inside of pin)
+ Good    :   108 pins (via ongrid,  no violations)
+ Offgrid :   377 pins (via offgrid, completely inside of pin)
+ None    :     0 pins (no access)
+ None NDR:     0 pins (no NDR via access)
+Pitch/Offset X: 1900/500, Y: 1400/200
+Done in 0.4 (0.4 CPU) seconds, used 0 MB
+info PG blockages 'from_rail_vias' are enabled.
+info PG blockages 'from_stripes' are disabled.
+Creating lib cell PG blockages: 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+-------------------------------------------------------------------------
+|                             PG structure                              |
+|--------------+------------------+------------------+------------------|
+|              | via1/metal1      | via2/metal2      | via3/metal3      | 
+|--------------+------------------+------------------+------------------|
+| Power vias   | via1_5 (100.00%) | via2_7 (100.00%) | via3_1 (100.00%) | 
+|--------------+------------------+------------------+------------------|
+| Power width  | 1700 (100.00%)   | -                | -                | 
+|--------------+------------------+------------------+------------------|
+| Ground vias  | -                | -                | -                | 
+|--------------+------------------+------------------+------------------|
+| Ground width | -                | -                | -                | 
+-------------------------------------------------------------------------
+
+info UI33: performed Library cell PG blockage preparation for 0 sec (CPU time: 0 sec; MEM: RSS - 183M, CVMEM - 1687M, PVMEM - 1870M)
+info Found 2946 movable and 0 fixed cells in partition float_mult
+info DP107: Legalizer for site FreePDK45_38x28_10R_NP_162NW_34O, has 60 cut rows, with average utilization 52.6727%, utilization with cell bloats 52.6727%.
+info DP116: Legalizer has initial 2946 illegal movable cells and 0 illegal fixed cells.
+info DP128: Legalizer has 2946 illegal moveable cells after fix orientation only step.
+info DP117: Iteration 1 (without drc) has 0 illegal movable cells.
+info DP118: Finished placing cells without drc: total movable cells: 2946, cells moved: 2946, total movement: 1559.88, max movement: 2.51321, average movement: 0.529492.
+info DP115: Iteration 2 (with drc) has 0 illegal movable cells.
+info Optimize displacement: 0 (0.0%) cells are moved and 0 (0.0%) cells are flipped.
+info DP113: Finished legalization after 2 iterations, all movable and fixed cells are legal.
+info Number of moved cells: 2946. First few cells with largest displacements:
+info DP110: 2.51 rows, from {613344 832259, N} to {581900 836000, FS}, cell regOut/out_reg[4].
+info DP110: 2.43 rows, from {492861 12041, N} to {524900 10000, N}, cell regB/out_reg[17].
+info DP110: 2.41 rows, from {445179 13210, N} to {414700 10000, N}, cell regA/out_reg[2].
+info DP110: 2.38 rows, from {236714 832518, N} to {266500 836000, FS}, cell regOut/out_reg[23].
+info DP110: 2.18 rows, from {66283 661404, N} to {42300 668000, FS}, cell regA/out_reg[25].
+info DP111: Legalization summary: total movable cells: 2946, cells moved: 2946, total movement: 1559.88, max movement: 2.51321, average movement: 0.529492.
+------------------------------------------------------------------------------------------------
+|                                     Legalization Summary                                     |
+|---------------------+-------------+------------------------+--------------+------------------|
+| Total Movable Cells | Cells Moved | Total Movement in Rows | Max Movement | Average Movement | 
+|---------------------+-------------+------------------------+--------------+------------------|
+| 2946                | 2946        | 1559.88                | 2.51321      | 0.529492         | 
+------------------------------------------------------------------------------------------------
+
+info DUM207: place_detail: re-initialized cell-density map for partition float_mult old bin-size 8x8 rows new bin-size 8x8 rows.
+info DUM203: place_detail: created cell-density map for partition float_mult with max-util 100 and bin-size 8x8 rows.
+info UI33: performed detailed placement for 1 sec (CPU time: 1 sec; MEM: RSS - 185M, CVMEM - 1687M, PVMEM - 1870M)
+
+### FLOORPLAN: Placing ports/pins ###
+info using min_layer = metal2
+info using max_layer = metal10
+info Collected pin constraints
+info Placing scalar pins ...
+info Placed 100 pins (out of 100).
+info UI33: performed fast pin placer for 0 sec (CPU time: 0 sec; MEM: RSS - 186M, CVMEM - 1687M, PVMEM - 1870M)
+
+### FLOORPLAN: Inserting welltaps ###
+error UI3: Specify a valid lib_cell value for '-lib_cell' .
+error UI26: Script file '/home/vlsi/Installation/Nitro/nitroPack-2019.1.R2a/nitro/ref_flows/tcl/scr/floorplan.tcl' execution failed (and stopped) at line 310 (place_welltap_cells -partition float_mult -lib_cell WELLTAP.gds -hspread 20u -vspread 2u -hoffset 2u -voffset 2u -stagger odd -blockages hard_placement -prefix well).
+error UI26: Script file 'flow_scripts/0_import.tcl' execution failed (and stopped) at line 63 (source /home/vlsi/Installation/Nitro/nitroPack-2019.1.R2a/nitro/ref_flows/tcl/scr/floorplan.tcl).
+Nitro-SoC> start_gui 
+Nitro-SoC> trigger_gui -name main:window_action:move_view -param up
+Nitro-SoC> zoom_to -target area -xl_area -4.3225u -yb_area 5.2220u -xr_area 90.7725u -yt_area 100.6670u
+Nitro-SoC> trigger_gui -name main:view_errors
+Nitro-SoC> trigger_gui -name main:view_errors
+Nitro-SoC> write_db -file db/import.db
+warning UI4: Only 1 cores are available; the -cpus argument was set to 4.
+info UI36: Writing folded database file '/home/vlsi/Desktop/Lab5_2022/work/db/import.db'.
+info Writing libraries...
+info Writing design...
+info Writing timer configuration...
+info Writing SI configuration...
+info Writing Parasitic Models and Extractor configuration...
+info Writing Scan data
+info Writing Trailing data
+info Writing partitions...
+info UI33: performed database save for 0 sec (CPU time: 0 sec; MEM: RSS - 209M, CVMEM - 1691M, PVMEM - 1870M)
+Nitro-SoC> source flow_scripts/1_place.tcl > LOGs/place.log
+info UI54: redirecting output of source to LOGs/place.log
+info UI54: redirecting output of create_property to /dev/null
+info UI54: redirecting output of create_property to /dev/null
+TCL: No clocks found in the design. Please check the timing constraints and try again.
+Nitro-SoC> write_db -file db/place.db
+warning UI4: Only 1 cores are available; the -cpus argument was set to 4.
+info UI36: Writing folded database file '/home/vlsi/Desktop/Lab5_2022/work/db/place.db'.
+info Writing libraries...
+info Writing design...
+info Writing timer configuration...
+info Writing SI configuration...
+info Writing Parasitic Models and Extractor configuration...
+info Writing Scan data
+info Writing Trailing data
+info Writing partitions...
+info UI33: performed database save for 0 sec (CPU time: 0 sec; MEM: RSS - 264M, CVMEM - 1691M, PVMEM - 1870M)
+Nitro-SoC> report_placement
+Report 'placement': Placement Report
+Generated on Wed Jan 4 02:02:10 2023
+  
+---------------------------------------------------------------------
+|   Placement Bounding Box Statistics [float_mult] length units:    |
+|                            micro-meter                            |
+|-----------+---------+----------------+---------------+------------|
+| Pin Count | Average | Number Of Nets | Total Length  | Deviation  | 
+|-----------+---------+----------------+---------------+------------|
+| All       | 7.4751  | 3011           | 22507.4025    | 12.8279    | 
+|-----------+---------+----------------+---------------+------------|
+| 2         | 3.5800  | 623            | 2230.3375     | 5.1824     | 
+|-----------+---------+----------------+---------------+------------|
+| 3         | 5.8692  | 2086           | 12243.0750    | 4.9534     | 
+|-----------+---------+----------------+---------------+------------|
+| 4         | 8.3256  | 146            | 1215.5400     | 6.4227     | 
+|-----------+---------+----------------+---------------+------------|
+| 5         | 10.2654 | 56             | 574.8625      | 5.1104     | 
+|-----------+---------+----------------+---------------+------------|
+| >=6       | 62.4359 | 100            | 6243.5875     | 32.1911    | 
+---------------------------------------------------------------------
+
+Pin Count Statistics, Min:  2
+Pin Count Statistics, Max:  97
+Pin Count Statistics, Avg:  3.31617
+Pin Count Statistics, Sum:  9985
+  
+--------------------------------------------------
+|           Placement Area Statistics            |
+|--------------------------------------+---------|
+|                                      | Value   | 
+|--------------------------------------+---------|
+| Total Instance count                 | 2952    | 
+|--------------------------------------+---------|
+| Total Leaf-cells in the netlist      | 2946    | 
+|--------------------------------------+---------|
+| Total Number of Buf+Inv              | 321     | 
+|--------------------------------------+---------|
+| Total Number of Macros               | 0       | 
+|--------------------------------------+---------|
+| Total Number of Pads                 | 0       | 
+|--------------------------------------+---------|
+| Total Utilized Area (sq micron)      | 3732.51 | 
+|--------------------------------------+---------|
+| Total Macro+Pad Area (sq micron)     | 0       | 
+|--------------------------------------+---------|
+| Total Logic Area (sq micron)         | 3732.51 | 
+|--------------------------------------+---------|
+| Total Physical-Only Area (sq micron) | 0       | 
+|--------------------------------------+---------|
+| Total Buf+Inv Area (sq micron)       | 170.772 | 
+|--------------------------------------+---------|
+| Total Placeable Row Area (sq micron) | 7086.24 | 
+|--------------------------------------+---------|
+| Logic Cell Utilization (%)           | 52.67   | 
+|--------------------------------------+---------|
+| Silicon Area Utilization (%)         | 49.74   | 
+--------------------------------------------------
+
+  
+-----------------------------------------------------------------------------------------------------------
+|                                      Cell and Row Site Statistics                                       |
+|----------------------------------+-----------+------------+--------------+-------------+----------------|
+| Site Name                        | Row Count | Site Count | Placed Cells | Fixed Cells | Unplaced Cells | 
+|----------------------------------+-----------+------------+--------------+-------------+----------------|
+| FreePDK45_38x28_10R_NP_162NW_34O | 60        | 26640      | 2946         | 0           | 0              | 
+-----------------------------------------------------------------------------------------------------------
+
+  
+Cell Density Map Utilization - 64 objects 
+    --- get_objects cell_density_rect -of [get_objects cell_density_map] -fi --->
+0   | 0
+5   | 0
+10  | 0
+15  | 0
+20  | 0
+25  | 0
+30  | 0
+35  |== 1
+40  |== 1
+45  |==================================== 15
+50  |======================================================================== 30
+55  |======================================== 17
+60  | 0
+65  | 0
+70  | 0
+75  | 0
+80  | 0
+85  | 0
+90  | 0
+95  | 0
+100 | 0
+105 | 0
+110 | 0
+115 | 0
+120 | 0
+125 | 0
+130 | 0
+135 | 0
+140 | 0
+145 | 0
+150 |
+    V      get_property -name utilization -object %object%
+Nitro-SoC> create_pg_ports -net {VDD VSS}
+info UI33: performed Create PG ports for 0 sec (CPU time: 0 sec; MEM: RSS - 264M, CVMEM - 1691M, PVMEM - 1870M)
+Nitro-SoC> source flow_scripts/2_clock.tcl > LOGs/clock.log
+TCL: can't read "grcong": no such variable
+Nitro-SoC> zoom_to -target area -xl_area -25.7434u -yb_area -2.2802u -xr_area 93.1252u -yt_area 117.0259u
+Nitro-SoC> zoom_to -target area -xl_area -97.1464u -yb_area -27.2875u -xr_area 100.9678u -yt_area 171.5559u
+Nitro-SoC> zoom_to -target area -xl_area -66.6546u -yb_area -22.9459u -xr_area 91.8366u -yt_area 136.1287u
+Nitro-SoC> zoom_to -target area -xl_area -42.2612u -yb_area -19.4726u -xr_area 84.5316u -yt_area 107.7869u
+Nitro-SoC> zoom_to -target area -xl_area -22.7465u -yb_area -16.6940u -xr_area 78.6876u -yt_area 85.1135u
+Nitro-SoC> zoom_to -target area -xl_area -8.4240u -yb_area -5.4017u -xr_area 72.7231u -yt_area 76.0441u
+Nitro-SoC> zoom_to -target area -xl_area 23.4035u -yb_area 19.6920u -xr_area 59.4688u -yt_area 55.8901u
+Nitro-SoC> zoom_to -target area -xl_area 34.3157u -yb_area 28.2955u -xr_area 54.9244u -yt_area 48.9801u
+Nitro-SoC> zoom_to -target area -xl_area 37.2256u -yb_area 30.5898u -xr_area 53.7125u -yt_area 47.1374u
+Nitro-SoC> zoom_to -target area -xl_area 43.0454u -yb_area 35.1783u -xr_area 51.2888u -yt_area 43.4521u
+Nitro-SoC> zoom_to -target area -xl_area 19.7662u -yb_area 16.8239u -xr_area 60.9832u -yt_area 58.1929u
+Nitro-SoC> zoom_to -target area -xl_area 0.3668u -yb_area 1.5287u -xr_area 69.0617u -yt_area 70.4770u
+Nitro-SoC> zoom_to -target area -xl_area -11.7577u -yb_area -8.0306u -xr_area 74.1108u -yt_area 78.1546u
+Nitro-SoC> zoom_to -target area -xl_area -26.9134u -yb_area -19.9798u -xr_area 80.4221u -yt_area 87.7516u
+Nitro-SoC> zoom_to -target area -xl_area -45.8579u -yb_area -34.9163u -xr_area 88.3113u -yt_area 99.7478u
+Nitro-SoC> zoom_to -target area -xl_area -28.7949u -yb_area -11.0412u -xr_area 78.5402u -yt_area 96.6899u
+Nitro-SoC> write_db -file db/clock.db
+warning UI4: Only 1 cores are available; the -cpus argument was set to 4.
+info UI36: Writing folded database file '/home/vlsi/Desktop/Lab5_2022/work/db/clock.db'.
+info Writing libraries...
+info Writing design...
+info Writing timer configuration...
+info Writing SI configuration...
+info Writing Parasitic Models and Extractor configuration...
+info Writing Scan data
+info Writing Trailing data
+info Writing partitions...
+info UI33: performed database save for 0 sec (CPU time: 0 sec; MEM: RSS - 265M, CVMEM - 1691M, PVMEM - 1870M)
+Nitro-SoC> source flow_scripts/3_route.tcl > LOGs/route.log
+info UI54: redirecting output of report_route_nets to /dev/null
+info UI54: redirecting output of check_lvs -nets $tdro::env::data_nets -name gr_lvs -global -quiet to /dev/null
+info UI54: redirecting output of report_route_nets to /dev/null
+info UI54: redirecting output of report_route_nets to /dev/null
+Report 'report_mcmm_variation': MCMM Variation
+Generated on Wed Jan 4 02:18:38 2023
+  
+----------------------------------------------------------
+| MCMM variability report for design 'float_mult' (pico) |
+|--------------------------------------------------------|
+| MODE CORNER WNS TNS #Endpts WHS THS #Endpts            | 
+----------------------------------------------------------
+
+info UI33: performed report_mcmm_variation for 0 sec (CPU time: 0 sec; MEM: RSS - 312M, CVMEM - 1691M, PVMEM - 1870M)
+Report 'report_path_group': Path Group
+Generated on Wed Jan 4 02:18:38 2023
+  
+-------------------------------------------------------------------------------------------
+|                               PATH GROUPS (SETUP) (pico)                                |
+|-----------------------------------------------------------------------------------------|
+| QOR Weight Margin TNS Range Endpoints Violating Endpoints Violating Endpoints % WNS TNS | 
+-------------------------------------------------------------------------------------------
+
+info UI33: performed report_path_group for 0 sec (CPU time: 0 sec; MEM: RSS - 312M, CVMEM - 1691M, PVMEM - 1870M)
+SLACK HISTOGRAM
+---------------
+Select : SELECT_NONE
+
+info UI33: performed report_slack_histogram for 0 sec (CPU time: 0 sec; MEM: RSS - 312M, CVMEM - 1691M, PVMEM - 1870M)
+Report 'report_path_group': Path Group
+Generated on Wed Jan 4 02:18:38 2023
+  
+-------------------------------------------------------------------------------------------
+|                                PATH GROUPS (HOLD) (pico)                                |
+|-----------------------------------------------------------------------------------------|
+| QOR Weight Margin TNS Range Endpoints Violating Endpoints Violating Endpoints % WNS TNS | 
+-------------------------------------------------------------------------------------------
+
+info UI33: performed report_path_group for 0 sec (CPU time: 0 sec; MEM: RSS - 312M, CVMEM - 1691M, PVMEM - 1870M)
+SLACK HISTOGRAM
+---------------
+Select : SELECT_NONE
+
+info UI33: performed report_slack_histogram for 0 sec (CPU time: 0 sec; MEM: RSS - 312M, CVMEM - 1691M, PVMEM - 1870M)
+Report 'report_power_summary': Power
+Generated on Wed Jan 4 02:18:39 2023
+  
+-------------------------------------------------------------------------
+|                       Power Summary (nanowatt)                        |
+|-----------------------------------------------------------------------|
+| Component          Internal Switching  Dynamic Leakage  Total Percent | 
+|-----------------------------------------------------------------------|
+| Entire design             0         0        0   87564  87564  100.00 | 
+|                                                                       | 
+| Power of all cells        0         0        0   87564  87564  100.00 | 
+|   Clock cells             0         0        0       0      0    0.00 | 
+|   Data cells              0         0        0   87564  87564  100.00 | 
+|     Combinational         0         0        0   79263  79263   90.52 | 
+|     Registers             0         0        0    8301   8301    9.48 | 
+|     Macros                0         0        0       0      0    0.00 | 
+|     Physical              0         0        0       0      0    0.00 | 
+|                                                                       | 
+| Power of all nets                   0        0              0    0.00 | 
+|   Clock nets                        0        0              0    0.00 | 
+|     Clock leaves                    0        0              0    0.00 | 
+|   Data nets                         0        0              0    0.00 | 
+-------------------------------------------------------------------------
+
+info UI33: performed report_power_summary for 0 sec (CPU time: 0 sec; MEM: RSS - 312M, CVMEM - 1691M, PVMEM - 1870M)
+------------------------------------------------------------------------------------------------------------------------------------------------
+| Corner     Enable Setup Hold  CRPR       SI    Power            EM   Voltage Drop DRC        Process                    RC Temp Scale Factor | 
+|----------------------------------------------------------------------------------------------------------------------------------------------|
+| slow       false  true  false setup_hold none  leakage          none none         trans, cap new_rcmaster_techFreePDK45 25      1            | 
+| fast       false  false false setup_hold none  leakage          none none         trans, cap new_rcmaster_techFreePDK45 25      1            | 
+| corner_0_0 true   true  true  setup_hold delay leakage, dynamic none none         trans, cap new_rcmaster_techFreePDK45 25      1            | 
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+Nitro-SoC> trigger_gui -name main:view_errors
+Nitro-SoC> write_db -file db/route.db
+warning UI4: Only 1 cores are available; the -cpus argument was set to 4.
+info UI36: Writing folded database file '/home/vlsi/Desktop/Lab5_2022/work/db/route.db'.
+info Writing libraries...
+info Writing design...
+info Writing timer configuration...
+info Writing SI configuration...
+info Writing Parasitic Models and Extractor configuration...
+info Writing Scan data
+info Writing Trailing data
+info Writing partitions...
+info UI33: performed database save for 1 sec (CPU time: 0 sec; MEM: RSS - 315M, CVMEM - 1691M, PVMEM - 1870M)
+Nitro-SoC> report_timing
+info UI33: performed report_timing for 0 sec (CPU time: 0 sec; MEM: RSS - 315M, CVMEM - 1691M, PVMEM - 1870M)
+Nitro-SoC> report_timing -max_delay
+info UI33: performed report_timing for 0 sec (CPU time: 0 sec; MEM: RSS - 315M, CVMEM - 1691M, PVMEM - 1870M)
+Nitro-SoC> report_timing -min_delay
+info UI33: performed report_timing for 0 sec (CPU time: 0 sec; MEM: RSS - 315M, CVMEM - 1691M, PVMEM - 1870M)
+Nitro-SoC> report_placement
+Report 'placement': Placement Report
+Generated on Wed Jan 4 02:21:07 2023
+  
+---------------------------------------------------------------------
+|   Placement Bounding Box Statistics [float_mult] length units:    |
+|                            micro-meter                            |
+|-----------+---------+----------------+---------------+------------|
+| Pin Count | Average | Number Of Nets | Total Length  | Deviation  | 
+|-----------+---------+----------------+---------------+------------|
+| All       | 7.4743  | 3011           | 22504.9875    | 12.8101    | 
+|-----------+---------+----------------+---------------+------------|
+| 2         | 3.5917  | 623            | 2237.6275     | 5.1834     | 
+|-----------+---------+----------------+---------------+------------|
+| 3         | 5.8686  | 2086           | 12241.8175    | 4.9530     | 
+|-----------+---------+----------------+---------------+------------|
+| 4         | 8.3131  | 146            | 1213.7150     | 6.4298     | 
+|-----------+---------+----------------+---------------+------------|
+| 5         | 10.2654 | 56             | 574.8625      | 5.1104     | 
+|-----------+---------+----------------+---------------+------------|
+| >=6       | 62.3697 | 100            | 6236.9650     | 32.0958    | 
+---------------------------------------------------------------------
+
+Pin Count Statistics, Min:  2
+Pin Count Statistics, Max:  97
+Pin Count Statistics, Avg:  3.31617
+Pin Count Statistics, Sum:  9985
+  
+--------------------------------------------------
+|           Placement Area Statistics            |
+|--------------------------------------+---------|
+|                                      | Value   | 
+|--------------------------------------+---------|
+| Total Instance count                 | 2952    | 
+|--------------------------------------+---------|
+| Total Leaf-cells in the netlist      | 2946    | 
+|--------------------------------------+---------|
+| Total Number of Buf+Inv              | 321     | 
+|--------------------------------------+---------|
+| Total Number of Macros               | 0       | 
+|--------------------------------------+---------|
+| Total Number of Pads                 | 0       | 
+|--------------------------------------+---------|
+| Total Utilized Area (sq micron)      | 3746.08 | 
+|--------------------------------------+---------|
+| Total Macro+Pad Area (sq micron)     | 0       | 
+|--------------------------------------+---------|
+| Total Logic Area (sq micron)         | 3746.08 | 
+|--------------------------------------+---------|
+| Total Physical-Only Area (sq micron) | 0       | 
+|--------------------------------------+---------|
+| Total Buf+Inv Area (sq micron)       | 170.772 | 
+|--------------------------------------+---------|
+| Total Placeable Row Area (sq micron) | 7086.24 | 
+|--------------------------------------+---------|
+| Logic Cell Utilization (%)           | 52.86   | 
+|--------------------------------------+---------|
+| Silicon Area Utilization (%)         | 49.92   | 
+--------------------------------------------------
+
+  
+-----------------------------------------------------------------------------------------------------------
+|                                      Cell and Row Site Statistics                                       |
+|----------------------------------+-----------+------------+--------------+-------------+----------------|
+| Site Name                        | Row Count | Site Count | Placed Cells | Fixed Cells | Unplaced Cells | 
+|----------------------------------+-----------+------------+--------------+-------------+----------------|
+| FreePDK45_38x28_10R_NP_162NW_34O | 60        | 26640      | 2946         | 0           | 0              | 
+-----------------------------------------------------------------------------------------------------------
+
+  
+Cell Density Map Utilization - 64 objects 
+    --- get_objects cell_density_rect -of [get_objects cell_density_map] -fi --->
+0   | 0
+5   | 0
+10  | 0
+15  | 0
+20  | 0
+25  | 0
+30  | 0
+35  |== 1
+40  |== 1
+45  |================================ 14
+50  |======================================================================== 31
+55  |======================================= 17
+60  | 0
+65  | 0
+70  | 0
+75  | 0
+80  | 0
+85  | 0
+90  | 0
+95  | 0
+100 | 0
+105 | 0
+110 | 0
+115 | 0
+120 | 0
+125 | 0
+130 | 0
+135 | 0
+140 | 0
+145 | 0
+150 |
+    V      get_property -name utilization -object %object%
+Nitro-SoC> report_power
+Report 'report_power': Power
+Generated on Wed Jan 4 02:21:28 2023
+  
+----------------------------------------------------------------------------------------------------------
+|                                            Power (nanowatt)                                            |
+|------------+----------+---------+----------+---------------+---------------+---------+---------+-------|
+| corner     | mode     | logic   | internal | pin switching | net switching | dynamic | leakage | total | 
+|------------+----------+---------+----------+---------------+---------------+---------+---------+-------|
+| corner_0_0 | new_mode | clock   |        0 |             0 |             0 |       0 |       0 |     0 | 
+|------------+----------+---------+----------+---------------+---------------+---------+---------+-------|
+| corner_0_0 | new_mode | data    |        0 |             0 |             0 |       0 |   87564 | 87564 | 
+|------------+----------+---------+----------+---------------+---------------+---------+---------+-------|
+| corner_0_0 | new_mode | total   |        0 |             0 |             0 |       0 |   87564 | 87564 | 
+|------------+----------+---------+----------+---------------+---------------+---------+---------+-------|
+|            |          | Maximum |        0 |             0 |             0 |       0 |   87564 | 87564 | 
+----------------------------------------------------------------------------------------------------------
+
+info UI33: performed report_power for 0 sec (CPU time: 0 sec; MEM: RSS - 315M, CVMEM - 1691M, PVMEM - 1870M)
+Nitro-SoC> write_db -file db/route.db
+warning UI4: Only 1 cores are available; the -cpus argument was set to 4.
+info UI36: Writing folded database file '/home/vlsi/Desktop/Lab5_2022/work/db/route.db'.
+info Writing libraries...
+info Writing design...
+info Writing timer configuration...
+info Writing SI configuration...
+info Writing Parasitic Models and Extractor configuration...
+info Writing Scan data
+info Writing Trailing data
+info Writing partitions...
+info UI33: performed database save for 0 sec (CPU time: 0 sec; MEM: RSS - 315M, CVMEM - 1691M, PVMEM - 1870M)
+Nitro-SoC> source flow_scripts/4_export.tcl
+
+######################################################
+#  Export Flow                                       #
+# Version : 2019.1.R2                                #
+#  Fix process antennas, add fillers & metal fill    #
+#  Output design data.                               #
+#  Control vars defined in flow_variables.tcl        #
+#                                                    #
+######################################################
+
+Nitro-SoC> # config_shell -echo_script false
+info UI33: performed source of flow_variables.tcl for 0 sec (CPU time: 0 sec; MEM: RSS - 315M, CVMEM - 1691M, PVMEM - 1870M)
+info UI33: performed source of scr/kit_utils.tcl for 0 sec (CPU time: 0 sec; MEM: RSS - 315M, CVMEM - 1691M, PVMEM - 1870M)
+Loading utility util::nrf_utils
+  util::save_vars already loaded.  Use -force true to overwrite
+Loading utility util::db_utils
+NRF info: Checking flow variables for export
+NRF info: Verifying user input for export
+Storing TCL variables as db root property
+info UI33: performed source of nrf_customization.tcl for 0 sec (CPU time: 0 sec; MEM: RSS - 315M, CVMEM - 1691M, PVMEM - 1870M)
+warning UI4: Only 1 cores are available; the -cpus argument was set to 2.
+Checking Antenna rules:
+  OXIDE1:
+metal1:
+  No rules are defined
+metal2:
+  No rules are defined
+metal3:
+  No rules are defined
+metal4:
+  No rules are defined
+metal5:
+  No rules are defined
+metal6:
+  No rules are defined
+metal7:
+  No rules are defined
+metal8:
+  No rules are defined
+metal9:
+  No rules are defined
+metal10:
+  No rules are defined
+
+Checking Antenna library:
+Preparing nets ...
+Processing nets: 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
+  All pins have Antenna area information
+
+Antenna verification progress:
+Preparing nets ...
+Processing nets: 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
+Skip 100 nets with insufficient antenna information.
+
+Report 'report_ant': Report Antenna
+Generated on Wed Jan 4 02:22:05 2023
+  
+----------------------------------------------------------------------------------------------------
+|                                   Antenna verification report                                    |
+|-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| TOTAL | metal1 | metal2 | metal3 | metal4 | metal5 | metal6 | metal7 | metal8 | metal9 | metal10 | 
+----------------------------------------------------------------------------------------------------
+
+info UI33: performed Antenna verification for 0 sec (CPU time: 0 sec; MEM: RSS - 315M, CVMEM - 1691M, PVMEM - 1870M)
+warning UI4: Only 1 cores are available; the -cpus argument was set to 2.
+Antenna fixing progress:
+Preparing nets ...
+Processing nets: 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
+Skip 100 nets with insufficient antenna information.
+
+
+Incremental timing update of 0 nets
+Report 'report_ant': Report Antenna
+Generated on Wed Jan 4 02:22:05 2023
+  
+----------------------------------------------------------------------------------------------------
+|                                   Antenna verification report                                    |
+|-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| TOTAL | metal1 | metal2 | metal3 | metal4 | metal5 | metal6 | metal7 | metal8 | metal9 | metal10 | 
+----------------------------------------------------------------------------------------------------
+
+info UI33: performed Antenna fixing for 0 sec (CPU time: 0 sec; MEM: RSS - 315M, CVMEM - 1691M, PVMEM - 1870M)
+info DRC201: Only violations caused by detail_route shapes are being checked.
+DRC verification progress:
+Processing metal1: 20% 50% 70% 100% 
+Processing metal2: 30% 60% 100% 
+Processing metal3: 20% 50% 70% 100% 
+Processing metal4: 50% 100% 
+Processing metal5: 50% 100% 
+Processing metal6: 50% 100% 
+Processing metal7: 100% 
+Processing metal8: 100% 
+Processing metal9: 100% 
+Processing metal10: 100% 
+
+Report 'report_drc': Report Drc
+Generated on Wed Jan 4 02:22:06 2023
+  
+----------------------------------------------------------------------------------------------------------------------------
+|                                                 DRC verification report                                                  |
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|                       | TOTAL | metal1 | metal2 | metal3 | metal4 | metal5 | metal6 | metal7 | metal8 | metal9 | metal10 | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Grid                  | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Width                 | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Minimum samenet space | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Fat samenet space     | 0     | -      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Minimum diffnet space | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Fat diffnet space     | 0     | -      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Diffnet short         | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Prohibited routing    | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|                       | TOTAL | CO     | via1   | via2   | via3   | via4   | via5   | via6   | via7   | via8   | via9    | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Grid                  | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Size                  | 0     | -      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Minimum space         | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+----------------------------------------------------------------------------------------------------------------------------
+
+info UI33: performed DRC verification for 1 sec (CPU time: 0 sec; MEM: RSS - 315M, CVMEM - 1691M, PVMEM - 1870M)
+NRF info: Placing filler cells using lib cells: FILLCELL_X8 FILLCELL_X4 FILLCELL_X32 FILLCELL_X2 FILLCELL_X16 FILLCELL_X1
+
+warning UI4: Only 1 cores are available; the -cpus argument was set to 2.
+info Removing existing filler cells.
+info UI49: removed 0 core filler cells
+info UI49: inserted 3565 core filler cells
+info DUM207: place_filler_cells: re-initialized cell-density map for partition float_mult old bin-size 8x8 rows new bin-size 8x8 rows.
+info DUM203: place_filler_cells: created cell-density map for partition float_mult with max-util 100 and bin-size 8x8 rows.
+info UI33: performed core filler cells placement for 0 sec (CPU time: 0 sec; MEM: RSS - 316M, CVMEM - 1691M, PVMEM - 1870M)
+NRF info: Checking for unfilled gaps after filler cell insertion
+info UI49: Found 0 unfilled gaps (0 minimum sites).
+info UI33: performed check_unfilled_gaps for 0 sec (CPU time: 0 sec; MEM: RSS - 316M, CVMEM - 1691M, PVMEM - 1870M)
+info DRC201: Only violations caused by detail_route shapes are being checked.
+DRC verification progress:
+Processing metal1: 20% 50% 70% 100% 
+Processing metal2: 30% 60% 100% 
+Processing metal3: 20% 50% 70% 100% 
+Processing metal4: 50% 100% 
+Processing metal5: 50% 100% 
+Processing metal6: 50% 100% 
+Processing metal7: 100% 
+Processing metal8: 100% 
+Processing metal9: 100% 
+Processing metal10: 100% 
+
+Report 'report_drc': Report Drc
+Generated on Wed Jan 4 02:22:07 2023
+  
+----------------------------------------------------------------------------------------------------------------------------
+|                                                 DRC verification report                                                  |
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|                       | TOTAL | metal1 | metal2 | metal3 | metal4 | metal5 | metal6 | metal7 | metal8 | metal9 | metal10 | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Grid                  | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Width                 | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Minimum samenet space | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Fat samenet space     | 0     | -      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Minimum diffnet space | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Fat diffnet space     | 0     | -      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Diffnet short         | 31    | 31     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Prohibited routing    | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|                       | TOTAL | CO     | via1   | via2   | via3   | via4   | via5   | via6   | via7   | via8   | via9    | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Grid                  | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Size                  | 0     | -      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Minimum space         | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+----------------------------------------------------------------------------------------------------------------------------
+
+info UI33: performed DRC verification for 1 sec (CPU time: 0 sec; MEM: RSS - 316M, CVMEM - 1691M, PVMEM - 1870M)
+NRF info: Number of DRC errors increased after filler cell insertion (31 > 0). Running DRC clean-up 
+
+DRC cleaning progress:
+Iteration  0 on  metal1 layer (    16 wins): 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
+Iteration  0 on  metal2 layer (     9 wins): 10% 20% 30% 40% 50% 60% 70% 80% 100% 
+Iteration  0 on  metal3 layer (    16 wins): 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
+Iteration  0 on  metal4 layer (     4 wins): 20% 50% 70% 100% 
+Iteration  0 on  metal5 layer (     4 wins): 20% 50% 70% 100% 
+Iteration  0 on  metal6 layer (     4 wins): 20% 50% 70% 100% 
+Iteration  0 on  metal7 layer (     1 wins): 100% 
+Iteration  0 on  metal8 layer (     1 wins): 100% 
+Iteration  0 on  metal9 layer (     1 wins): 100% 
+Iteration  0 on metal10 layer (     1 wins): 100% 
+Iteration  1 on  metal1 layer (    11 wins): 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
+
+--------------------------------------------------------------------------------------------------------------------
+|                                               DRC cleaning report                                                |
+|---------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|               | TOTAL | metal1 | metal2 | metal3 | metal4 | metal5 | metal6 | metal7 | metal8 | metal9 | metal10 | 
+|---------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Removed vias  | 32    | 32     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|---------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Removed wires | 1     | 1      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|---------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Clipped wires | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|---------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Modified nets | 31    | 31     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+--------------------------------------------------------------------------------------------------------------------
+
+info UI33: performed DRC cleaning for 1 sec (CPU time: 0 sec; MEM: RSS - 318M, CVMEM - 1691M, PVMEM - 1870M)
+warning UI1291: The size of '-column_names' does not equal to the number of columns in '-values' arg.
+---------------------------------
+|  Start run_route_timing flow  |
+|-----------------+-------------|
+| Argument        | Value       | 
+|-----------------+-------------|
+| cpus            | 2           | 
+|-----------------+-------------|
+| messages        | default     | 
+|-----------------+-------------|
+| timing_mode     | si          | 
+|-----------------+-------------|
+| preserve_clocks | auto        | 
+|-----------------+-------------|
+| save_db_stages  |             | 
+|-----------------+-------------|
+| stop_after      | false       | 
+|-----------------+-------------|
+| start_from      | false       | 
+|-----------------+-------------|
+| resume          | false       | 
+|-----------------+-------------|
+| skip_stages     |             | 
+|-----------------+-------------|
+| run_stages      |             | 
+|-----------------+-------------|
+| mode            | repair      | 
+|-----------------+-------------|
+| trial           | false       | 
+|-----------------+-------------|
+| dump_qor_stages |             | 
+|-----------------+-------------|
+| user_params     | -drc_effort | 
+---------------------------------
+
+NRF info: Setting up run_route_timing flow ...
+
+warning UI4: Only 1 cores are available; the -cpus argument was set to 2.
+warning The design is already timed. New CPU settings will be effective from next non-incremental timing analysis
+info UI33: performed update timing for 0 sec (CPU time: 0 sec; MEM: RSS - 318M, CVMEM - 1691M, PVMEM - 1870M, PRSS - 318M)
+Routing lib vias have been created
+Routing lib vias have been selected
+info UI30: performing congestion analysis on partition float_mult (started at Wed Jan 4 02:22:10 2023)
+
+Congestion ratio stats: min = 0.02, max = 0.60, mean = 0.34 
+At threshold 1.17, found 0 hot spots, consisting of 0 grid-cells (0.00 pct of total)
+At threshold 0.99, found 0 hot spots, consisting of 0 grid-cells (0.00 pct of total)
+At threshold 0.87, found 0 hot spots, consisting of 0 grid-cells (0.00 pct of total)
+
+-------------------------------------------------
+| Grade = A; the partition should route easily. |
+-------------------------------------------------
+
+info UI33: performed congestion analysis for 0 sec (CPU time: 0 sec; MEM: RSS - 318M, CVMEM - 1691M, PVMEM - 1870M, PRSS - 318M)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|                                                                           Current Parameter Values for 'config_route_timing'                                                                            |
+|--------------------------+-----------------------------------------------------------------+------------+------------+----------+------------+--------------------------------+------------+------------|
+| Name                     | Description                                                     | Value      | Default    | Modified | Value_type | Enum                           | Persistent | User_level | 
+|--------------------------+-----------------------------------------------------------------+------------+------------+----------+------------+--------------------------------+------------+------------|
+| dvia_mode                | Specifies the mode of double via replacement                    | dfm        | timing     | true     | N/A        | dfm none timing                | true       | normal     | 
+|--------------------------+-----------------------------------------------------------------+------------+------------+----------+------------+--------------------------------+------------+------------|
+| tr_preserve_gr_channel   | Specifies effort to preserve channel for follow_gr nets in      | 90         | 0          | true     | N/A        |                                | true       | advanced   | 
+|                          | route_track (0-100)                                             |            |            |          |            |                                |            |            | 
+|--------------------------+-----------------------------------------------------------------+------------+------------+----------+------------+--------------------------------+------------+------------|
+| tr_preserve_gr_layer     | Specifies effort to preserve layer for follow_gr nets in        | 100        | 0          | true     | N/A        |                                | true       | advanced   | 
+|                          | route_track (0-100)                                             |            |            |          |            |                                |            |            | 
+|--------------------------+-----------------------------------------------------------------+------------+------------+----------+------------+--------------------------------+------------+------------|
+| ds_max_count             | Specifies the maximum allowed number of dominant scenarios      | 6          | 0          | true     | N/A        |                                | true       | developer  | 
+|--------------------------+-----------------------------------------------------------------+------------+------------+----------+------------+--------------------------------+------------+------------|
+| ds_threshold             | Specifies the percentage threshold for dominant scenarios       | 80         | 0          | true     | N/A        |                                | true       | developer  | 
+|--------------------------+-----------------------------------------------------------------+------------+------------+----------+------------+--------------------------------+------------+------------|
+| fr_topo_cri_priority     | Specifies priority value for topology critical nets in          | 0          | 50         | true     | N/A        |                                | true       | developer  | 
+|                          | route_final (0-100)                                             |            |            |          |            |                                |            |            | 
+|--------------------------+-----------------------------------------------------------------+------------+------------+----------+------------+--------------------------------+------------+------------|
+| low_power_effort         | Specifies low power effort                                      | low        | none       | true     | N/A        | high low medium none           | true       | developer  | 
+|--------------------------+-----------------------------------------------------------------+------------+------------+----------+------------+--------------------------------+------------+------------|
+| opt_cdm_model            | Specifies advanced CDM model                                    | delta_area | delta_area | true     | N/A        | delta_area dynamic_bloat none  | true       | developer  | 
+|--------------------------+-----------------------------------------------------------------+------------+------------+----------+------------+--------------------------------+------------+------------|
+| opt_cpus                 | Specifies number of cpus for optimizer ('0' - distributed)      | 4          | 4          | true     | N/A        |                                | true       | developer  | 
+|--------------------------+-----------------------------------------------------------------+------------+------------+----------+------------+--------------------------------+------------+------------|
+| si_mcmm                  | Specifies to look at all the enabled corners in si_delay_repair | true       | false      | true     | N/A        |                                | true       | developer  | 
+|--------------------------+-----------------------------------------------------------------+------------+------------+----------+------------+--------------------------------+------------+------------|
+| tr_preserve_all_gr_layer | Specifies effort to preserve layer for all the nets in          | 100        | 0          | true     | N/A        |                                | true       | developer  | 
+|                          | route_track (0-100)                                             |            |            |          |            |                                |            |            | 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+RRT info: Running run_route_timing in 'repair' mode ...
+
+RRT info: Start stage 'check'
+RRT info: User event handler 'before check' completed successfully
+-----------------------------
+|  Check routing lib vias   |
+|-------+---------+---------|
+| layer | regular | minarea | 
+|-------+---------+---------|
+| via1  | ok      | none    | 
+|-------+---------+---------|
+| via2  | ok      | none    | 
+|-------+---------+---------|
+| via3  | ok      | none    | 
+|-------+---------+---------|
+| via4  | ok      | none    | 
+|-------+---------+---------|
+| via5  | ok      | none    | 
+|-------+---------+---------|
+| via6  | ok      | none    | 
+|-------+---------+---------|
+| via7  | ok      | none    | 
+-----------------------------
+
+RRT info: Stage 'check' completed successfully
+RRT info: User event handler 'after check' completed successfully
+RRT info: Start stage 'open'
+RRT info: User event handler 'before open' completed successfully
+LVS verification progress:
+Preparing nets ...
+Processing nets: 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
+
+info Set 'max_open' and 'total_open' attributes for '1' open nets
+
+Report 'report_lvs': Detail Routing LVS Report
+Generated on Wed Jan 4 02:22:10 2023
+  
+----------------------------------------------------------------------------------------------
+|                           LVS detail routing verification report                           |
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+|                   | Total nets | Open nets | Open | Float | Tail | Loop | Pillar | Warning | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| Signal nets       | 3011       | 31        | 31   | 0     | 0    | 0    | -      | -       | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| Logic nets        | 2          | 0         | 0    | 0     | 0    | 0    | -      | -       | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| Shield nets       | 0          | 0         | 0    | 0     | 0    | 0    | -      | -       | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| Power/Ground nets | -          | -         | -    | -     | -    | -    | -      | -       | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| DontRoute nets    | 0          | 0         | 0    | 0     | 0    | 0    | -      | -       | 
+----------------------------------------------------------------------------------------------
+
+  
+-----------------------------------------------
+| LVS open distance distribution (nanometers) |
+|--------+--------------+-------+-------------|
+|        | Total: 80.00 | 0.00  | 80.00       | 
+|--------+--------------+-------+-------------|
+| % open | 100          | 96.77 | 3.23        | 
+|--------+--------------+-------+-------------|
+| # open | 31           | 30    | 1           | 
+-----------------------------------------------
+
+info UI33: performed LVS verification for 0 sec (CPU time: 0 sec; MEM: RSS - 318M, CVMEM - 1691M, PVMEM - 1870M, PRSS - 318M)
+LVS cleaning progress:
+Preparing nets ...
+Processing nets: 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
+
+Report 'report_lvs': Detail Routing LVS Report
+Generated on Wed Jan 4 02:22:10 2023
+  
+----------------------------------------------------------------------------------------------
+|                           LVS detail routing verification report                           |
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+|                   | Total nets | Open nets | Open | Float | Tail | Loop | Pillar | Warning | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| Signal nets       | 3011       | -         | -    | 0     | 0    | -    | -      | -       | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| Logic nets        | 2          | -         | -    | 0     | 0    | -    | -      | -       | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| Shield nets       | 0          | -         | -    | 0     | 0    | -    | -      | -       | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| Power/Ground nets | -          | -         | -    | -     | -    | -    | -      | -       | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| DontRoute nets    | 0          | -         | -    | 0     | 0    | -    | -      | -       | 
+----------------------------------------------------------------------------------------------
+
+info UI33: performed LVS cleaning for 0 sec (CPU time: 0 sec; MEM: RSS - 318M, CVMEM - 1691M, PVMEM - 1870M, PRSS - 318M)
+LVS verification progress:
+Preparing nets ...
+Processing nets: 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
+
+info Set 'max_open' and 'total_open' attributes for '1' open nets
+
+Report 'report_lvs': Detail Routing LVS Report
+Generated on Wed Jan 4 02:22:11 2023
+  
+----------------------------------------------------------------------------------------------
+|                           LVS detail routing verification report                           |
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+|                   | Total nets | Open nets | Open | Float | Tail | Loop | Pillar | Warning | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| Signal nets       | 3011       | 31        | 31   | 0     | 0    | 0    | -      | -       | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| Logic nets        | 2          | 0         | 0    | 0     | 0    | 0    | -      | -       | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| Shield nets       | 0          | 0         | 0    | 0     | 0    | 0    | -      | -       | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| Power/Ground nets | -          | -         | -    | -     | -    | -    | -      | -       | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| DontRoute nets    | 0          | 0         | 0    | 0     | 0    | 0    | -      | -       | 
+----------------------------------------------------------------------------------------------
+
+  
+-----------------------------------------------
+| LVS open distance distribution (nanometers) |
+|--------+--------------+-------+-------------|
+|        | Total: 80.00 | 0.00  | 80.00       | 
+|--------+--------------+-------+-------------|
+| % open | 100          | 96.77 | 3.23        | 
+|--------+--------------+-------+-------------|
+| # open | 31           | 30    | 1           | 
+-----------------------------------------------
+
+info UI33: performed LVS verification for 0 sec (CPU time: 0 sec; MEM: RSS - 318M, CVMEM - 1691M, PVMEM - 1870M, PRSS - 318M)
+info UI30: performing final routing on partition float_mult (started at Wed Jan 4 02:22:11 2023)
+Start Final Routing in simple DRC mode on 1 cpus
+
+-----------------------------------
+|         Nets statistics         |
+|-------------------+------+------|
+|                   | Nets | Pins | 
+|-------------------+------+------|
+| Total (partition) | 3013 | 9985 | 
+|-------------------+------+------|
+| To be routed :    | 3011 | 9985 | 
+|-------------------+------+------|
+|   - signal        | 3011 | 9985 | 
+|-------------------+------+------|
+|   - tieoff        | 0    | 0    | 
+|-------------------+------+------|
+| To be skipped :   | 2    | 0    | 
+|-------------------+------+------|
+|   - less 2 pins   | 2    | 0    | 
+-----------------------------------
+
+Check opens ...
+Longest open in net 'A[10]' of length=1500
+Total opens=31 (nets=31)
+
+Check routing ...
+Corrected 0 objects, removed 5 objects
+
+Check opens ...
+Longest open in net 'A[10]' of length=1500
+Total opens=31 (nets=31)
+
+Initialization finished
+Cpu time: 00:00:00, Elapsed time: 00:00:01, Memory: 1.7G
+
+
+Check violations (1 windows)...
+Total viols=0
+Cpu time: 00:00:00, Elapsed time: 00:00:00, Memory: 1.7G
+
+Run(1) 'Objective: fix opens'   ...
+Result=end(begin): opens=0(31), viols=0(0)
+Cpu time: 00:00:01, Elapsed time: 00:00:02, Memory: 1.7G
+
+Finish Final Routing ...
+Number of touched nets: 31
+Number of changed nets: 31
+
+info UI33: performed final routing for 2 sec (CPU time: 1 sec; MEM: RSS - 324M, CVMEM - 1691M, PVMEM - 1870M, PRSS - 324M)
+LVS cleaning progress:
+Preparing nets ...
+Processing nets: 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
+
+Report 'report_lvs': Detail Routing LVS Report
+Generated on Wed Jan 4 02:22:13 2023
+  
+----------------------------------------------------------------------------------------------
+|                           LVS detail routing verification report                           |
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+|                   | Total nets | Open nets | Open | Float | Tail | Loop | Pillar | Warning | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| Signal nets       | 3011       | -         | -    | 0     | 0    | -    | -      | -       | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| Logic nets        | 2          | -         | -    | 0     | 0    | -    | -      | -       | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| Shield nets       | 0          | -         | -    | 0     | 0    | -    | -      | -       | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| Power/Ground nets | -          | -         | -    | -     | -    | -    | -      | -       | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| DontRoute nets    | 0          | -         | -    | 0     | 0    | -    | -      | -       | 
+----------------------------------------------------------------------------------------------
+
+info UI33: performed LVS cleaning for 0 sec (CPU time: 0 sec; MEM: RSS - 324M, CVMEM - 1691M, PVMEM - 1870M, PRSS - 324M)
+info UI30: performing final routing on partition float_mult (started at Wed Jan 4 02:22:13 2023)
+Start Final Routing in simple DRC mode on 1 cpus
+  with 'number' acceptance 
+
+-----------------------------------
+|         Nets statistics         |
+|-------------------+------+------|
+|                   | Nets | Pins | 
+|-------------------+------+------|
+| Total (partition) | 3013 | 9985 | 
+|-------------------+------+------|
+| To be routed :    | 3011 | 9985 | 
+|-------------------+------+------|
+|   - signal        | 3011 | 9985 | 
+|-------------------+------+------|
+|   - tieoff        | 0    | 0    | 
+|-------------------+------+------|
+| To be skipped :   | 2    | 0    | 
+|-------------------+------+------|
+|   - less 2 pins   | 2    | 0    | 
+-----------------------------------
+
+Check opens ...
+Total opens=0 (nets=0)
+
+Check routing ...
+
+Initialization finished
+Cpu time: 00:00:00, Elapsed time: 00:00:01, Memory: 1.7G
+
+
+Check violations (1 windows)...
+Total viols=0
+Cpu time: 00:00:01, Elapsed time: 00:00:00, Memory: 1.7G
+
+Finish Final Routing ...
+info UI33: performed final routing for 1 sec (CPU time: 0 sec; MEM: RSS - 320M, CVMEM - 1691M, PVMEM - 1870M, PRSS - 324M)
+LVS verification progress:
+Preparing nets ...
+Processing nets: 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
+
+Report 'report_lvs': Detail Routing LVS Report
+Generated on Wed Jan 4 02:22:15 2023
+  
+----------------------------------------------------------------------------------------------
+|                           LVS detail routing verification report                           |
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+|                   | Total nets | Open nets | Open | Float | Tail | Loop | Pillar | Warning | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| Signal nets       | 3011       | 0         | 0    | 0     | 0    | 0    | -      | -       | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| Logic nets        | 2          | 0         | 0    | 0     | 0    | 0    | -      | -       | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| Shield nets       | 0          | 0         | 0    | 0     | 0    | 0    | -      | -       | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| Power/Ground nets | -          | -         | -    | -     | -    | -    | -      | -       | 
+|-------------------+------------+-----------+------+-------+------+------+--------+---------|
+| DontRoute nets    | 0          | 0         | 0    | 0     | 0    | 0    | -      | -       | 
+----------------------------------------------------------------------------------------------
+
+info UI33: performed LVS verification for 0 sec (CPU time: 0 sec; MEM: RSS - 320M, CVMEM - 1691M, PVMEM - 1870M, PRSS - 324M)
+RRT info: Stage 'open' completed successfully
+RRT info: User event handler 'after open' completed successfully
+RRT info: Start stage 'drc'
+RRT info: User event handler 'before drc' completed successfully
+RRT warning: User-specified value 'high' for option 'drc_effort' overrides previous ''
+RRT warning: User-specified value 'number' for option 'drc_accept' overrides previous ''
+info UI30: performing final routing on partition float_mult (started at Wed Jan 4 02:22:15 2023)
+Start Final Routing in full DRC mode on 1 cpus
+  with 'number' acceptance 
+  with expensive effort
+
+-----------------------------------
+|         Nets statistics         |
+|-------------------+------+------|
+|                   | Nets | Pins | 
+|-------------------+------+------|
+| Total (partition) | 3013 | 9985 | 
+|-------------------+------+------|
+| To be routed :    | 3011 | 9985 | 
+|-------------------+------+------|
+|   - signal        | 3011 | 9985 | 
+|-------------------+------+------|
+|   - tieoff        | 0    | 0    | 
+|-------------------+------+------|
+| To be skipped :   | 2    | 0    | 
+|-------------------+------+------|
+|   - less 2 pins   | 2    | 0    | 
+-----------------------------------
+
+Check opens ...
+Total opens=0 (nets=0)
+
+Check routing ...
+
+Initialization finished
+Cpu time: 00:00:00, Elapsed time: 00:00:01, Memory: 1.7G
+
+
+Check violations (1 windows)...
+Total viols=0
+Cpu time: 00:00:00, Elapsed time: 00:00:01, Memory: 1.7G
+
+Finish Final Routing ...
+info UI33: performed final routing for 1 sec (CPU time: 0 sec; MEM: RSS - 322M, CVMEM - 1691M, PVMEM - 1870M, PRSS - 324M)
+info DRC201: Only violations caused by detail_route shapes are being checked.
+DRC verification progress:
+Processing metal1: 20% 50% 70% 100% 
+Processing metal2: 30% 60% 100% 
+Processing metal3: 20% 50% 70% 100% 
+Processing metal4: 50% 100% 
+Processing metal5: 50% 100% 
+Processing metal6: 50% 100% 
+Processing metal7: 100% 
+Processing metal8: 100% 
+Processing metal9: 100% 
+Processing metal10: 100% 
+
+Report 'tdro_drc': Report Drc
+Generated on Wed Jan 4 02:22:17 2023
+  
+----------------------------------------------------------------------------------------------------------------------------
+|                                                 DRC verification report                                                  |
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|                       | TOTAL | metal1 | metal2 | metal3 | metal4 | metal5 | metal6 | metal7 | metal8 | metal9 | metal10 | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Grid                  | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Width                 | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Minimum samenet space | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Fat samenet space     | 0     | -      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Minimum diffnet space | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Fat diffnet space     | 0     | -      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Diffnet short         | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Prohibited routing    | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|                       | TOTAL | CO     | via1   | via2   | via3   | via4   | via5   | via6   | via7   | via8   | via9    | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Grid                  | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Size                  | 0     | -      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Minimum space         | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+----------------------------------------------------------------------------------------------------------------------------
+
+info UI33: performed DRC verification for 1 sec (CPU time: 0 sec; MEM: RSS - 322M, CVMEM - 1691M, PVMEM - 1870M, PRSS - 324M)
+
+RRT info: Number of remaining shorts: 0
+RRT info: Number of remaining DRCs  : 0
+
+RRT info: Stage 'drc' completed successfully
+RRT info: User event handler 'after drc' completed successfully
+RRT info: Start stage 'dp'
+RRT info: User event handler 'before dp' completed successfully
+RRT info: Stage 'dp' skipped
+RRT info: Start stage 'dvia'
+RRT info: User event handler 'before dvia' completed successfully
+RRT warning: Configured value 'dfm' for option 'dvia_mode' overrides previous 'timing'
+DFM via replacement progress:
+Processing via1: 10% 20% 40% 50% 70% 80% 100% 
+Processing via2: 20% 40% 60% 80% 100% 
+Processing via3: 10% 20% 40% 50% 70% 80% 100% 
+Processing via4: 20% 50% 70% 100% 
+Processing via5: 20% 50% 70% 100% 
+Processing via6: 20% 50% 70% 100% 
+Processing via7: 50% 100% 
+
+Incremental timing update of 30 nets
+
+Report 'report_dfm_rvi': DFM via replacement report
+Generated on Wed Jan 4 02:22:35 2023
+  
+----------------------------------------------------------------------------------------------
+|                                 DFM via replacement report                                 |
+|-------------------+-------+-------+-------+------+------+------+------+------+------+------|
+|                   | Total | via1  | via2  | via3 | via4 | via5 | via6 | via7 | via8 | via9 | 
+|-------------------+-------+-------+-------+------+------+------+------+------+------+------|
+| Checked vias      | 30964 | 10109 | 13104 | 4671 | 1774 | 555  | 419  | 332  | 0    | 0    | 
+|-------------------+-------+-------+-------+------+------+------+------+------+------+------|
+| Replaced vias     | 33    | 29    | 2     | 1    | 1    | 0    | 0    | 0    | 0    | 0    | 
+|-------------------+-------+-------+-------+------+------+------+------+------+------+------|
+| Replaced vias (%) | 0.11  | 0.29  | 0.02  | 0.02 | 0.06 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 
+----------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------
+|                                        Via statistics in the design                                        |
+|----------------------------+--------+-------+-------+-------+-------+-------+--------+-------+------+------|
+|                            | TOTAL  | via1  | via2  | via3  | via4  | via5  | via6   | via7  | via8 | via9 | 
+|----------------------------+--------+-------+-------+-------+-------+-------+--------+-------+------+------|
+| Number of vias  (thousand) | 30.68  | 10.09 | 13.03 | 4.52  | 1.75  | 0.55  | 0.41   | 0.33  | 0.00 | 0.00 | 
+|----------------------------+--------+-------+-------+-------+-------+-------+--------+-------+------+------|
+| Vias (%)                   | 100.00 | 32.88 | 42.47 | 14.74 | 5.70  | 1.78  | 1.35   | 1.08  | 0.00 | 0.00 | 
+|----------------------------+--------+-------+-------+-------+-------+-------+--------+-------+------+------|
+| Single vias (%)            | 14.47  | 19.01 | 13.80 | 6.34  | 12.86 | 35.10 | 0.00   | 6.06  | 0    | 0    | 
+|----------------------------+--------+-------+-------+-------+-------+-------+--------+-------+------+------|
+| Double vias (%)            | 85.53  | 80.99 | 86.20 | 93.66 | 87.14 | 64.90 | 100.00 | 93.94 | 0    | 0    | 
+|----------------------------+--------+-------+-------+-------+-------+-------+--------+-------+------+------|
+| Multi vias (%)             | 0.00   | 0.00  | 0.00  | 0.00  | 0.00  | 0.00  | 0.00   | 0.00  | 0    | 0    | 
+--------------------------------------------------------------------------------------------------------------
+
+info UI33: performed Via replacement for 17 sec (CPU time: 5 sec; MEM: RSS - 321M, CVMEM - 1691M, PVMEM - 1870M, PRSS - 324M)
+RRT warning: User-specified value 'high' for option 'drc_effort' overrides previous ''
+RRT warning: User-specified value 'number' for option 'drc_accept' overrides previous ''
+RRT warning: User-specified value 'number_improved' for option 'drc_accept' overrides previous 'number'
+info UI30: performing final routing on partition float_mult (started at Wed Jan 4 02:22:35 2023)
+Start Final Routing in full DRC mode on 1 cpus
+  with 'number' acceptance 
+  with expensive effort
+
+-----------------------------------
+|         Nets statistics         |
+|-------------------+------+------|
+|                   | Nets | Pins | 
+|-------------------+------+------|
+| Total (partition) | 3013 | 9985 | 
+|-------------------+------+------|
+| To be routed :    | 3011 | 9985 | 
+|-------------------+------+------|
+|   - signal        | 3011 | 9985 | 
+|-------------------+------+------|
+|   - tieoff        | 0    | 0    | 
+|-------------------+------+------|
+| To be skipped :   | 2    | 0    | 
+|-------------------+------+------|
+|   - less 2 pins   | 2    | 0    | 
+-----------------------------------
+
+Check opens ...
+Total opens=0 (nets=0)
+
+Check routing ...
+
+Initialization finished
+Cpu time: 00:00:00, Elapsed time: 00:00:00, Memory: 1.7G
+
+
+Check violations (1 windows)...
+Total viols=0
+Cpu time: 00:00:01, Elapsed time: 00:00:01, Memory: 1.7G
+
+Finish Final Routing ...
+info UI33: performed final routing for 1 sec (CPU time: 0 sec; MEM: RSS - 321M, CVMEM - 1691M, PVMEM - 1870M, PRSS - 324M)
+info DRC201: Only violations caused by detail_route shapes are being checked.
+DRC verification progress:
+Processing metal1: 20% 50% 70% 100% 
+Processing metal2: 30% 60% 100% 
+Processing metal3: 20% 50% 70% 100% 
+Processing metal4: 50% 100% 
+Processing metal5: 50% 100% 
+Processing metal6: 50% 100% 
+Processing metal7: 100% 
+Processing metal8: 100% 
+Processing metal9: 100% 
+Processing metal10: 100% 
+
+Report 'tdro_drc': Report Drc
+Generated on Wed Jan 4 02:22:38 2023
+  
+----------------------------------------------------------------------------------------------------------------------------
+|                                                 DRC verification report                                                  |
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|                       | TOTAL | metal1 | metal2 | metal3 | metal4 | metal5 | metal6 | metal7 | metal8 | metal9 | metal10 | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Grid                  | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Width                 | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Minimum samenet space | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Fat samenet space     | 0     | -      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Minimum diffnet space | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Fat diffnet space     | 0     | -      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Diffnet short         | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Prohibited routing    | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|                       | TOTAL | CO     | via1   | via2   | via3   | via4   | via5   | via6   | via7   | via8   | via9    | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Grid                  | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Size                  | 0     | -      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Minimum space         | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+----------------------------------------------------------------------------------------------------------------------------
+
+info UI33: performed DRC verification for 1 sec (CPU time: 0 sec; MEM: RSS - 321M, CVMEM - 1691M, PVMEM - 1870M, PRSS - 324M)
+
+RRT info: Number of remaining shorts: 0
+RRT info: Number of remaining DRCs  : 0
+
+RRT info: Stage 'dvia' completed successfully
+RRT info: User event handler 'after dvia' completed successfully
+Nitro-SoC> # config_shell -ignore_errors false
+Nitro-SoC> # config_application -cpus 1
+Nitro-SoC> # config_timing -cpus 2
+warning The design is already timed. New CPU settings will be effective from next non-incremental timing analysis
+Nitro-SoC> # config_default_value -command route_global -argument check -value  technology libraries routing 
+Nitro-SoC> # config_default_value -command route_global -argument messages -value normal
+Nitro-SoC> # config_default_value -command route_track -argument check -value  technology libraries routing 
+Nitro-SoC> # config_default_value -command route_track -argument messages -value normal
+Nitro-SoC> # config_default_value -command route_final -argument check -value  technology libraries routing 
+Nitro-SoC> # config_default_value -command route_final -argument messages -value normal
+Nitro-SoC> # config_default_value -command route_si_repair -argument check -value  
+Nitro-SoC> # config_default_value -command route_si_repair -argument messages -value normal
+Nitro-SoC> # config_route_final -opt_strict_drc false
+Nitro-SoC> # fk_msg -set_prompt NRF
+Nitro-SoC> # new_config_flow -name flow_msg_prompt -quiet
+Nitro-SoC> # new_config_flow -name flow_msg_prompt -value NRF -descr Flow prefix - will appear in all messages printed by flow_msg -quiet
+Nitro-SoC> # config_shell -level normal
+Nitro-SoC> # fk_msg -set_verbosity_filter info
+Nitro-SoC> # new_config_flow -name verbose_level
+Nitro-SoC> # new_config_flow -name verbose_level -value info -quiet
+Nitro-SoC> # config_shell -echo false
+warning The design is already timed. New CPU settings will be effective from next non-incremental timing analysis
+info DRC201: Only violations caused by detail_route shapes are being checked.
+DRC verification progress:
+Processing metal1: 20% 50% 70% 100% 
+Processing metal2: 30% 60% 100% 
+Processing metal3: 20% 50% 70% 100% 
+Processing metal4: 50% 100% 
+Processing metal5: 50% 100% 
+Processing metal6: 50% 100% 
+Processing metal7: 100% 
+Processing metal8: 100% 
+Processing metal9: 100% 
+Processing metal10: 100% 
+
+Report 'report_drc': Report Drc
+Generated on Wed Jan 4 02:22:40 2023
+  
+----------------------------------------------------------------------------------------------------------------------------
+|                                                 DRC verification report                                                  |
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|                       | TOTAL | metal1 | metal2 | metal3 | metal4 | metal5 | metal6 | metal7 | metal8 | metal9 | metal10 | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Grid                  | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Width                 | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Minimum samenet space | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Fat samenet space     | 0     | -      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Minimum diffnet space | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Fat diffnet space     | 0     | -      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Diffnet short         | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Prohibited routing    | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|                       | TOTAL | CO     | via1   | via2   | via3   | via4   | via5   | via6   | via7   | via8   | via9    | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Grid                  | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Size                  | 0     | -      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+|-----------------------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Minimum space         | 0     | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0       | 
+----------------------------------------------------------------------------------------------------------------------------
+
+info UI33: performed DRC verification for 1 sec (CPU time: 0 sec; MEM: RSS - 322M, CVMEM - 1691M, PVMEM - 1870M)
+info UI36: Writing Verilog file 'output/float_mult.v.gz'.
+info UI33: performed verilog write for 0 sec (CPU time: 0 sec; MEM: RSS - 322M, CVMEM - 1691M, PVMEM - 1870M)
+info UI36: Writing DEF file 'output/float_mult.def.gz'.
+info UI33: performed DEF write for 1 sec (CPU time: 0 sec; MEM: RSS - 322M, CVMEM - 1691M, PVMEM - 1870M)
+Annotate antenna information on 100 pins from 100 nets
+Antenna verification progress:
+Preparing nets ...
+Processing nets: 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 
+NRF warning: No GDS layer-map file specified in flow variable MGC_gds_layer_map_file.  GDS will not be written
+warning UI4: Only 1 cores are available; the -cpus argument was set to 4.
+info UI36: Writing folded database file '/home/vlsi/Desktop/Lab5_2022/work/dbs/export.db'.
+info Writing design...
+info Writing timer configuration...
+info Writing SI configuration...
+info Writing Parasitic Models and Extractor configuration...
+info Writing Scan data
+info Writing Trailing data
+info Writing partitions...
+info UI33: performed database save for 0 sec (CPU time: 0 sec; MEM: RSS - 323M, CVMEM - 1691M, PVMEM - 1870M)
+NRF info: Reports started Wed Jan 04 02:22:42 EET 2023
+Report 'application': Application Report
+Generated on Wed Jan 4 02:22:42 2023
+  
+-------------------------------------------------------------------------------------------
+|                      Application CPU time and memory usage status                       |
+|-----------------------------------------------------------------------------------------|
+| Total memory (MBytes)    | 1691                                                         | 
+| Heap memory (MBytes)     | 1184                                                         | 
+| Resident memory (MBytes) | 323                                                          | 
+| CPU time (minutes)       | 7.22                                                         | 
+| Elapsed time (minutes)   | 33.98                                                        | 
+| Load Averages            | 8.85 7.22 6.19                                               | 
+| Build                    | 1.68700.2.290                                                | 
+| Version                  | version 2019.1.R2 1.68700.2.290 Fri Nov 29 21:06:00 PST 2019 | 
+| Calibre Version          | Calibre library v2019.2_14.13                                | 
+| Computer Name            | localhost.localdomain                                        | 
+| Cores                    | 1                                                            | 
+| Frequency (GHz)          | 2.7                                                          | 
+| Execution mode           | 64                                                           | 
+| Process id               | 17933                                                        | 
+| Interaction mode         | window                                                       | 
+| Log file                 | nitro.log                                                    | 
+| Journal file             | nitro.jou                                                    | 
+| Working directory        | /home/vlsi/Desktop/Lab5_2022/work/.nitro_tmp_localhost.local | 
+|                          domain_17933                                                 | 
+-------------------------------------------------------------------------------------------
+
+NRF info: Writing Timing Summary Reports Wed Jan 04 02:22:42 EET 2023
+Report 'report_mcmm_variation': MCMM Variation
+Generated on Wed Jan 4 02:22:42 2023
+  
+----------------------------------------------------------
+| MCMM variability report for design 'float_mult' (pico) |
+|--------------------------------------------------------|
+| MODE CORNER WNS TNS #Endpts WHS THS #Endpts            | 
+----------------------------------------------------------
+
+info UI33: performed report_mcmm_variation for 0 sec (CPU time: 0 sec; MEM: RSS - 323M, CVMEM - 1691M, PVMEM - 1870M)
+Report 'report_path_group': Path Group
+Generated on Wed Jan 4 02:22:42 2023
+  
+-------------------------------------------------------------------------------------------
+|                               PATH GROUPS (SETUP) (pico)                                |
+|-----------------------------------------------------------------------------------------|
+| QOR Weight Margin TNS Range Endpoints Violating Endpoints Violating Endpoints % WNS TNS | 
+-------------------------------------------------------------------------------------------
+
+info UI33: performed report_path_group for 0 sec (CPU time: 0 sec; MEM: RSS - 323M, CVMEM - 1691M, PVMEM - 1870M)
+SLACK HISTOGRAM
+---------------
+Select : SELECT_NONE
+
+info UI33: performed report_slack_histogram for 0 sec (CPU time: 0 sec; MEM: RSS - 323M, CVMEM - 1691M, PVMEM - 1870M)
+Report 'report_path_group': Path Group
+Generated on Wed Jan 4 02:22:42 2023
+  
+-------------------------------------------------------------------------------------------
+|                                PATH GROUPS (HOLD) (pico)                                |
+|-----------------------------------------------------------------------------------------|
+| QOR Weight Margin TNS Range Endpoints Violating Endpoints Violating Endpoints % WNS TNS | 
+-------------------------------------------------------------------------------------------
+
+info UI33: performed report_path_group for 0 sec (CPU time: 0 sec; MEM: RSS - 323M, CVMEM - 1691M, PVMEM - 1870M)
+SLACK HISTOGRAM
+---------------
+Select : SELECT_NONE
+
+info UI33: performed report_slack_histogram for 0 sec (CPU time: 0 sec; MEM: RSS - 323M, CVMEM - 1691M, PVMEM - 1870M)
+NRF info: Writing Detailed Setup Timing Path Reports Wed Jan 04 02:22:42 EET 2023
+NRF info: Writing Detailed Hold Timing Path Reports Wed Jan 04 02:22:42 EET 2023
+NRF info: Writing Timing Drc Reports Wed Jan 04 02:22:42 EET 2023
+NRF info: Writing Physical Reports Wed Jan 04 02:22:42 EET 2023
+NRF info: Writing Power Reports Wed Jan 04 02:22:45 EET 2023
+Report 'report_power_summary': Power
+Generated on Wed Jan 4 02:22:45 2023
+  
+-------------------------------------------------------------------------
+|                       Power Summary (nanowatt)                        |
+|-----------------------------------------------------------------------|
+| Component          Internal Switching  Dynamic Leakage  Total Percent | 
+|-----------------------------------------------------------------------|
+| Entire design             0         0        0   87564  87564  100.00 | 
+|                                                                       | 
+| Power of all cells        0         0        0   87564  87564  100.00 | 
+|   Clock cells             0         0        0       0      0    0.00 | 
+|   Data cells              0         0        0   87564  87564  100.00 | 
+|     Combinational         0         0        0   79263  79263   90.52 | 
+|     Registers             0         0        0    8301   8301    9.48 | 
+|     Macros                0         0        0       0      0    0.00 | 
+|     Physical              0         0        0       0      0    0.00 | 
+|                                                                       | 
+| Power of all nets                   0        0              0    0.00 | 
+|   Clock nets                        0        0              0    0.00 | 
+|     Clock leaves                    0        0              0    0.00 | 
+|   Data nets                         0        0              0    0.00 | 
+-------------------------------------------------------------------------
+
+info UI33: performed report_power_summary for 0 sec (CPU time: 0 sec; MEM: RSS - 322M, CVMEM - 1691M, PVMEM - 1870M)
+------------------------------------------------------------------------------------------------------------------------------------------------
+| Corner     Enable Setup Hold  CRPR       SI    Power            EM   Voltage Drop DRC        Process                    RC Temp Scale Factor | 
+|----------------------------------------------------------------------------------------------------------------------------------------------|
+| slow       false  true  false setup_hold none  leakage          none none         trans, cap new_rcmaster_techFreePDK45 25      1            | 
+| fast       false  false false setup_hold none  leakage          none none         trans, cap new_rcmaster_techFreePDK45 25      1            | 
+| corner_0_0 true   true  true  setup_hold delay leakage, dynamic none none         trans, cap new_rcmaster_techFreePDK45 25      1            | 
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+NRF info: Reports completed Wed Jan 04 02:22:45 EET 2023
+NRF info: Because Nitro is not being exited, supply nets are not propagated and power netlist is not output by default.
+
+info UI33: performed source of flow_scripts/4_export.tcl for 40 sec (CPU time: 15 sec; MEM: RSS - 322M, CVMEM - 1691M, PVMEM - 1870M)
+Nitro-SoC> source /home/vlsi/Desktop/Lab5_2022/save_design.sh 
+warning UI4: Only 1 cores are available; the -cpus argument was set to 4.
+info UI36: Writing folded database file '/home/vlsi/Desktop/Lab5_2022/work/db/final.db'.
+info Writing libraries...
+info Writing design...
+info Writing timer configuration...
+info Writing SI configuration...
+info Writing Parasitic Models and Extractor configuration...
+info Writing Scan data
+info Writing Trailing data
+info Writing partitions...
+info UI33: performed database save for 0 sec (CPU time: 0 sec; MEM: RSS - 322M, CVMEM - 1691M, PVMEM - 1870M)
+info UI33: performed sdf write for 0 sec (CPU time: 0 sec; MEM: RSS - 322M, CVMEM - 1691M, PVMEM - 1870M)
+info UI36: Writing Verilog file 'multiplier.route.v'.
+info UI33: performed verilog write for 0 sec (CPU time: 0 sec; MEM: RSS - 322M, CVMEM - 1691M, PVMEM - 1870M)
+info Removing existing filler cells.
+info UI49: removed 3565 core filler cells
+info UI49: inserted 3565 core filler cells
+info DUM207: place_filler_cells: re-initialized cell-density map for partition float_mult old bin-size 8x8 rows new bin-size 8x8 rows.
+info DUM203: place_filler_cells: created cell-density map for partition float_mult with max-util 100 and bin-size 8x8 rows.
+info UI33: performed core filler cells placement for 0 sec (CPU time: 0 sec; MEM: RSS - 322M, CVMEM - 1691M, PVMEM - 1870M)
+info Top port for supply net 'VDD' on partition 'float_mult' already exists.
+warning Creating top port for supply net 'VSS' on partition 'float_mult' as it is a supply net within its power domain.
+warning UI1253: Write verilog and exit Nitro session immediately. write_db is disabled.
+info UI36: Writing Verilog file 'output/float_mult.power.v.gz'.
+info UI33: performed verilog write for 0 sec (CPU time: 0 sec; MEM: RSS - 322M, CVMEM - 1691M, PVMEM - 1870M)
+info UI36: Writing GDSII file 'float_mult.gds'.
+info STREAM4: Writing stream output with resolution 10.
+warning STREAM5: No layer mapping defined for table -'default' layer - metal2 type - text 
+warning STREAM5: No layer mapping defined for table -'default' layer - metal3 type - text 
+info UI33: performed gds stream write for 0 sec (CPU time: 0 sec; MEM: RSS - 322M, CVMEM - 1691M, PVMEM - 1870M)
+info UI33: performed source of /home/vlsi/Desktop/Lab5_2022/save_design.sh for 2 sec (CPU time: 1 sec; MEM: RSS - 322M, CVMEM - 1691M, PVMEM - 1870M)
+error UI158: Can't read or write to the terminal.

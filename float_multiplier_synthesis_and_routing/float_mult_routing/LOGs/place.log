@@ -1,0 +1,799 @@
+
+#####################################################
+## Nitro Reference Flow : Place Stage              ##
+## Version : 2019.1.R2                             ##
+## Loads design from import stage, prepares for    ##
+## and then runs run_place_timing                  ##
+#####################################################
+
+info UI33: performed source of flow_variables.tcl for 0 sec (CPU time: 0 sec; MEM: RSS - 209M, CVMEM - 1691M, PVMEM - 1870M)
+info UI33: performed source of scr/kit_utils.tcl for 0 sec (CPU time: 0 sec; MEM: RSS - 209M, CVMEM - 1691M, PVMEM - 1870M)
+Loading utility util::nrf_utils
+Loading utility util::save_vars
+Loading utility util::db_utils
+warning UI4: Only 1 cores are available; the -cpus argument was set to 2.
+NRF info: Checking flow variables for place
+NRF warning: Variable 'MGC_customNdrFile' is no longer used. Please review/update to latest flow_variables.tcl
+NRF info: Verifying user input for place
+Storing TCL variables as db root property
+info CHK10: Checking technology...
+info CHK10: Checking libraries...
+info CHK10: Checking design...
+info CHK10: Checking partition...
+info CHK10: Checking cells...
+info CHK10: Checking nets...
+info CHK10: Checking pins...
+info CHK10: Checking placement...
+info Found 2946 movable and 0 fixed cells in partition float_mult
+info DP136: Found 0 moveable cells and 0 fixed cells to be illegal.
+info CHK10: Checking floorplan...
+-------------------------------------------------------------------------------------------
+|                                       Pin Errors                                        |
+|----------------------+-------+---------+------------------------------------------------|
+| Name                 | Count | Status  | Description                                    | 
+|----------------------+-------+---------+------------------------------------------------|
+| not_connected        | 96    | Warning | Pin is not connected to any net                | 
+|----------------------+-------+---------+------------------------------------------------|
+| pg_not_connected     | 0     | Passed  | PG core pin is not connected to any supply net | 
+|----------------------+-------+---------+------------------------------------------------|
+| no_leaf_pin_geometry | 0     | Passed  | Leaf pin doesn't have geometry or not placed.  | 
+-------------------------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------------------------------------------
+|                                               Floorplan Errors                                                |
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| Name                      | Count | Status  | Description                                                     | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| no_tracks                 | 0     | Passed  | No preferred direction routing tracks on the layer.             | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| track_step_too_small      | 0     | Passed  | Step of routing tracks is smaller then via-wire spacing.        | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| track_step_too_big        | 0     | Passed  | Step of routing tracks is bigger then via-wire spacing.         | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| diff_track_step           | 0     | Passed  | Different step of preferred direction routing tracks.           | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| tracks_not_cover_pin      | 0     | Passed  | Routing tracks do not cover pin.                                | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| tracks_not_masked         | 0     | Passed  | Routing tracks shall have mask on masked layer.                 | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| tracks_incorrectly_masked | 0     | Passed  | Routing tracks masks shall interlace.                           | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| no_macro_pin_access       | 0     | Passed  | Macro pin doesn't have routing access.                          | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| macro_pin_blocked         | 0     | Passed  | Macro pin may be blocked by nearby objects.                     | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| no_port_access            | 0     | Passed  | Partition port doesn't have routing access.                     | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| not_aligned_pin           | 0     | Passed  | Macro/top pin is not aligned to manufacturing grid.             | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| offgrid_core_access       | 82    | Warning | Library core pin has only offgird routing access.               | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| no_core_access            | 0     | Passed  | Library core pin doesn't have routing access.                   | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| no_port_geometry          | 0     | Passed  | Port doesn't have geometry or not placed.                       | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| port_outside_partition    | 0     | Passed  | Port is placed outside partition.                               | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| port_min_area             | 0     | Passed  | Port has insufficient minimum area.                             | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| port_short                | 0     | Passed  | Port has intersection with other one.                           | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| port_spacing              | 0     | Passed  | Port has insufficient spacing with other one.                   | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| port_above_max_layer      | 0     | Passed  | Port is above of max layer.                                     | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| region_overlaps           | 0     | Passed  | Region overlaps other region.                                   | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| cell_outside_region       | 0     | Passed  | Cell outside of region with member_hard requirement. Will       | 
+|                           |       |         | cause pin assignment to fail.                                   | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| cell_inside_region        | 0     | Passed  | Foreign cell is inside region with non_member_hard requirement. | 
+|                           |       |         | Will cause pin assignment to fail                               | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| region_off_mfg_grid       | 0     | Passed  | Region is not on manufacturing grid                             | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| region_off_fp_grid        | 0     | Passed  | Region is not on floorplan grid.                                | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| excessive_region_blockage | 0     | Passed  | Placement blockages cover more than 70% of region. Run          | 
+|                           |       |         | report_region_utilization to verify placeability.               | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| macro_off_mfg             | 0     | Passed  | Macro off manufacturing grid.                                   | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| missing_cell_rows         | 0     | Passed  | No cell rows are found in the design. Placer will fail          | 
+|                           |       |         | without rows.                                                   | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| partition_overlap         | 0     | Passed  | Partition overlaps other partition.                             | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| partition_off_fp_grid     | 0     | Passed  | Partition is not on floorplan grid.                             | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| endcap_alignment          | 0     | Passed  | Cell is not aligned with the cell row.                          | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| row_without_endcaps       | 120   | Warning | Row has no endcap cells at ends.                                | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| no_pin_mask               | 0     | Passed  | Port shape does not have a mask on a masked layer.              | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| narrow_pin_misalignment   | 0     | Passed  | Narrow port shape mask, on masked layer, doesn't match          | 
+|                           |       |         | track mask.                                                     | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| wide_pin_misalignment     | 0     | Passed  | Wide port shape mask, on masked layer, should be on alternate   | 
+|                           |       |         | mask to reduce routing congestion.                              | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| short_placement_width     | 0     | Passed  | The width of the placement rectangle is short.                  | 
+|---------------------------+-------+---------+-----------------------------------------------------------------|
+| object_off_floorplan_grid | 0     | Passed  | Objects are off floorplan grid.                                 | 
+-----------------------------------------------------------------------------------------------------------------
+
+
+info UI33: performed design checks for 0 sec (CPU time: 0 sec; MEM: RSS - 210M, CVMEM - 1691M, PVMEM - 1870M)
+Nitro-SoC> # config_shell -echo false
+NRF info: Saving design MCMM scenarios
+-------------------------------------------
+| Mode     | Enable | System | Corners    | 
+|----------+--------+--------+------------|
+| default  | false  | true   | <all>      | 
+|----------+--------+--------+------------|
+| new_mode | true   | false  | corner_0_0 | 
+-------------------------------------------
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Corner     | Enable | Setup | Hold  | CRPR       | SI   | Power   | EM   | Voltage Drop | DRC        | Process                    | RC Temp | Scale Factor | 
+|------------+--------+-------+-------+------------+------+---------+------+--------------+------------+----------------------------+---------+--------------|
+| slow       | false  | true  | false | setup_hold | none | leakage | none | none         | trans, cap | new_rcmaster_techFreePDK45 | 25      | 1            | 
+|------------+--------+-------+-------+------------+------+---------+------+--------------+------------+----------------------------+---------+--------------|
+| fast       | false  | false | true  | setup_hold | none | leakage | none | none         | trans, cap | new_rcmaster_techFreePDK45 | 25      | 1            | 
+|------------+--------+-------+-------+------------+------+---------+------+--------------+------------+----------------------------+---------+--------------|
+| corner_0_0 | true   | true  | true  | setup_hold | none | leakage | none | none         | trans, cap | new_rcmaster_techFreePDK45 | 25      | 1            | 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Nitro-SoC> # config_shell -echo false
+NRF info: Configuring MCMM scenarios for place
+NRF info: In place hold corners will be used in clock optimization. Disabling hold corner: corner_0_0
+NRF info: Power effort is low. Enabling corner corner_0_0 for leakage and dynamic power.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Corner     | Enable | Setup | Hold  | CRPR       | SI   | Power            | EM   | Voltage Drop | DRC        | Process                    | RC Temp | Scale Factor | 
+|------------+--------+-------+-------+------------+------+------------------+------+--------------+------------+----------------------------+---------+--------------|
+| slow       | false  | true  | false | setup_hold | none | leakage          | none | none         | trans, cap | new_rcmaster_techFreePDK45 | 25      | 1            | 
+|------------+--------+-------+-------+------------+------+------------------+------+--------------+------------+----------------------------+---------+--------------|
+| fast       | false  | false | false | setup_hold | none | leakage          | none | none         | trans, cap | new_rcmaster_techFreePDK45 | 25      | 1            | 
+|------------+--------+-------+-------+------------+------+------------------+------+--------------+------------+----------------------------+---------+--------------|
+| corner_0_0 | true   | true  | true  | setup_hold | none | leakage, dynamic | none | none         | trans, cap | new_rcmaster_techFreePDK45 | 25      | 1            | 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+-------------------------------------------
+| Mode     | Enable | System | Corners    | 
+|----------+--------+--------+------------|
+| default  | false  | true   | <all>      | 
+|----------+--------+--------+------------|
+| new_mode | true   | false  | corner_0_0 | 
+-------------------------------------------
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Corner     | Enable | Setup | Hold  | CRPR       | SI   | Power            | EM   | Voltage Drop | DRC        | Process                    | RC Temp | Scale Factor | 
+|------------+--------+-------+-------+------------+------+------------------+------+--------------+------------+----------------------------+---------+--------------|
+| slow       | false  | true  | false | setup_hold | none | leakage          | none | none         | trans, cap | new_rcmaster_techFreePDK45 | 25      | 1            | 
+|------------+--------+-------+-------+------------+------+------------------+------+--------------+------------+----------------------------+---------+--------------|
+| fast       | false  | false | false | setup_hold | none | leakage          | none | none         | trans, cap | new_rcmaster_techFreePDK45 | 25      | 1            | 
+|------------+--------+-------+-------+------------+------+------------------+------+--------------+------------+----------------------------+---------+--------------|
+| corner_0_0 | true   | true  | true  | setup_hold | none | leakage, dynamic | none | none         | trans, cap | new_rcmaster_techFreePDK45 | 25      | 1            | 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Nitro-SoC> # config_shell -echo false
+info UI34: no objects were found for '*'
+Nitro-SoC> # config_shell -echo false
+NRF info: Configuring target libraries for place
+NRF info: There are no user defined dont_use cells
+Nitro-SoC> # config_shell -echo false
+NRF info: Configuring routing layers
+info UI49: updated global design rule(s): max_layer
+NRF info: Top and bottom CTS layers are not set. Selecting CTS layers based on RC
+info Use corner 'corner_0_0'
+---------------------------------------------------------------
+|                        Layer ranges                         |
+|---------+-----------+-----------+-------------+-------------|
+|         | Bot metal | Top metal | Bot res     | Top res     | 
+|---------+-----------+-----------+-------------+-------------|
+| Range 1 | metal1    | metal3    | 5.42857e-07 | 3.57143e-07 | 
+|---------+-----------+-----------+-------------+-------------|
+| Range 2 | metal4    | metal6    | 1.5e-07     | 1.5e-07     | 
+|---------+-----------+-----------+-------------+-------------|
+| Range 3 | metal7    | metal8    | 1.875e-08   | 1.875e-08   | 
+|---------+-----------+-----------+-------------+-------------|
+| Range 4 | metal9    | metal10   | 3.75e-09    | 3.75e-09    | 
+---------------------------------------------------------------
+
+
+-----------------------------------------
+|             Clock layers              |
+|--------+------------+--------+--------|
+| Layer  | Direction  | Width  | Pitch  | 
+|--------+------------+--------+--------|
+| metal7 | horizontal | 0.4000 | 0.8000 | 
+|--------+------------+--------+--------|
+| metal8 | vertical   | 0.4000 | 0.8000 | 
+-----------------------------------------
+
+
+Nitro-SoC> # set_crpr_spec -method margin_based
+Nitro-SoC> # config_default_value -command compile_scan -argument cross_chain_optimization -value false
+Nitro-SoC> # config_place_detail -name min_filler_space -value $MGC_min_filler_space
+Nitro-SoC> # fk_msg -type info Reading OCV from scr/ocv.tcl
+Nitro-SoC> # new_config_flow -name flow_msg_prompt -quiet
+Nitro-SoC> # new_config_flow -name verbose_level
+NRF info: Reading OCV from scr/ocv.tcl
+Nitro-SoC> # config_shell -echo false
+info UI33: performed source of scr/ocv.tcl for 0 sec (CPU time: 0 sec; MEM: RSS - 210M, CVMEM - 1691M, PVMEM - 1870M)
+Nitro-SoC> # config_shell -table_lines vertical_lines
+Nitro-SoC> # config_shell -echo false
+-----------------------------------------------------------------------------------------
+| Name                                                        | Value      | Default    | 
+|-------------------------------------------------------------+------------+------------|
+| cpus                                                        | 2          | 4          | 
+| create_io_path_groups                                       | false      | false      | 
+| create_clock_check_path_group                               | false      | false      | 
+| derate_annotated_delays                                     | true       | true       | 
+| disable_auto_clock_gating_checks                            | false      | false      | 
+| disable_case_analysis                                       | false      | false      | 
+| disable_clock_gating_checks                                 | false      | false      | 
+| disable_recovery_removal_checks                             | false      | false      | 
+| disable_seq_case_analysis                                   | true       | true       | 
+| enable_clock_gating_propagate                               | true       | true       | 
+| early_launch_at_borrowing_latches                           | true       | true       | 
+| enable_default_for_cond_arcs                                | true       | true       | 
+| enable_default_input_delays                                 | true       | true       | 
+| enable_non_unate_clock_paths                                | true       | true       | 
+| enable_path_segmentation                                    | true       | true       | 
+| enable_port_clock_leaves                                    | false      | false      | 
+| enable_preset_clear_arcs                                    | false      | false      | 
+| enable_setup_independent_hold_checks                        | true       | true       | 
+| estimated_delays                                            | false      | false      | 
+| ignore_driving_cell_for_annotated_delays                    | true       | true       | 
+| sdf_includes_si_delays                                      | false      | false      | 
+| report_unconstrained_path                                   | false      | false      | 
+| use_si_slew_for_max_transition                              | false      | false      | 
+| zero_rc_delays                                              | false      | false      | 
+| ignore_driving_cell_for_clock_ports                         | false      | false      | 
+| use_annotated_cts_offsets                                   | false      | false      | 
+| enable_skew_estimation                                      | false      | false      | 
+| valid_skew_estimation                                       | false      | false      | 
+| enable_ideal_clock_data_tags                                | true       | true       | 
+| enable_clock_propagation_through_three_state_enable_pins    | false      | false      | 
+| disable_sequential_generation_of_waveform_preserving_clocks | false      | false      | 
+| capacitance_violation_threshold                             | -2         | -2         | 
+| derate_output_delay                                         | false      | false      | 
+| additive_regular_ocv_for_advanced_ocv                       | false      | false      | 
+| clock_source_use_driver_arc                                 | true       | true       | 
+| use_pin_specific_clock_latency_and_propagation              | true       | true       | 
+| sdf_is_derated                                              | false      | false      | 
+| use_worst_constraint_from_all_slew_permutations             | true       | true       | 
+| use_worst_of_early_and_late_libs_constraint                 | true       | true       | 
+| clock_enable_separate_rise_fall_pin_capacitance             | false      | false      | 
+| data_enable_separate_rise_fall_pin_capacitance              | false      | false      | 
+| timing_slew_propagation_mode                                | worst_slew | worst_slew | 
+| gclock_source_network_num_master_registers                  | 1000000    | 1000000    | 
+| alpine_timing_mode                                          | -1         | -1         | 
+| parametric_ocv                                              | false      | false      | 
+| parametric_ocv_corner_sigma                                 | 3          | 3          | 
+| enforce_explicit_library_association_to_corners             | false      | false      | 
+| enable_slew_variation                                       | true       | true       | 
+| low_geometry                                                | false      | false      | 
+| precise_waveform_analysis                                   | false      | false      | 
+-----------------------------------------------------------------------------------------
+
+
+Nitro-SoC> # config_shell -echo false
+info TA_CMDS6301: Limiting CPUs to available cores (Requested: 2, Available: 1).
+info TA_CMDS6300: Running Multi-Core Timing Analysis using 1 CPUs.
+info Running Single Core Timing Analysis using 1 CPU.
+info UI34: no objects were found for '*'
+info TA_CMDS6301: Limiting CPUs to available cores (Requested: 2, Available: 1).
+info TA_CMDS6300: Running Multi-Core Timing Analysis using 1 CPUs.
+info UI34: no objects were found for '*'
+info UI34: no objects were found for '*'
+Nitro-SoC> # config_optimize -dont_create_assign
+Nitro-SoC> # fk_msg -type info "Deriving Clock NDR from technology."
+Nitro-SoC> # new_config_flow -name flow_msg_prompt -quiet
+Nitro-SoC> # new_config_flow -name verbose_level
+NRF info: Deriving Clock NDR from technology.
+Nitro-SoC> # get_layers -type metal
+Nitro-SoC> # fk_msg Setting up NDR: setup_clock_ndr_shield {-ndr_width_multiplier 1  -ndr_space_multiplier 2  -ndr_layers {metal7 metal8}  -top_route_layer metal8}
+Nitro-SoC> # new_config_flow -name flow_msg_prompt -quiet
+Nitro-SoC> # new_config_flow -name verbose_level
+NRF info: Setting up NDR: setup_clock_ndr_shield {-ndr_width_multiplier 1  -ndr_space_multiplier 2  -ndr_layers {metal7 metal8}  -top_route_layer metal8}
+Nitro-SoC> # setup_clock_ndr_shield -ndr_width_multiplier 1 -ndr_space_multiplier 2 -ndr_layers metal7 metal8 -top_route_layer metal8
+Nitro-SoC> # get_config -name process -param node
+Nitro-SoC> # config_shell -echo false
+NRF info: Cts Top Layer Already Specified
+------------------------
+| Clock Routing Layers |
+|--------+-------------|
+| Bottom | Top         | 
+|--------+-------------|
+| metal7 | metal8      | 
+------------------------
+
+
+NRF info: Applying non-default rules on the clock routes
+warning UI160: Clear all variables that may contain removed objects.
+info UI40: removed 0 objects (out of 0 objects)
+NRF info: Created non-default rule MGC_CLK_NDR_1.0w2.0s for the  trunk clock nets.
+NRF info: Configured nondefault rule MGC_CLK_NDR_1.0w2.0s from height 2 up to height
+-----------------------------------------------------------------------------------------------
+|              trunk Clock Nets NDR MGC_CLK_NDR_1.0w2.0s  Configuration (micro)               |
+|--------+--------+-----------+-----------+-------------+-------------------+-----------------|
+| layer  | pitch  | min_width | ndr_width | min_spacing | requested_spacing | applied_spacing | 
+|--------+--------+-----------+-----------+-------------+-------------------+-----------------|
+| metal7 | 0.8000 | 0.4000    | 0.4000    | 0.4000      | 0.8000            | 1.2000          | 
+|--------+--------+-----------+-----------+-------------+-------------------+-----------------|
+| metal8 | 0.8000 | 0.4000    | 0.4000    | 0.4000      | 0.8000            | 1.2000          | 
+-----------------------------------------------------------------------------------------------
+
+
+info UI33: performed update timing for 0 sec (CPU time: 0 sec; MEM: RSS - 219M, CVMEM - 1691M, PVMEM - 1870M)
+info UI33: performed update timing for 0 sec (CPU time: 0 sec; MEM: RSS - 219M, CVMEM - 1691M, PVMEM - 1870M)
+NRF info: Assigned non-default rule MGC_CLK_NDR_1.0w2.0s on 0 clock nets.
+-----------------------------------------------------------------------------------------------------------------
+|                                      Ndr 'MGC_CLK_NDR_1.0w2.0s' lib vias                                      |
+|----------------------+------+-----------------+------+-----------------+---------------+------+---------------|
+|                      | via1 | via2            | via3 | via4            | via5          | via6 | via7          | 
+|----------------------+------+-----------------+------+-----------------+---------------+------+---------------|
+| Total NDR vias       | 0    | 0               | 0    | 0               | 0             | 0    | 0             | 
+|----------------------+------+-----------------+------+-----------------+---------------+------+---------------|
+| Illegal NDR vias     | 0    | 0               | 0    | 0               | 0             | 0    | 0             | 
+|----------------------+------+-----------------+------+-----------------+---------------+------+---------------|
+| New NDR vias         | -    | -               | -    | -               | -             | -    | -             | 
+|----------------------+------+-----------------+------+-----------------+---------------+------+---------------|
+| Routing vias         | 4    | 3               | 2    | 1               | 1             | 1    | 1             | 
+|----------------------+------+-----------------+------+-----------------+---------------+------+---------------|
+| Legal vias           | 4    | 3               | 2    | 1               | 1             | 1    | 1             | 
+|----------------------+------+-----------------+------+-----------------+---------------+------+---------------|
+| New NDR minarea vias | -    | north,south,ver | -    | north,south,ver | west,east,hor | -    | west,east,hor | 
+|----------------------+------+-----------------+------+-----------------+---------------+------+---------------|
+| Routing minarea vias | 0    | 0               | 0    | 0               | 0             | 0    | 0             | 
+|----------------------+------+-----------------+------+-----------------+---------------+------+---------------|
+| Legal minarea vias   | 0    | 0               | 0    | 0               | 0             | 0    | 0             | 
+-----------------------------------------------------------------------------------------------------------------
+
+
+Report 'MGC_CLK_NDR_1.0w2.0s': Nondefault rule: MGC_CLK_NDR_1.0w2.0s
+Generated on Wed Jan 4 02:00:58 2023
+  
+---------------------------------------------------------------------------------------------------------------------------
+|                                       Ndr layer properties: MGC_CLK_NDR_1.0w2.0s                                        |
+|------------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+|                              | metal1 | metal2 | metal3 | metal4 | metal5 | metal6 | metal7 | metal8 | metal9 | metal10 | 
+|------------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Width                        | 0.0700 | 0.0700 | 0.0700 | 0.1400 | 0.1400 | 0.1400 | 0.4000 | 0.4000 | 0.8000 | 0.8000  | 
+|------------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Spacing (hard)               | 0.0650 | 0.0700 | 0.0700 | 0.1400 | 0.1400 | 0.1400 | 1.2000 | 1.2000 | 0.8000 | 0.8000  | 
+|------------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Wire spacing to              | wire   | wire   | wire   | wire   | wire   | wire   | wire   | wire   | wire   | wire    | 
+|------------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Via  spacing to              |        |        |        |        |        |        |        |        |        |         | 
+|------------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Spacing threshold (angstrom) | 20000  | 20000  | 20000  | 20000  | 20000  | 20000  | 20000  | 20000  | 20000  | 20000   | 
+|------------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Use layer                    | 0      | 0      | 0      | 0      | 0      | 0      | 1      | 1      | 0      | 0       | 
+|------------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Single vias                  | 0      | 3      | 0      | 3      | 3      | 0      | 3      | 0      | 0      |         | 
+|------------------------------+--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+| Multi  vias                  | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      | 0      |         | 
+---------------------------------------------------------------------------------------------------------------------------
+
+
+Nitro-SoC> # set_rcd_models -stage pre_cts
+Nitro-SoC> # config_shell -echo false
+#################################################################################################################
+INFO: Resetting the config_extraction to default.
+#################################################################################################################
+Setting the Parasitic and Delay models for a (Full GR) -OR- (DR+GR mix) Extraction & Timing...
+
+Parasitic models:
+--------------------------------------------------
+| Wiring       | Clock Coupling | Data  Coupling | 
+|--------------+----------------+----------------|
+| Global Route | Predictive     | Predictive     | 
+|--------------+----------------+----------------|
+| Detail Route | Predictive     | Predictive     | 
+--------------------------------------------------
+
+
+Delay models:
+------------------------------
+| Name  | Model | Base Model | 
+|-------+-------+------------|
+| Data  | fast  | voltage    | 
+|-------+-------+------------|
+| Clock | fast  | voltage    | 
+------------------------------
+
+
+Nitro-SoC> # fk_msg -type info Reading configs from scr/config.tcl
+Nitro-SoC> # new_config_flow -name flow_msg_prompt -quiet
+Nitro-SoC> # new_config_flow -name verbose_level
+NRF info: Reading configs from scr/config.tcl
+Nitro-SoC> # config_shell -echo false
+warning EXTR600: Extraction configuration 'search_distance_multiple' value is changed from '6' to '15'.
+warning EXTR600: Extraction configuration 'use_thickness_variation_for_res' value is changed from 'false' to 'true'.
+warning EXTR600: Extraction configuration 'coupling_abs_threshold' value is changed from '3' to '0.1'.
+warning EXTR600: Extraction configuration 'coupling_rel_threshold' value is changed from '0.03' to '1'.
+info UI33: performed source of scr/config.tcl for 0 sec (CPU time: 0 sec; MEM: RSS - 211M, CVMEM - 1691M, PVMEM - 1870M)
+Nitro-SoC> # config_optimize -allow_reroute true -nondef_rule "" 
+Nitro-SoC> # config_timing -disable_clock_gating_checks false
+Nitro-SoC> # config_clockdata_optimize -name hold_corners -value corner_0_0
+Nitro-SoC> # config_flows -preserve_rcd true
+Nitro-SoC> # config_shell -echo false
+Nitro-SoC> # set_max_length -length_threshold $MGC_maxLengthParam 
+Nitro-SoC> # report_max_length
+Nitro-SoC> # fk_msg "Max Length Set to [report_max_length]"
+Nitro-SoC> # new_config_flow -name flow_msg_prompt -quiet
+Nitro-SoC> # new_config_flow -name verbose_level
+NRF info: Max Length Set to 1000
+Nitro-SoC> # config_shell -echo false
+NRF info: Setting max transition constraint as 0.2 of clock period
+info TA_CMDS6301: Limiting CPUs to available cores (Requested: 2, Available: 1).
+info TA_CMDS6300: Running Multi-Core Timing Analysis using 1 CPUs.
+info EXTR538: The corner corner_0_0 check passed!
+info EXTR540: The extraction technology check passed!
+info UI33: performed update timing for 1 sec (CPU time: 0 sec; MEM: RSS - 223M, CVMEM - 1691M, PVMEM - 1870M)
+info UI34: no objects were found for '*'
+Nitro-SoC> # fk_msg -type warning Please provide SAIF file when running low power flow. Power analysis will be inaccurate otherwise.
+Nitro-SoC> # new_config_flow -name flow_msg_prompt -quiet
+Nitro-SoC> # new_config_flow -name verbose_level
+NRF warning: Please provide SAIF file when running low power flow. Power analysis will be inaccurate otherwise.
+Nitro-SoC> # fk_msg -type warning MGC_cts_repeater_pruning_objective is not defined. Setting it to default value 'delay'. Please review/update flow_variables.tcl to latest version.
+Nitro-SoC> # new_config_flow -name flow_msg_prompt -quiet
+Nitro-SoC> # new_config_flow -name verbose_level
+NRF warning: MGC_cts_repeater_pruning_objective is not defined. Setting it to default value 'delay'. Please review/update flow_variables.tcl to latest version.
+Nitro-SoC> # config_cts -corner corner_0_0 -min_route_layer metal7 -max_route_layer metal8 -max_transition 0.25n -max_leaf_transition 0.25n -max_skew 0.2n -max_length 400u -enable_port_clock_leaves false
+Nitro-SoC> # config_cts -use_inverters false -buffers CLKBUF_* -inverters 
+Nitro-SoC> # config_shell -echo false
+info UI34: no objects were found for '*'
+lib_cell              ideal_transition (n)   in corner corner_0_0
+CLKBUF_X3             0.2310                
+CLKBUF_X2             0.2460                
+CLKBUF_X1             0.2480                
+info UI33: performed Get informations about the repeaters used in CTS for 0 sec (CPU time: 0 sec; MEM: RSS - 223M, CVMEM - 1691M, PVMEM - 1870M)
+info UI33: performed report_clock for 0 sec (CPU time: 0 sec; MEM: RSS - 223M, CVMEM - 1691M, PVMEM - 1870M)
+NRF info: Collecting Ideal Clock Transition data...
+NRF info: Analyzing Ideal Clock Transition data...
+NRF info: 	"CTS Repeaters" mode: true
+NRF info: 	Default ideal clock transition: 248.0p
+NRF info: All required inputs (non-zero ideal clock transitions) are available and consistent.
+Nitro-SoC> # fk_msg Delay, Timing, Parasitic, CRPR Configs Report
+Nitro-SoC> # new_config_flow -name flow_msg_prompt -quiet
+Nitro-SoC> # new_config_flow -name verbose_level
+NRF info: Delay, Timing, Parasitic, CRPR Configs Report
+Nitro-SoC> # config_timing -report
+-----------------------------------------------------------------------------------------
+| Name                                                        | Value      | Default    | 
+|-------------------------------------------------------------+------------+------------|
+| cpus                                                        | 2          | 4          | 
+|-------------------------------------------------------------+------------+------------|
+| create_io_path_groups                                       | true       | false      | 
+|-------------------------------------------------------------+------------+------------|
+| create_clock_check_path_group                               | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| derate_annotated_delays                                     | true       | true       | 
+|-------------------------------------------------------------+------------+------------|
+| disable_auto_clock_gating_checks                            | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| disable_case_analysis                                       | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| disable_clock_gating_checks                                 | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| disable_recovery_removal_checks                             | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| disable_seq_case_analysis                                   | true       | true       | 
+|-------------------------------------------------------------+------------+------------|
+| enable_clock_gating_propagate                               | true       | true       | 
+|-------------------------------------------------------------+------------+------------|
+| early_launch_at_borrowing_latches                           | false      | true       | 
+|-------------------------------------------------------------+------------+------------|
+| enable_default_for_cond_arcs                                | true       | true       | 
+|-------------------------------------------------------------+------------+------------|
+| enable_default_input_delays                                 | false      | true       | 
+|-------------------------------------------------------------+------------+------------|
+| enable_non_unate_clock_paths                                | true       | true       | 
+|-------------------------------------------------------------+------------+------------|
+| enable_path_segmentation                                    | true       | true       | 
+|-------------------------------------------------------------+------------+------------|
+| enable_port_clock_leaves                                    | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| enable_preset_clear_arcs                                    | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| enable_setup_independent_hold_checks                        | true       | true       | 
+|-------------------------------------------------------------+------------+------------|
+| estimated_delays                                            | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| ignore_driving_cell_for_annotated_delays                    | true       | true       | 
+|-------------------------------------------------------------+------------+------------|
+| sdf_includes_si_delays                                      | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| report_unconstrained_path                                   | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| use_si_slew_for_max_transition                              | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| zero_rc_delays                                              | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| ignore_driving_cell_for_clock_ports                         | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| use_annotated_cts_offsets                                   | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| enable_skew_estimation                                      | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| valid_skew_estimation                                       | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| enable_ideal_clock_data_tags                                | true       | true       | 
+|-------------------------------------------------------------+------------+------------|
+| enable_clock_propagation_through_three_state_enable_pins    | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| disable_sequential_generation_of_waveform_preserving_clocks | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| capacitance_violation_threshold                             | 0          | -2         | 
+|-------------------------------------------------------------+------------+------------|
+| derate_output_delay                                         | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| additive_regular_ocv_for_advanced_ocv                       | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| clock_source_use_driver_arc                                 | true       | true       | 
+|-------------------------------------------------------------+------------+------------|
+| use_pin_specific_clock_latency_and_propagation              | true       | true       | 
+|-------------------------------------------------------------+------------+------------|
+| sdf_is_derated                                              | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| use_worst_constraint_from_all_slew_permutations             | true       | true       | 
+|-------------------------------------------------------------+------------+------------|
+| use_worst_of_early_and_late_libs_constraint                 | true       | true       | 
+|-------------------------------------------------------------+------------+------------|
+| clock_enable_separate_rise_fall_pin_capacitance             | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| data_enable_separate_rise_fall_pin_capacitance              | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| timing_slew_propagation_mode                                | worst_slew | worst_slew | 
+|-------------------------------------------------------------+------------+------------|
+| gclock_source_network_num_master_registers                  | 1000000    | 1000000    | 
+|-------------------------------------------------------------+------------+------------|
+| alpine_timing_mode                                          | -1         | -1         | 
+|-------------------------------------------------------------+------------+------------|
+| parametric_ocv                                              | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| parametric_ocv_corner_sigma                                 | 3          | 3          | 
+|-------------------------------------------------------------+------------+------------|
+| enforce_explicit_library_association_to_corners             | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| enable_slew_variation                                       | true       | true       | 
+|-------------------------------------------------------------+------------+------------|
+| low_geometry                                                | false      | false      | 
+|-------------------------------------------------------------+------------+------------|
+| precise_waveform_analysis                                   | false      | false      | 
+-----------------------------------------------------------------------------------------
+
+
+Nitro-SoC> # config_extraction -report
+------------------------------------------------------------------------
+| Name                                     | Value       | Default     | 
+|------------------------------------------+-------------+-------------|
+| max_segment_length                       | 100         | 100         | 
+|------------------------------------------+-------------+-------------|
+| virtual_max_segment_length               | 200000      | 200000      | 
+|------------------------------------------+-------------+-------------|
+| min_segment_resistance                   | 0           | 0           | 
+|------------------------------------------+-------------+-------------|
+| shrink_factor                            | 1           | 1           | 
+|------------------------------------------+-------------+-------------|
+| use_thickness_variation                  | false       | false       | 
+|------------------------------------------+-------------+-------------|
+| use_thickness_variation_for_res          | true        | false       | 
+|------------------------------------------+-------------+-------------|
+| use_thickness_variation_for_cap          | false       | false       | 
+|------------------------------------------+-------------+-------------|
+| coupling_abs_threshold                   | 0.1         | 3           | 
+|------------------------------------------+-------------+-------------|
+| coupling_rel_threshold                   | 1           | 0.03        | 
+|------------------------------------------+-------------+-------------|
+| coupling_avg_threshold                   | 3.40282e+38 | 3.40282e+38 | 
+|------------------------------------------+-------------+-------------|
+| persistent_internal_parasitic_extraction | true        | true        | 
+|------------------------------------------+-------------+-------------|
+| gr_use_coaxial_shielding_for_clks        | false       | false       | 
+|------------------------------------------+-------------+-------------|
+| color_awareness                          | no_coloring | no_coloring | 
+|------------------------------------------+-------------+-------------|
+| ideal_net_cap                            | 10          | 10          | 
+|------------------------------------------+-------------+-------------|
+| skip_tcs_for_resistance                  | false       | false       | 
+|------------------------------------------+-------------+-------------|
+| use_new_extractor                        | false       | false       | 
+|------------------------------------------+-------------+-------------|
+| break_shorts                             | false       | false       | 
+------------------------------------------------------------------------
+
+
+Nitro-SoC> # report_delay_model
+------------------------------
+| Name  | Model | Base Model | 
+|-------+-------+------------|
+| Data  | fast  | voltage    | 
+|-------+-------+------------|
+| Clock | fast  | voltage    | 
+------------------------------
+
+
+Nitro-SoC> # report_parasitic_model
+--------------------------------------------------
+| Wiring       | Clock Coupling | Data  Coupling | 
+|--------------+----------------+----------------|
+| Global Route | Predictive     | Predictive     | 
+|--------------+----------------+----------------|
+| Detail Route | Predictive     | Predictive     | 
+--------------------------------------------------
+
+
+Nitro-SoC> # set_crpr_spec -report
+------------------------------------------------------------
+| Name                   | Value          | Default        | 
+|------------------------+----------------+----------------|
+| transition             | any_transition | any_transition | 
+|------------------------+----------------+----------------|
+| xtalk_cycle            | zero_cycle     | zero_cycle     | 
+|------------------------+----------------+----------------|
+| setup_slack_cutoff     | 100            | 100            | 
+|------------------------+----------------+----------------|
+| hold_slack_cutoff      | 100            | 100            | 
+|------------------------+----------------+----------------|
+| stage_threshold        | 0              | 0              | 
+|------------------------+----------------+----------------|
+| method                 | margin_based   | margin_based   | 
+|------------------------+----------------+----------------|
+| trim_effort            | none           | none           | 
+|------------------------+----------------+----------------|
+| crpr_backward_grouping | false          | false          | 
+|------------------------+----------------+----------------|
+| crpr_min_threshold     | 20             | 20             | 
+|------------------------+----------------+----------------|
+| crpr_max_threshold     | 20             | 20             | 
+------------------------------------------------------------
+
+
+Nitro-SoC> # source nrf_customization.tcl
+info UI33: performed source of nrf_customization.tcl for 0 sec (CPU time: 0 sec; MEM: RSS - 223M, CVMEM - 1691M, PVMEM - 1870M)
+Nitro-SoC> # run_place_timing -effort $MGC_flow_effort  -skip_precondition $MGC_skip_precondition -messages verbose 
+Nitro-SoC> # create_property -name rpt_flow_args -object_type root -storage sparse -data_type string -hidden true -persistent true -init false >> /dev/null
+Nitro-SoC> # get_root
+Nitro-SoC> # set_property -name rpt_flow_args -object root -value {2 effort medium} {6 messages verbose} {11 skip_preconditioning true}
+Nitro-SoC> # config_flows -action is_user_defined -optimize_layers
+Nitro-SoC> # config_shell -echo false
+Nitro-SoC> # get_config -name process -param node
+Nitro-SoC> # config_application -cpus 4
+warning UI4: Only 1 cores are available; the -cpus argument was set to 4.
+
+
+info RPT: Running run_place_timing with the following parameters
+incremental        : false
+flow               : ipo
+effort             : medium
+preconditioning    : skipped
+reorder_scan       : true
+iplace_max_util    : 70
+area_opt           : false
+tns_local_opt      : false
+optimize_layers    : false
+cpus               : 4
+messages           : verbose
+Nitro-SoC> # config_shell -echo_script false
+warning UI4: Only 1 cores are available; the -cpus argument was set to 4.
+warning The design is already timed. New CPU settings will be effective from next non-incremental timing analysis
+info RPT: 4 threads will be used by run_place_timing
+Nitro-SoC> # config_shell -echo_script false
+Nitro-SoC> # get_top_partition
+info RPT: design variable does not exist, using top_partition float_mult
+Nitro-SoC> # config_shell -echo_script false
+Nitro-SoC> # config_shell -echo_script false
+info RPT: Init started Wed Jan 04 02:01:01 EET 2023
+
+info RPT: Running init
+Nitro-SoC> # config_place_timing -category user_defined
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+|                                                   Current Parameter Values for 'config_place_timing'                                                   |
+|------------------+-----------------------------------------------------------+---------+---------+----------+------------+-----------------------------|
+| Name             | Description                                               | Value   | Default | Modified | Value_type | Enum                        | 
+|------------------+-----------------------------------------------------------+---------+---------+----------+------------+-----------------------------|
+| messages         | Verbosity of placer output: debug, normal, quiet, verbose | verbose | normal  | true     | N/A        | debug normal quiet verbose  | 
+|------------------+-----------------------------------------------------------+---------+---------+----------+------------+-----------------------------|
+| low_power_effort | Effort for power: high, low, medium, none                 | low     | none    | true     | N/A        | high low medium none        | 
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Nitro-SoC> # config_place_detail -category user_defined
+--------------------------------------------------------------------------------------------------------------------
+|                             User-Defined Parameter Values for 'config_place_detail'                              |
+|-------------------+-------------------------------------------------------------+-------+---------+--------------|
+| Name              | Description                                                 | Value | Default | User Defined | 
+|-------------------+-------------------------------------------------------------+-------+---------+--------------|
+| min_filler_space* | If 2 adjacent cells are on the same row and do not abut,    | 1     | 1       | true         | 
+|                   | the gap between them must be more than or equal this value. |       |         |              | 
+|                   | The unit is site. The valid values are 1, 2, 3, or 4.       |       |         |              | 
+--------------------------------------------------------------------------------------------------------------------
+
+
+Nitro-SoC> # config_route_global -category user_defined
+
+No User-Defined Parameters are Set for 'config_route_global'
+
+Nitro-SoC> # config_place_timing -name low_power_effort
+info RPT: Flow is adjusted for LOW-POWER
+Nitro-SoC> # config_place_timing -name enable_remap_optimization
+Nitro-SoC> # config_place_timing -name enable_remap_optimization
+Nitro-SoC> # config_place_timing -name pass2_optimization_effort
+Nitro-SoC> # config_place_timing -name turbo2
+Nitro-SoC> # config_place_timing -name congestion_effort
+info RPT: IPO: Congestion effort is set to low
+Nitro-SoC> # config_cell_density_map_colors -ignore_bloats false
+Nitro-SoC> # config_place_timing -name combined_multi_objective
+Nitro-SoC> # config_place_timing -name combined_multi_objective
+Nitro-SoC> # get_root
+Nitro-SoC> # get_property -name mxdb.design_state.netlist -object root
+Nitro-SoC> # config_prects_corners -mode set
+Nitro-SoC> # config_shell -echo false
+Nitro-SoC> # report_analysis_corner
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Corner     | Enable | Setup | Hold  | CRPR       | SI   | Power   | EM   | Voltage Drop | DRC        | Process                    | RC Temp | Scale Factor | 
+|------------+--------+-------+-------+------------+------+---------+------+--------------+------------+----------------------------+---------+--------------|
+| slow       | false  | true  | false | setup_hold | none | leakage | none | none         | trans, cap | new_rcmaster_techFreePDK45 | 25      | 1            | 
+|------------+--------+-------+-------+------------+------+---------+------+--------------+------------+----------------------------+---------+--------------|
+| fast       | false  | false | false | setup_hold | none | leakage | none | none         | trans, cap | new_rcmaster_techFreePDK45 | 25      | 1            | 
+|------------+--------+-------+-------+------------+------+---------+------+--------------+------------+----------------------------+---------+--------------|
+| corner_0_0 | true   | true  | false | setup_hold | none | none    | none | none         | trans, cap | new_rcmaster_techFreePDK45 | 25      | 1            | 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Nitro-SoC> # config_nitro_flow -name power_corner
+Nitro-SoC> # get_config -name ref_flows/power_corner
+Nitro-SoC> # fk_msg -set_prompt NRF
+Nitro-SoC> # new_config_flow -name flow_msg_prompt -quiet
+Nitro-SoC> # new_config_flow -name flow_msg_prompt -value NRF -descr Flow prefix - will appear in all messages printed by flow_msg -quiet
+Nitro-SoC> # config_shell -echo false
+Nitro-SoC> # config_shell -ignore_errors false
+Nitro-SoC> # config_shell -max_output_line_len 2048
+Nitro-SoC> # config_clock_timing -name dont_prune_corners -value corner_0_0
+Nitro-SoC> # config_place_timing -name low_power_effort
+Nitro-SoC> # fk_msg -type info Power effort is low. Enabling corner corner_0_0 for leakage and dynamic power.
+Nitro-SoC> # new_config_flow -name flow_msg_prompt -quiet
+Nitro-SoC> # new_config_flow -name verbose_level
+NRF info: Power effort is low. Enabling corner corner_0_0 for leakage and dynamic power.
+Nitro-SoC> # set_analysis_corner -corner corner_0_0 -enable true -setup true -power all
+Nitro-SoC> # config_nitro_flow -name leakage_corner
+Nitro-SoC> # get_config -name ref_flows/leakage_corner
+Nitro-SoC> # fk_msg -set_prompt NRF
+Nitro-SoC> # new_config_flow -name flow_msg_prompt -quiet
+Nitro-SoC> # new_config_flow -name flow_msg_prompt -value NRF -descr Flow prefix - will appear in all messages printed by flow_msg -quiet
+Nitro-SoC> # config_shell -echo false
+Nitro-SoC> # config_shell -ignore_errors false
+Nitro-SoC> # config_shell -max_output_line_len 2048
+Nitro-SoC> # report_analysis_corner
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Corner     | Enable | Setup | Hold  | CRPR       | SI   | Power            | EM   | Voltage Drop | DRC        | Process                    | RC Temp | Scale Factor | 
+|------------+--------+-------+-------+------------+------+------------------+------+--------------+------------+----------------------------+---------+--------------|
+| slow       | false  | true  | false | setup_hold | none | leakage          | none | none         | trans, cap | new_rcmaster_techFreePDK45 | 25      | 1            | 
+|------------+--------+-------+-------+------------+------+------------------+------+--------------+------------+----------------------------+---------+--------------|
+| fast       | false  | false | false | setup_hold | none | leakage          | none | none         | trans, cap | new_rcmaster_techFreePDK45 | 25      | 1            | 
+|------------+--------+-------+-------+------------+------+------------------+------+--------------+------------+----------------------------+---------+--------------|
+| corner_0_0 | true   | true  | false | setup_hold | none | leakage, dynamic | none | none         | trans, cap | new_rcmaster_techFreePDK45 | 25      | 1            | 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Nitro-SoC> # config_timing -create_io_path_groups true
+Nitro-SoC> # config_shell -echo false
+info RPT: Saving properties of path groups
+info TA_CMDS6301: Limiting CPUs to available cores (Requested: 4, Available: 1).
+info TA_CMDS6300: Running Multi-Core Timing Analysis using 1 CPUs.
+Nitro-SoC> # config_timing -estimated_delay false
+info RPT: Preserving rcd models settings (set before invoking the flow using set_rcd_models)
+Nitro-SoC> # config_shell -echo false
+error UI26: Script file 'flow_scripts/1_place.tcl' execution failed (and stopped) at line 192 (run_place_timing -effort $MGC_flow_effort  -skip_precondition $MGC_skip_precondition -messages verbose ).
