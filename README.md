@@ -111,6 +111,18 @@ ii. Only use vertical strips
 ## Multiplier used in floating point adder
 
 ## How to test the modules?
+1-Open Modelsim.
+
+2-Create project
+
+3-Add files in _helping_modules_ folder to the project
+
+4-Add files in _multipliers_files_pre_synthesis_ folder to the project
+
+5-Add files in test_benches folder
+
+6-Simulate test bench files using modelsim
+
 
 ## DRC Report of floating point multiplier:
 
