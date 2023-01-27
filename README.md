@@ -86,9 +86,11 @@ ii. Only use vertical strips
 ![My Image](Radix4_multiplier_synthesis_and_routing/screenshots/netlist2.jpg)
 ![My Image](Radix4_multiplier_synthesis_and_routing/screenshots/netlist3.jpg)
 ![My Image](Radix4_multiplier_synthesis_and_routing/screenshots/netlist4.jpg)
-![My Image](Radix4_multiplier_synthesis_and_routing/screenshots/netlist5.jpg)
+![My Image](Radix4_multiplier_synthesis_and_routing/screenshots/nrtlist5.jpg)
 
 ## Nitro final layout
+
+**Radix4Multiplier:**
 
 ![My Image](Radix4_multiplier_synthesis_and_routing/screenshots/layout.jpg)
 
