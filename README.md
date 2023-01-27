@@ -22,7 +22,7 @@ All multipliers will have an input register before the multiplier and an output 
 
 ## Tree Multiplier
 
-##Sequential Multiplier
+## Sequential Multiplier
 
 ## Booth Multiplier
 
