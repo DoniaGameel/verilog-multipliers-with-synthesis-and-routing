@@ -90,9 +90,13 @@ ii. Only use vertical strips
 
 ## Nitro final layout
 
-**Radix4Multiplier:**
+**Radix4_Multiplier:**
 
 ![My Image](Radix4_multiplier_synthesis_and_routing/screenshots/layout.jpg)
+
+**Booth_Multiplier:**
+
+![My Image](Booth_multiplier_synthesis_and_routing/layout.jpg)
 
 ## Post_Synthesis_and_Routing_folders_content:
 
