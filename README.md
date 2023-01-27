@@ -82,6 +82,8 @@ ii. Only use vertical strips
 
 ## Nitro final layout
 
+
+
 ## Post_Synthesis_and_Routing_folders_content:
 
 ○ Do file to run and configure wave.
@@ -107,6 +109,12 @@ ii. Only use vertical strips
 ○ Final saved database from Nitro
 
 ## Post-Routing-Report
+
+detailed reports are in post_synthesis_and_routing folders
+
+**collective results report**:
+
+![My Image](figures/report.png)
 
 ## Multiplier used in floating point multiplier
 
