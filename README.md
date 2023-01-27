@@ -102,10 +102,10 @@ ii. Only use vertical strips
 
 **Verilog_Multiplier:**
 
-![My Image](Booth_multiplier_synthesis_and_routing/netlist1.jpg)
-![My Image](Booth_multiplier_synthesis_and_routing/netlist2.jpg)
-![My Image](Booth_multiplier_synthesis_and_routing/netlist3.jpg)
-![My Image](Booth_multiplier_synthesis_and_routing/netlist4.jpg)
+![My Image](verilog_multiplier__synthesis_and_routing/netlist1.jpg)
+![My Image](verilog_multiplier__synthesis_and_routing/netlist2.jpg)
+![My Image](verilog_multiplier__synthesis_and_routing/netlist3.jpg)
+![My Image](verilog_multiplier__synthesis_and_routing/netlist4.jpg)
 
 ## Nitro final layout
 
@@ -115,7 +115,7 @@ ii. Only use vertical strips
 
 **Booth_Multiplier:**
 
-![My Image](Booth_multiplier_synthesis_and_routing/layout.jpg)
+![My Image](verilog_multiplier__synthesis_and_routing/layout.jpg)
 
 **Verilog_Multiplier:**
 
