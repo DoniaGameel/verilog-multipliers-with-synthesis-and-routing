@@ -80,9 +80,17 @@ ii. Only use vertical strips
 
 ## Oasys Netlists
 
+**Radix4Multiplier:**
+
+![My Image](Radix4_multiplier_synthesis_and_routing/screenshots/netlist1.jpg)
+![My Image](Radix4_multiplier_synthesis_and_routing/screenshots/netlist2.jpg)
+![My Image](Radix4_multiplier_synthesis_and_routing/screenshots/netlist3.jpg)
+![My Image](Radix4_multiplier_synthesis_and_routing/screenshots/netlist4.jpg)
+![My Image](Radix4_multiplier_synthesis_and_routing/screenshots/netlist5.jpg)
+
 ## Nitro final layout
 
-
+![My Image](Radix4_multiplier_synthesis_and_routing/screenshots/layout.jpg)
 
 ## Post_Synthesis_and_Routing_folders_content:
 
