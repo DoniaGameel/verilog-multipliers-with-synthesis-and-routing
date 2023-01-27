@@ -115,11 +115,11 @@ ii. Only use vertical strips
 
 **Booth_Multiplier:**
 
-![My Image](verilog_multiplier__synthesis_and_routing/layout.jpg)
+![My Image](Booth_multiplier_synthesis_and_routing/layout.jpg)
 
 **Verilog_Multiplier:**
 
-![My Image](verilog_multiplier__synthesis_and_routing/layout.jpg)
+![My Image](verilog_multiplier__synthesis_and_routing/lauout.jpg)
 
 ## Post_Synthesis_and_Routing_folders_content:
 
