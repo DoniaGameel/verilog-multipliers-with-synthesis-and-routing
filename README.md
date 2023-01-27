@@ -20,6 +20,18 @@ All multipliers will have an input register before the multiplier and an output 
 
 ![My Image](figures/In_Out_Registers.png)
 
+## Tree Multiplier
+
+##Sequential Multiplier
+
+## Booth Multiplier
+
+[Booth Multiplier Explanation](https://www.geeksforgeeks.org/computer-organization-booths-algorithm/).
+
+## Radix_4 Multiplier
+
+[Radix-4 Multiplier Explanation](https://youtu.be/zu88Oq0zd0Y).
+
 ## Test cases in test bench file:
 
 ○ Multiplication of positive and negative number
