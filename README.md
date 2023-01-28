@@ -16,6 +16,8 @@ In this repo, we implemented using verilog the following 32-bits signed integer 
 
 **5- Radix-4 Booth Algorithm**
 
+**6- IEEE 754 Floating Point Multiplier**
+
 All multipliers will have an input register before the multiplier and an output register after the multiplier.
 
 ![My Image](figures/In_Out_Registers.png)
@@ -23,6 +25,8 @@ All multipliers will have an input register before the multiplier and an output 
 ## Tree Multiplier
 
 ## Sequential Multiplier
+
+[Sequential Multiplier Explanation](https://www.youtube.com/watch?v=pDuEKDszwHs).
 
 ## Booth Multiplier
 
