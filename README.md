@@ -38,6 +38,14 @@ All multipliers will have an input register before the multiplier and an output 
 
 [Radix-4 Multiplier Explanation](https://youtu.be/zu88Oq0zd0Y).
 
+## Floating Point Multiplier
+
+[Floating Point Multiplier Explanation](https://digitalsystemdesign.in/floating-point-multiplication/).
+
+### Block Diagram
+
+![My Image](float_multiplier_synthesis_and_routing/screenshots/Block-diagram-of-Floating-point-Multiplier.png)
+
 ## Test cases in test bench file:
 
 ○ Multiplication of positive and negative number
