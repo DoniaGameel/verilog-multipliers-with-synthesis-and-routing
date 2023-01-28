@@ -180,7 +180,7 @@ detailed reports are in post_synthesis_and_routing folders
 ## Multiplier used in floating point multiplier
 Verlilog * multiplier
 
-### Explaination
+### Explanation
 From the synthesis results of the 5 multipliers, it has the best efficient combination of delay, power, utilization and area
 
 ## How to test the modules?
