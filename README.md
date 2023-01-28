@@ -111,6 +111,12 @@ ii. Only use vertical strips
 ![My Image](verilog_multiplier__synthesis_and_routing/netlist3.jpg)
 ![My Image](verilog_multiplier__synthesis_and_routing/netlist4.jpg)
 
+**Floating_Point_Multiplier:**
+
+![My Image](float_multiplier_synthesis_and_routing/screenshots/netlist1.png)
+![My Image](float_multiplier_synthesis_and_routing/screenshots/netlist2.png)
+![My Image](float_multiplier_synthesis_and_routing/screenshots/netlist3.png)
+
 ## Nitro final layout
 
 **Radix4_Multiplier:**
@@ -124,6 +130,10 @@ ii. Only use vertical strips
 **Verilog_Multiplier:**
 
 ![My Image](verilog_multiplier__synthesis_and_routing/lauout.jpg)
+
+**Floating_Point_Multiplier:**
+
+![My Image](float_multiplier_synthesis_and_routing/screenshots/layout.png)
 
 ## Post_Synthesis_and_Routing_folders_content:
 
