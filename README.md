@@ -24,6 +24,8 @@ All multipliers will have an input register before the multiplier and an output 
 
 ## Tree Multiplier
 
+[Tree Multiplier Explanation](https://core.ac.uk/download/pdf/234643291.pdf)
+
 ## Sequential Multiplier
 
 [Sequential Multiplier Explanation](https://www.youtube.com/watch?v=pDuEKDszwHs).
