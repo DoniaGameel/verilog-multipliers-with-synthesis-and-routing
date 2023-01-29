@@ -129,6 +129,30 @@ ii. Only use vertical strips
 ![My Image](float_multiplier_synthesis_and_routing/screenshots/netlist2.png)
 ![My Image](float_multiplier_synthesis_and_routing/screenshots/netlist3.png)
 
+**Tree_Multiplier:**
+<p align="center">
+  <img src = "https://user-images.githubusercontent.com/64079821/215327841-e66187bb-5167-4e79-807f-08eee365e136.png" />
+  <img src = "https://user-images.githubusercontent.com/64079821/215327838-d42d8acf-2a12-4dbd-868e-3bc6741ba448.png" />
+  <img src = "https://user-images.githubusercontent.com/64079821/215327840-7ffc5bcf-97d1-40f0-8e04-3e0bb31c1e31.png" />
+</p>
+
+**Sequential_Multiplier:**
+
+<p align="center">
+  <img src = "https://user-images.githubusercontent.com/64079821/215327274-b70d3b63-36a9-47c8-8b09-2b7889ea8e9c.png" />
+  <img src = "https://user-images.githubusercontent.com/64079821/215327275-31954dc7-b0a3-4ef1-9386-e03a158dd1d8.png" />
+  <img src = "https://user-images.githubusercontent.com/64079821/215327276-cb9c5ea9-7de8-4bd4-bddf-81d4a467569d.png" />
+  <img src = "https://user-images.githubusercontent.com/64079821/215327277-c498cbcd-a3cb-43dd-8dd0-35b61d997e46.png" />
+  <img src = "(https://user-images.githubusercontent.com/64079821/215327278-5a32babd-f182-40cf-95c4-5dfa5bff5f90.png" />
+  <img src = "https://user-images.githubusercontent.com/64079821/215327279-01b0a3f5-5b75-4f09-9d8f-cbdca62c1eb1.png" />
+  <img src = "(https://user-images.githubusercontent.com/64079821/215327268-d7c3c1dd-8b76-4b97-ad55-93faedc97336.png" />
+  <img src = "https://user-images.githubusercontent.com/64079821/215327271-eb22c71f-72f9-43d1-9349-764797957d99.png" />
+  <img src = "https://user-images.githubusercontent.com/64079821/215327272-0d58fa47-eacb-402c-840d-eaa2608ddaba.png" />
+  <img src = "https://user-images.githubusercontent.com/64079821/215327273-4249e779-c696-4b36-9703-a13115fac947.png" />
+</p>
+
+
+
 ## Nitro final layout
 
 **Radix4_Multiplier:**
@@ -146,6 +170,20 @@ ii. Only use vertical strips
 **Floating_Point_Multiplier:**
 
 ![My Image](float_multiplier_synthesis_and_routing/screenshots/layout.png)
+
+**Tree_Multiplier:**
+
+<p align="center">
+  <img src = "https://user-images.githubusercontent.com/64079821/215327025-cbea8fba-fb52-475f-b903-eafcbbdc74df.png" />
+</p>
+
+**Sequential_Multiplier:**
+
+<p align="center">
+  <img src = "https://user-images.githubusercontent.com/64079821/215327057-d95f6168-4251-43f5-82b2-fd7942cc6b73.png" />
+</p>
+
+
 
 ## Post_Synthesis_and_Routing_folders_content:
 
